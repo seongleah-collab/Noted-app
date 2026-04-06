@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Noted — AI Meeting & Lecture Assistant</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Animated background -->
+  <div class="bg-sunset"></div>
+  <div class="bg-glow bg-glow-1"></div>
+  <div class="bg-glow bg-glow-2"></div>
+  <div class="bg-glow bg-glow-3"></div>
+  <div class="bg-glow bg-glow-4"></div>
+  <div class="bg-glow bg-glow-5"></div>
+
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">
+        <svg class="logo-svg" width="140" height="36" viewBox="230 20 200 64" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="glassFillNav" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#e0e0e0" stop-opacity="0.15"/>
+              <stop offset="50%" stop-color="#ffffff" stop-opacity="0.08"/>
+              <stop offset="100%" stop-color="#c0c0c0" stop-opacity="0.12"/>
+            </linearGradient>
+            <linearGradient id="glassEdgeNav" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#ffffff" stop-opacity="0.25"/>
+              <stop offset="40%" stop-color="#ffffff" stop-opacity="0.08"/>
+              <stop offset="60%" stop-color="#ffffff" stop-opacity="0.05"/>
+              <stop offset="100%" stop-color="#ffffff" stop-opacity="0.20"/>
+            </linearGradient>
+            <linearGradient id="glassShineNav" x1="0.2" y1="0" x2="0.8" y2="1">
+              <stop offset="0%" stop-color="#ffffff" stop-opacity="0.30"/>
+              <stop offset="40%" stop-color="#ffffff" stop-opacity="0.05"/>
+              <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+            </linearGradient>
+            <clipPath id="bClipNav"><rect x="236" y="24" width="56" height="56" rx="16"/></clipPath>
+          </defs>
+          <rect x="236" y="24" width="56" height="56" rx="16" fill="url(#glassFillNav)"/>
+          <ellipse cx="258" cy="35" rx="18" ry="8" fill="url(#glassShineNav)" clip-path="url(#bClipNav)"/>
+          <rect x="236" y="24" width="56" height="56" rx="16" fill="none" stroke="url(#glassEdgeNav)" stroke-width="1.2"/>
+          <rect x="245.5" y="47" width="5" height="10" rx="2.5" fill="currentColor" opacity="0.85"/>
+          <rect x="253.5" y="42" width="5" height="20" rx="2.5" fill="currentColor" opacity="0.9"/>
+          <rect x="261.5" y="37" width="5" height="30" rx="2.5" fill="currentColor" opacity="1"/>
+          <rect x="269.5" y="43" width="5" height="18" rx="2.5" fill="currentColor" opacity="0.9"/>
+          <rect x="277.5" y="48" width="5" height="8" rx="2.5" fill="currentColor" opacity="0.85"/>
+          <text x="302" y="68" font-family="-apple-system, 'system-ui', 'Segoe UI', sans-serif" font-size="42" font-weight="500" letter-spacing="1" fill="currentColor">Noted</text>
+        </svg>
+      </a>
+      <div class="nav-links">
+        <a href="#features">Features</a>
+        <a href="#how-it-works">How it works</a>
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle light/dark mode">
+          <svg class="theme-icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          <svg class="theme-icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+        <a href="#download" class="nav-cta">Get Early Access</a>
+      </div>
+      <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="#features">Features</a>
+      <a href="#how-it-works">How it works</a>
+      <button class="theme-toggle" id="theme-toggle-mobile" aria-label="Toggle light/dark mode">
+        <svg class="theme-icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg class="theme-icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <span>Toggle theme</span>
+      </button>
+      <a href="#download" class="nav-cta">Get Early Access</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        Now available for Windows
+      </div>
+      <h1 class="hero-title">
+        Be fully present.<br>
+        <span class="gradient-text">Let AI handle the rest.</span>
+      </h1>
+      <p class="hero-subtitle">
+        Noted is an AI-powered desktop assistant that records your meetings and lectures — online or in-person — generates real-time notes, and gives you a context-aware chatbot. Whether you're on a Zoom call or sitting in a lecture hall, Noted works completely incognito. No bots. No notifications. Just you, fully present.
+      </p>
+      <div class="hero-actions">
+        <a href="#download" class="btn btn-primary">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download for Windows
+        </a>
+        <a href="#how-it-works" class="btn btn-secondary">
+          See how it works
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+      <div class="hero-platforms-bar">
+        <div class="platform-pill">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          Zoom
+        </div>
+        <div class="platform-pill">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          Google Meet
+        </div>
+        <div class="platform-pill">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          Teams
+        </div>
+        <div class="platform-pill">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/></svg>
+          In-Person
+        </div>
+      </div>
+    </div>
+
+    <!-- App Mockup -->
+    <div class="hero-mockup">
+      <div class="mockup-glow"></div>
+      <div class="mockup-window">
+        <div class="mockup-titlebar">
+          <div class="mockup-titlebar-left">
+            <svg class="mockup-logo-svg" width="22" height="22" viewBox="236 24 56 56" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="glassFillMock" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#e0e0e0" stop-opacity="0.15"/>
+                  <stop offset="50%" stop-color="#ffffff" stop-opacity="0.08"/>
+                  <stop offset="100%" stop-color="#c0c0c0" stop-opacity="0.12"/>
+                </linearGradient>
+                <linearGradient id="glassEdgeMock" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#ffffff" stop-opacity="0.25"/>
+                  <stop offset="100%" stop-color="#ffffff" stop-opacity="0.15"/>
+                </linearGradient>
+              </defs>
+              <rect x="236" y="24" width="56" height="56" rx="16" fill="url(#glassFillMock)"/>
+              <rect x="236" y="24" width="56" height="56" rx="16" fill="none" stroke="url(#glassEdgeMock)" stroke-width="1.2"/>
+              <rect x="245.5" y="47" width="5" height="10" rx="2.5" fill="currentColor" opacity="0.85"/>
+              <rect x="253.5" y="42" width="5" height="20" rx="2.5" fill="currentColor" opacity="0.9"/>
+              <rect x="261.5" y="37" width="5" height="30" rx="2.5" fill="currentColor" opacity="1"/>
+              <rect x="269.5" y="43" width="5" height="18" rx="2.5" fill="currentColor" opacity="0.9"/>
+              <rect x="277.5" y="48" width="5" height="8" rx="2.5" fill="currentColor" opacity="0.85"/>
+            </svg>
+            <span>Noted</span>
+            <span class="mockup-badge mockup-badge-recording">Recording</span>
+          </div>
+          <div class="mockup-dots">
+            <span></span><span></span>
+          </div>
+        </div>
+        <div class="mockup-chat">
+          <!-- Live notes preview -->
+          <div class="mockup-notes-panel">
+            <div class="mockup-notes-header">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2"><circle cx="12" cy="12" r="5" fill="#4ade80" opacity="0.3"/><circle cx="12" cy="12" r="2" fill="#4ade80"/></svg>
+              <span>Live Notes</span>
+            </div>
+            <div class="mockup-notes-content">
+              <p class="mockup-note-item"><span class="note-bullet">-</span> Q3 revenue targets increased to $2.4M</p>
+              <p class="mockup-note-item"><span class="note-bullet">-</span> New hire onboarding starts <strong>Monday Oct 14</strong></p>
+              <p class="mockup-note-item highlight"><span class="note-bullet">!</span> <strong>Action item:</strong> Submit budget proposal by Friday</p>
+              <p class="mockup-note-item typing-note"><span class="note-bullet">-</span> Marketing team to present campaign res<span class="cursor-blink">|</span></p>
+            </div>
+          </div>
+          <!-- Chat -->
+          <div class="mockup-msg mockup-msg-user">
+            <div class="mockup-msg-label">You</div>
+            <div class="mockup-msg-bubble mockup-msg-bubble-user">
+              What did she say about the deadline?
+            </div>
+          </div>
+          <div class="mockup-msg mockup-msg-assistant">
+            <div class="mockup-msg-label">Noted</div>
+            <div class="mockup-msg-bubble mockup-msg-bubble-assistant">
+              <p>Sarah said the budget proposal needs to be submitted by <strong>Friday, October 11th</strong>. She also mentioned that late submissions won't be reviewed until next quarter.</p>
+            </div>
+          </div>
+        </div>
+        <div class="mockup-input">
+          <div class="mockup-input-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/></svg>
+          </div>
+          <div class="mockup-input-field">Ask about this meeting...</div>
+          <div class="mockup-input-send">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="content-solid">
+
+  <!-- Features -->
+  <section class="features" id="features">
+    <div class="section-header">
+      <div class="section-badge">Features</div>
+      <h2>Bypass anything you want with Noted.<br><span class="gradient-text">Meetings, lectures, and everything in between.</span></h2>
+      <p>Online call or in-person class — Noted runs silently in the background, capturing system audio or your microphone. No bots join your call. No one knows it's there.</p>
+    </div>
+    <div class="features-grid">
+      <!-- Card 1: Real-Time Notes -->
+      <div class="feature-card">
+        <div class="feature-card-text">
+          <h3>Real-time notes, not after the fact</h3>
+          <p>Notes appear live as the conversation happens. Key points, deadlines, and action items — highlighted instantly. Request changes on the fly.</p>
+        </div>
+        <div class="feature-card-visual">
+          <div class="feat-mock feat-mock-notes">
+            <div class="feat-mock-header">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2"><circle cx="12" cy="12" r="5" fill="#4ade80" opacity="0.3"/><circle cx="12" cy="12" r="2" fill="#4ade80"/></svg>
+              <span>Live Notes</span>
+            </div>
+            <div class="feat-mock-lines">
+              <div class="feat-note-line live-line-1"><span class="feat-bullet">-</span> Q3 revenue targets increased to $2.4M</div>
+              <div class="feat-note-line live-line-2"><span class="feat-bullet">-</span> New hire onboarding starts <strong>Monday</strong></div>
+              <div class="feat-note-line feat-note-highlight live-line-3"><span class="feat-bullet">!</span> <strong>Action item:</strong> Submit budget by Friday</div>
+              <div class="feat-note-line feat-note-typing"><span class="feat-bullet">-</span> Marketing team to present<span class="cursor-blink">|</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2: Context-Aware Chatbot -->
+      <div class="feature-card">
+        <div class="feature-card-text">
+          <h3>AI that answers questions for you, real-time</h3>
+          <p>Ask questions mid-meeting and get accurate answers based on what's actually being said. No copy-pasting into a random LLM.</p>
+        </div>
+        <div class="feature-card-visual">
+          <div class="feat-mock feat-mock-chat">
+            <div class="feat-chat-msg feat-chat-user">
+              <span class="feat-chat-label">You</span>
+              <div class="feat-chat-bubble feat-chat-bubble-user">What did she say about the deadline?</div>
+            </div>
+            <div class="feat-chat-msg feat-chat-assistant">
+              <span class="feat-chat-label">Noted</span>
+              <div class="feat-chat-bubble feat-chat-bubble-ai">Sarah said the budget proposal needs to be submitted by <strong>Friday, October 11th</strong>. Late submissions won't be reviewed until next quarter.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3: Completely Incognito -->
+      <div class="feature-card">
+        <div class="feature-card-text">
+          <h3>Completely incognito</h3>
+          <p>No bots joining your call. No notifications sent to anyone. Noted captures system audio for online meetings or your mic for in-person — invisible to everyone else.</p>
+        </div>
+        <div class="feature-card-visual">
+          <div class="feat-mock feat-mock-incognito">
+            <div class="feat-incog-window">
+              <div class="feat-incog-titlebar">
+                <div class="feat-incog-dots"><span></span><span></span><span></span></div>
+                <span>Zoom Meeting</span>
+              </div>
+              <div class="feat-incog-body">
+                <div class="feat-incog-grid">
+                  <div class="feat-incog-participant">
+                    <div class="feat-incog-avatar">S</div>
+                    <span>Sarah Chen</span>
+                  </div>
+                  <div class="feat-incog-participant">
+                    <div class="feat-incog-avatar">Y</div>
+                    <span>You</span>
+                  </div>
+                  <div class="feat-incog-participant">
+                    <div class="feat-incog-avatar">M</div>
+                    <span>Mike Ross</span>
+                  </div>
+                  <div class="feat-incog-participant">
+                    <div class="feat-incog-avatar">J</div>
+                    <span>Jane Park</span>
+                  </div>
+                </div>
+                <div class="feat-incog-badge">
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/><line x1="1" y1="1" x2="23" y2="23"/></svg>
+                  No bot visible · Recording silently
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 4: Your Notes, Your Way -->
+      <div class="feature-card">
+        <div class="feature-card-text">
+          <h3>Your notes, your way</h3>
+          <p>Choose the depth, style, and format. Bullet points, detailed summaries, Cornell-style — you describe it, Noted delivers.</p>
+        </div>
+        <div class="feature-card-visual">
+          <div class="feat-mock feat-mock-styles">
+            <div class="feat-style-option feat-style-active">
+              <div class="feat-style-label">Bullet Points</div>
+              <div class="feat-style-preview">
+                <div class="feat-style-line">- Key decisions from standup</div>
+                <div class="feat-style-line">- Sprint velocity at 80%</div>
+                <div class="feat-style-line">- Deploy scheduled Friday</div>
+              </div>
+            </div>
+            <div class="feat-style-option">
+              <div class="feat-style-label">Detailed Summary</div>
+              <div class="feat-style-preview">
+                <div class="feat-style-line feat-style-block"></div>
+                <div class="feat-style-line feat-style-block short"></div>
+              </div>
+            </div>
+            <div class="feat-style-option">
+              <div class="feat-style-label">Cornell Notes</div>
+              <div class="feat-style-preview">
+                <div class="feat-style-line feat-style-block"></div>
+                <div class="feat-style-line feat-style-block short"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section class="how-it-works" id="how-it-works">
+    <div class="section-header">
+      <div class="section-badge">How it works</div>
+      <h2>Walk into any room.<br><span class="gradient-text">Noted does the rest.</span></h2>
+    </div>
+    <div class="steps">
+      <!-- Step 1 -->
+      <div class="step-card">
+        <div class="step-card-text">
+          <div class="step-number">1</div>
+          <h3>Open Noted & hit record</h3>
+          <p>Joining a Zoom call? Noted captures system audio automatically. Sitting in a lecture hall? It records through your mic. One click, any setting.</p>
+        </div>
+        <div class="step-card-visual">
+          <div class="step-mock step-mock-record">
+            <div class="step-mock-titlebar">
+              <div class="step-mock-dots"><span></span><span></span></div>
+              <span class="step-mock-title">Noted</span>
+            </div>
+            <div class="step-mock-body">
+              <div class="step-source-picker">
+                <div class="step-source step-source-active">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                  System Audio
+                </div>
+                <div class="step-source">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/></svg>
+                  Microphone
+                </div>
+              </div>
+              <div class="step-record-btn">
+                <div class="step-record-circle"></div>
+                <span>Start Recording</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="step-card">
+        <div class="step-card-text">
+          <div class="step-number">2</div>
+          <h3>Watch notes appear live</h3>
+          <p>Key dates, action items, and important details are highlighted automatically as the conversation flows. Ask the chatbot anything mid-session.</p>
+        </div>
+        <div class="step-card-visual">
+          <div class="step-mock step-mock-live">
+            <div class="step-mock-titlebar">
+              <div class="step-mock-dots"><span></span><span></span></div>
+              <span class="step-mock-title">Noted</span>
+              <span class="step-recording-badge">
+                <span class="step-rec-dot"></span>
+                Recording
+              </span>
+            </div>
+            <div class="step-mock-body step-mock-split">
+              <div class="step-live-notes">
+                <div class="step-live-line step-anim-1">Q3 targets set at $2.4M</div>
+                <div class="step-live-line step-anim-2">Onboarding starts <strong>Monday Oct 14</strong></div>
+                <div class="step-live-line step-live-highlight step-anim-3">
+                  <strong>Action:</strong> Submit budget by Friday
+                </div>
+                <div class="step-live-line step-live-typing">Marketing campaign res<span class="cursor-blink">|</span></div>
+              </div>
+              <div class="step-live-chat">
+                <div class="step-mini-bubble step-mini-user">What's the deadline?</div>
+                <div class="step-mini-bubble step-mini-ai">Budget due <strong>Friday Oct 11</strong></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="step-card">
+        <div class="step-card-text">
+          <div class="step-number">3</div>
+          <h3>Review, refine & act</h3>
+          <p>After the session, get a full summary, extracted to-do list with deadlines, and your complete notes — ready to export or share.</p>
+        </div>
+        <div class="step-card-visual">
+          <div class="step-mock step-mock-summary">
+            <div class="step-mock-titlebar">
+              <div class="step-mock-dots"><span></span><span></span></div>
+              <span class="step-mock-title">Session Complete</span>
+            </div>
+            <div class="step-mock-body">
+              <div class="step-summary-cards">
+                <div class="step-sum-card">
+                  <div class="step-sum-icon">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                  </div>
+                  <span>Full Summary</span>
+                </div>
+                <div class="step-sum-card">
+                  <div class="step-sum-icon step-sum-icon-green">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+                  </div>
+                  <span>3 Action Items</span>
+                </div>
+                <div class="step-sum-card">
+                  <div class="step-sum-icon step-sum-icon-amber">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                  </div>
+                  <span>2 Deadlines</span>
+                </div>
+              </div>
+              <div class="step-summary-actions">
+                <div class="step-action-btn step-action-primary">Export Notes</div>
+                <div class="step-action-btn">Copy Summary</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta" id="download">
+    <div class="cta-card cta-card-centered">
+      <h2>Stop multitasking.<br><span class="gradient-text">Start being present.</span></h2>
+      <p>Get Noted for free and never miss a thing in meetings and lectures again.</p>
+      <a href="#" class="btn cta-download-btn">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download for Windows
+      </a>
+      <span class="cta-meta">Free to try · Windows 10+ · No account required</span>
+      <div class="cta-platforms">
+        <span class="platform-tag">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801"/></svg>
+          Windows
+        </span>
+        <span class="platform-tag platform-soon">
+          macOS <span class="coming-soon">Coming soon</span>
+        </span>
+        <span class="platform-tag platform-soon">
+          iOS & Android <span class="coming-soon">Coming soon</span>
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <svg class="logo-svg logo-svg-sm" width="110" height="28" viewBox="230 20 200 64" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="glassFillFoot" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#e0e0e0" stop-opacity="0.10"/>
+              <stop offset="50%" stop-color="#ffffff" stop-opacity="0.05"/>
+              <stop offset="100%" stop-color="#c0c0c0" stop-opacity="0.08"/>
+            </linearGradient>
+            <linearGradient id="glassEdgeFoot" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#ffffff" stop-opacity="0.15"/>
+              <stop offset="100%" stop-color="#ffffff" stop-opacity="0.08"/>
+            </linearGradient>
+          </defs>
+          <rect x="236" y="24" width="56" height="56" rx="16" fill="url(#glassFillFoot)"/>
+          <rect x="236" y="24" width="56" height="56" rx="16" fill="none" stroke="url(#glassEdgeFoot)" stroke-width="1.2"/>
+          <rect x="245.5" y="47" width="5" height="10" rx="2.5" fill="currentColor" opacity="0.5"/>
+          <rect x="253.5" y="42" width="5" height="20" rx="2.5" fill="currentColor" opacity="0.6"/>
+          <rect x="261.5" y="37" width="5" height="30" rx="2.5" fill="currentColor" opacity="0.7"/>
+          <rect x="269.5" y="43" width="5" height="18" rx="2.5" fill="currentColor" opacity="0.6"/>
+          <rect x="277.5" y="48" width="5" height="8" rx="2.5" fill="currentColor" opacity="0.5"/>
+          <text x="302" y="68" font-family="-apple-system, 'system-ui', 'Segoe UI', sans-serif" font-size="42" font-weight="500" letter-spacing="1" fill="currentColor">Noted</text>
+        </svg>
+      </div>
+      <div class="footer-links">
+        <a href="#">Twitter</a>
+        <a href="#">Discord</a>
+        <a href="#">Contact</a>
+      </div>
+      <p class="footer-copy">&copy; 2026 Noted. All rights reserved.</p>
+    </div>
+  </footer>
+  </div><!-- .content-solid -->
+
+  <script src="script.js"></script>
+</body>
+</html>

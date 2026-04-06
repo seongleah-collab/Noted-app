@@ -1,0 +1,19 @@
+{
+  "name": "noted",
+  "version": "1.0.0",
+  "description": "AI-powered desktop overlay assistant",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "NODE_ENV=development electron ."
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.39.0",
+    "dotenv": "^16.4.7",
+    "electron-store": "^8.1.0",
+    "screenshot-desktop": "^1.15.0"
+  },
+  "devDependencies": {
+    "electron": "^31.7.7"
+  }
+}
