@@ -274,6 +274,11 @@ button {
   opacity: 0.85;
 }
 
+.signup-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 /* ─── Hero Right / Scene ────────────────────────────── */
 .hero-right {
   flex: 1;

@@ -44,12 +44,58 @@ document.addEventListener('keydown', (e) => {
 
 // ─── Signup Form ───────────────────────────────────
 const signupForm = document.getElementById('signup-form');
+const signupInput = signupForm.querySelector('.signup-input');
+const signupBtn = signupForm.querySelector('.signup-btn');
 
-signupForm.addEventListener('submit', (e) => {
+signupForm.addEventListener('submit', async (e) => {
   e.preventDefault();
-  const email = signupForm.querySelector('.signup-input').value;
-  if (email) {
-    signupForm.querySelector('.signup-input').value = '';
-    signupForm.querySelector('.signup-input').placeholder = 'Thanks! We\'ll be in touch.';
+  const email = signupInput.value.trim();
+  if (!email) return;
+
+  signupBtn.textContent = 'Joining...';
+  signupBtn.disabled = true;
+
+  try {
+    const res = await fetch('https://app.loops.so/api/v1/contacts/create', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer df3cec20d30b0978b5994f5bc180a913'
+      },
+      body: JSON.stringify({ email })
+    });
+
+    if (res.ok) {
+      signupInput.value = '';
+      signupInput.placeholder = 'You\'re on the list!';
+      signupBtn.textContent = 'Joined';
+      setTimeout(() => {
+        signupBtn.textContent = 'Join Waitlist';
+        signupBtn.disabled = false;
+        signupInput.placeholder = 'Enter your email';
+      }, 3000);
+    } else {
+      const data = await res.json().catch(() => null);
+      if (data?.message?.includes('already')) {
+        signupInput.value = '';
+        signupInput.placeholder = 'You\'re already on the list!';
+        signupBtn.textContent = 'Joined';
+      } else {
+        signupInput.placeholder = 'Something went wrong. Try again.';
+        signupBtn.textContent = 'Join Waitlist';
+      }
+      setTimeout(() => {
+        signupBtn.textContent = 'Join Waitlist';
+        signupBtn.disabled = false;
+        signupInput.placeholder = 'Enter your email';
+      }, 3000);
+    }
+  } catch {
+    signupInput.placeholder = 'Network error. Try again.';
+    signupBtn.textContent = 'Join Waitlist';
+    signupBtn.disabled = false;
+    setTimeout(() => {
+      signupInput.placeholder = 'Enter your email';
+    }, 3000);
   }
 });
