@@ -1038,17 +1038,17 @@ button {
     font-size: 13px;
   }
 
-  /* Hero: generous spacing, strong hierarchy */
+  /* Hero: owns the first viewport */
   .hero {
-    padding: 110px 20px 40px;
-    gap: 52px;
+    padding: 120px 24px 48px;
+    gap: 56px;
   }
 
   .hero-title {
-    font-size: 40px;
-    letter-spacing: -1.5px;
-    margin-bottom: 20px;
-    line-height: 1.1;
+    font-size: 42px;
+    letter-spacing: -1.8px;
+    margin-bottom: 18px;
+    line-height: 1.06;
   }
 
   .hero-title br {
@@ -1057,39 +1057,39 @@ button {
 
   .hero-subtitle {
     font-size: 17px;
-    margin-bottom: 40px;
+    margin-bottom: 36px;
     line-height: 1.5;
   }
 
   .signup-label {
     font-size: 11px;
-    letter-spacing: 1.2px;
-    margin-bottom: 12px;
+    letter-spacing: 1.5px;
+    margin-bottom: 14px;
   }
 
-  /* Signup: full-width stacked */
+  /* Signup */
   .signup-form {
     flex-direction: column;
     gap: 10px;
   }
 
   .signup-input {
-    padding: 15px 18px;
-    font-size: 15px;
+    padding: 16px 20px;
+    font-size: 16px;
     width: 100%;
     border-radius: 14px;
   }
 
   .signup-btn {
     width: 100%;
-    padding: 15px;
+    padding: 16px;
     text-align: center;
     font-size: 15px;
     font-weight: 600;
     border-radius: 14px;
   }
 
-  /* Scene: clean grid composition */
+  /* ── Scene: layered card composition ── */
   .hero-right {
     overflow: visible;
   }
@@ -1105,36 +1105,37 @@ button {
     gap: 10px;
   }
 
-  /* Meeting window: full width, prominent */
+  /* Meeting window */
   .meeting-window {
     grid-column: 1 / -1;
-    width: 100%;
+    width: 92%;
+    margin: 0 auto;
     border-radius: 16px;
     position: relative;
     z-index: 1;
   }
 
   .meeting-titlebar {
-    padding: 10px 14px;
+    padding: 11px 14px;
     font-size: 12px;
   }
 
   .participant {
-    padding: 20px 10px 16px;
+    padding: 22px 10px 18px;
   }
 
   .participant-avatar {
-    width: 38px;
-    height: 38px;
-    font-size: 14px;
-    margin-bottom: 6px;
+    width: 40px;
+    height: 40px;
+    font-size: 15px;
+    margin-bottom: 7px;
   }
 
   .participant-name {
-    font-size: 10.5px;
+    font-size: 11px;
   }
 
-  /* All float cards: positioned in grid flow */
+  /* Shared float card styles */
   .float-card,
   .float-notes,
   .float-actions,
@@ -1146,69 +1147,69 @@ button {
     left: auto;
     width: 100%;
     border-radius: 16px;
-    padding: 14px 16px;
+    padding: 16px 18px;
     font-size: 12px;
-    line-height: 1.5;
-    animation: floatIn 0.6s ease-out both;
+    line-height: 1.55;
+    animation: floatIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
   }
 
   .float-card:hover {
-    transform: none;
-    box-shadow: var(--glass-shadow);
+    animation-play-state: running;
   }
 
   .float-card-header {
-    font-size: 9px;
-    margin-bottom: 8px;
+    font-size: 9.5px;
+    margin-bottom: 10px;
     letter-spacing: 0.8px;
   }
 
-  /* Live Notes: full width, overlaps meeting window */
+  /* Live Notes: full width, layered over meeting edge */
   .float-notes {
     grid-column: 1 / -1;
-    margin-top: -16px;
+    margin-top: -20px;
     z-index: 2;
-    animation-delay: 0.15s;
   }
 
   .float-notes-list p {
-    font-size: 11.5px;
+    font-size: 12px;
     margin-bottom: 4px;
   }
 
   /* Action Items: left column */
   .float-actions {
     grid-column: 1 / 2;
-    animation-delay: 0.25s;
     align-self: start;
   }
 
+  .float-actions-list {
+    gap: 7px;
+  }
+
   .action-item {
-    font-size: 10.5px;
+    font-size: 11px;
   }
 
   .action-check {
-    width: 14px;
-    height: 14px;
+    width: 15px;
+    height: 15px;
   }
 
   /* Ask Noted: right column */
   .float-chat {
     grid-column: 2 / 3;
-    animation-delay: 0.3s;
     align-self: start;
   }
 
   .float-chat-q {
-    font-size: 10.5px;
+    font-size: 11px;
   }
 
   .float-chat-a {
-    font-size: 11px;
-    line-height: 1.5;
+    font-size: 11.5px;
+    line-height: 1.55;
   }
 
-  /* Incognito badge: centered pill */
+  /* Incognito badge */
   .float-incognito {
     grid-column: 1 / -1;
     position: relative;
@@ -1218,20 +1219,38 @@ button {
     width: auto;
     justify-content: center;
     white-space: nowrap;
-    padding: 8px 18px;
-    font-size: 10.5px;
+    padding: 10px 20px;
+    font-size: 11px;
     border-radius: 24px;
-    animation: floatIn 0.6s ease-out 0.4s both;
+    margin-top: 2px;
+    animation: floatIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.5s both;
   }
 
   .float-incognito:hover {
     transform: none;
   }
 
+  /* Idle float — keeps cards feeling alive like desktop */
+  .float-notes {
+    animation: floatIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both,
+               idleFloat 6s ease-in-out 1s infinite;
+  }
+
+  .float-actions {
+    animation: floatIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both,
+               idleFloat 6s ease-in-out 1.4s infinite;
+  }
+
+  .float-chat {
+    animation: floatIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.4s both,
+               idleFloat 6s ease-in-out 1.8s infinite;
+  }
+
   /* Footer */
   .footer {
-    padding: 20px;
+    padding: 24px 20px;
     font-size: 12px;
+    gap: 14px;
   }
 
   .footer-right .footer-logo {
@@ -1246,12 +1265,13 @@ button {
   }
 
   .modal-title {
-    font-size: 22px;
+    font-size: 24px;
+    letter-spacing: -0.8px;
   }
 
   .modal-desc {
-    font-size: 13px;
-    margin-bottom: 16px;
+    font-size: 13.5px;
+    margin-bottom: 18px;
   }
 
   .modal-close {
@@ -1265,10 +1285,10 @@ button {
   }
 
   .mf-tile h3 {
-    font-size: 13px;
+    font-size: 13.5px;
   }
 
   .mf-tile p {
-    font-size: 11.5px;
+    font-size: 12px;
   }
 }
