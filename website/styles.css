@@ -137,6 +137,8 @@ button {
 .nav-logo-icon {
   flex-shrink: 0;
   display: block;
+  width: 26px;
+  height: 26px;
   translate: 0 -0.5px;
 }
 
@@ -887,16 +889,16 @@ button {
   40% { opacity: 0; }
 }
 
-/* ─── Responsive ────────────────────────────────────── */
+/* ─── Responsive: Tablet ────────────────────────────── */
 @media (max-width: 900px) {
   .nav {
-    padding: 20px 24px;
+    padding: 16px 20px;
   }
 
   .hero {
     flex-direction: column;
-    padding: 140px 24px 80px;
-    gap: 60px;
+    padding: 100px 20px 60px;
+    gap: 48px;
     align-items: flex-start;
   }
 
@@ -905,12 +907,22 @@ button {
   }
 
   .hero-title {
-    font-size: 44px;
+    font-size: 40px;
     letter-spacing: -1.5px;
   }
 
   .hero-subtitle {
-    font-size: 18px;
+    font-size: 17px;
+    margin-bottom: 32px;
+  }
+
+  .signup-label {
+    font-size: 12px;
+    margin-bottom: 10px;
+  }
+
+  .signup-form {
+    max-width: 100%;
   }
 
   .hero-right {
@@ -919,13 +931,17 @@ button {
     width: 100%;
   }
 
+  /* Scene: stack everything vertically, no absolute positioning */
   .scene {
-    padding: 20px 0 80px;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   .meeting-window {
     width: 100%;
-    max-width: 340px;
+    max-width: 100%;
   }
 
   .float-card,
@@ -938,71 +954,271 @@ button {
     bottom: auto;
     left: auto;
     width: 100%;
-    max-width: 340px;
-    margin: 12px auto 0;
-    animation: floatIn 0.6s ease-out both;
+    max-width: 100%;
+    margin: 10px 0 0;
+    animation: floatIn 0.5s ease-out both;
   }
 
-  .float-notes { margin-top: 16px; animation-delay: 0.1s; }
-  .float-actions { animation-delay: 0.2s; }
-  .float-chat { animation-delay: 0.3s; }
+  .float-card:hover {
+    transform: none;
+  }
+
+  .float-notes { margin-top: 14px; animation-delay: 0.1s; }
+  .float-actions { animation-delay: 0.15s; }
+  .float-chat { animation-delay: 0.2s; }
 
   .float-incognito {
     position: relative;
     top: auto;
     left: auto;
     transform: none;
-    margin: 16px auto 0;
+    margin: 12px 0 0;
+    width: 100%;
     justify-content: center;
-    animation: floatIn 0.6s ease-out 0.4s both;
+    animation: floatIn 0.5s ease-out 0.25s both;
   }
 
+  .float-incognito:hover {
+    transform: none;
+  }
+
+  /* Footer */
   .footer {
     flex-direction: column;
-    gap: 16px;
-    padding: 24px;
+    gap: 12px;
+    padding: 20px;
     text-align: center;
   }
 
   .footer-center {
-    gap: 24px;
+    gap: 20px;
   }
 
-  .signup-form {
-    max-width: 100%;
-  }
-
+  /* Modal */
   .modal {
-    padding: 28px 24px;
+    padding: 28px 20px;
     border-radius: 20px;
     max-width: 100%;
+    width: 94%;
+    max-height: 90vh;
   }
 
   .modal-title {
     font-size: 24px;
+    margin-bottom: 8px;
+  }
+
+  .modal-desc {
+    font-size: 14px;
+    margin-bottom: 20px;
   }
 
   .modal-features {
     grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .mf-tile:nth-child(1),
+  .mf-tile:nth-child(2),
+  .mf-tile:nth-child(3),
+  .mf-tile:nth-child(4),
+  .mf-tile:nth-child(5) {
+    grid-column: 1 / -1;
+  }
+
+  .mf-tile {
+    padding: 14px 16px;
+    gap: 12px;
+  }
+
+  .mf-tile p {
+    font-size: 12px;
+  }
+
+  .modal-feature-icon {
+    width: 36px;
+    height: 36px;
   }
 }
 
+/* ─── Responsive: Mobile ────────────────────────────── */
 @media (max-width: 480px) {
-  .hero-title {
-    font-size: 36px;
-    letter-spacing: -1px;
-  }
-
-  .hero-subtitle {
-    font-size: 17px;
+  .nav {
+    padding: 14px 16px;
   }
 
   .nav-logo {
-    font-size: 22px;
+    font-size: 20px;
+    gap: 6px;
+  }
+
+  .nav-logo-icon {
+    width: 22px;
+    height: 22px;
+  }
+
+  .nav-right {
+    gap: 8px;
+  }
+
+  .theme-toggle {
+    width: 34px;
+    height: 34px;
+  }
+
+  .theme-toggle svg {
+    width: 15px;
+    height: 15px;
   }
 
   .nav-btn {
-    padding: 8px 20px;
+    padding: 7px 16px;
+    font-size: 12px;
+  }
+
+  .hero {
+    padding: 88px 16px 48px;
+    gap: 36px;
+  }
+
+  .hero-title {
+    font-size: 32px;
+    letter-spacing: -1px;
+    margin-bottom: 16px;
+  }
+
+  .hero-subtitle {
+    font-size: 15px;
+    margin-bottom: 28px;
+  }
+
+  .signup-form {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .signup-input {
+    padding: 13px 16px;
+    font-size: 14px;
+    width: 100%;
+  }
+
+  .signup-btn {
+    width: 100%;
+    padding: 13px;
+    text-align: center;
+    font-size: 14px;
+  }
+
+  /* Scene cards */
+  .meeting-window {
+    border-radius: 12px;
+  }
+
+  .meeting-titlebar {
+    padding: 8px 12px;
+    font-size: 11px;
+  }
+
+  .meeting-dots span {
+    width: 7px;
+    height: 7px;
+  }
+
+  .participant {
+    padding: 18px 8px 14px;
+  }
+
+  .participant-avatar {
+    width: 36px;
+    height: 36px;
+    font-size: 14px;
+    margin-bottom: 6px;
+  }
+
+  .participant-name {
+    font-size: 10px;
+  }
+
+  .float-card {
+    border-radius: 14px;
+    padding: 14px 14px;
+    font-size: 11px;
+  }
+
+  .float-card-header {
+    font-size: 9px;
+    margin-bottom: 8px;
+  }
+
+  .float-notes-list p {
+    font-size: 11px;
+  }
+
+  .action-item {
+    font-size: 10.5px;
+  }
+
+  .action-check {
+    width: 14px;
+    height: 14px;
+  }
+
+  .float-chat-q {
+    font-size: 10.5px;
+  }
+
+  .float-chat-a {
+    font-size: 11px;
+  }
+
+  .float-incognito {
+    padding: 7px 14px;
+    font-size: 10px;
+    border-radius: 20px;
+  }
+
+  /* Footer */
+  .footer {
+    padding: 16px;
+    font-size: 11px;
+  }
+
+  .footer-right .footer-logo {
+    font-size: 16px;
+  }
+
+  /* Modal */
+  .modal {
+    padding: 24px 16px;
+    border-radius: 16px;
+    width: 96%;
+  }
+
+  .modal-title {
+    font-size: 22px;
+  }
+
+  .modal-desc {
     font-size: 13px;
+    margin-bottom: 16px;
+  }
+
+  .modal-close {
+    top: 14px;
+    right: 14px;
+  }
+
+  .modal-close svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .mf-tile h3 {
+    font-size: 13px;
+  }
+
+  .mf-tile p {
+    font-size: 11.5px;
   }
 }
