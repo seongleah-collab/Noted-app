@@ -56,12 +56,9 @@ signupForm.addEventListener('submit', async (e) => {
   signupBtn.disabled = true;
 
   try {
-    const res = await fetch('https://app.loops.so/api/v1/contacts/create', {
+    const res = await fetch('/api/waitlist', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer df3cec20d30b0978b5994f5bc180a913'
-      },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email })
     });
 
