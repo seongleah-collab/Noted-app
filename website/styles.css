@@ -896,6 +896,83 @@ button {
   40% { opacity: 0; }
 }
 
+/* ─── Legal Pages ──────────────────────────────────── */
+.legal-page {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 140px 48px 80px;
+}
+
+.legal-title {
+  font-size: 40px;
+  font-weight: 700;
+  letter-spacing: -1.5px;
+  color: var(--logo-color);
+  margin-bottom: 8px;
+}
+
+.legal-updated {
+  font-size: 14px;
+  color: var(--text-dim);
+  margin-bottom: 48px;
+}
+
+.legal-section {
+  margin-bottom: 36px;
+}
+
+.legal-section h2 {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text);
+  letter-spacing: -0.3px;
+  margin-bottom: 12px;
+}
+
+.legal-section p {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin-bottom: 10px;
+}
+
+.legal-section strong {
+  color: var(--text);
+  font-weight: 500;
+}
+
+.legal-section a {
+  color: var(--text);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.legal-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 8px 0;
+}
+
+.legal-section ul li {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  padding-left: 20px;
+  position: relative;
+  margin-bottom: 4px;
+}
+
+.legal-section ul li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 10px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--text-dim);
+}
+
 /* ─── Responsive: Tablet ────────────────────────────── */
 @media (max-width: 900px) {
   .nav {
@@ -1252,6 +1329,24 @@ button {
   .float-chat {
     animation: floatIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.4s both,
                idleFloat 6s ease-in-out 1.8s infinite;
+  }
+
+  /* Legal pages */
+  .legal-page {
+    padding: 100px 20px 60px;
+  }
+
+  .legal-title {
+    font-size: 30px;
+  }
+
+  .legal-section h2 {
+    font-size: 16px;
+  }
+
+  .legal-section p,
+  .legal-section ul li {
+    font-size: 14px;
   }
 
   /* Footer */
