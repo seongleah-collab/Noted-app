@@ -1014,14 +1014,14 @@ button {
 /* ─── Responsive: Mobile ────────────────────────────── */
 @media (max-width: 480px) {
 
-  /* Nav: minimal — logo + Learn More only */
+  /* Nav */
   .nav {
-    padding: 14px 16px;
+    padding: 16px 20px;
   }
 
   .nav-logo {
-    font-size: 20px;
-    gap: 6px;
+    font-size: 22px;
+    gap: 7px;
   }
 
   .nav-logo-icon {
@@ -1034,20 +1034,21 @@ button {
   }
 
   .nav-btn {
-    padding: 7px 16px;
-    font-size: 12px;
+    padding: 8px 20px;
+    font-size: 13px;
   }
 
-  /* Hero: natural height, stacks top-down */
+  /* Hero: generous spacing, strong hierarchy */
   .hero {
-    padding: 80px 16px 40px;
-    gap: 32px;
+    padding: 96px 20px 40px;
+    gap: 44px;
   }
 
   .hero-title {
-    font-size: 32px;
-    letter-spacing: -1px;
-    margin-bottom: 16px;
+    font-size: 36px;
+    letter-spacing: -1.5px;
+    margin-bottom: 14px;
+    line-height: 1.08;
   }
 
   .hero-title br {
@@ -1055,30 +1056,40 @@ button {
   }
 
   .hero-subtitle {
-    font-size: 15px;
-    margin-bottom: 28px;
+    font-size: 16px;
+    margin-bottom: 32px;
+    line-height: 1.5;
+  }
+
+  .signup-label {
+    font-size: 11px;
+    letter-spacing: 1.2px;
+    margin-bottom: 12px;
   }
 
   /* Signup: full-width stacked */
   .signup-form {
     flex-direction: column;
-    gap: 8px;
+    gap: 10px;
   }
 
   .signup-input {
-    padding: 13px 16px;
-    font-size: 14px;
+    padding: 15px 18px;
+    font-size: 15px;
     width: 100%;
+    border-radius: 14px;
   }
 
   .signup-btn {
     width: 100%;
-    padding: 13px;
+    padding: 15px;
     text-align: center;
-    font-size: 14px;
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 14px;
   }
 
-  /* Scene: floating layout tailored for mobile */
+  /* Scene: clean grid composition */
   .hero-right {
     overflow: visible;
   }
@@ -1089,143 +1100,138 @@ button {
     transform: none;
     margin-bottom: 0;
     padding: 0;
-    position: relative;
-    height: 420px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
   }
 
+  /* Meeting window: full width, prominent */
   .meeting-window {
-    width: 240px;
-    border-radius: 12px;
-    margin: 0 auto;
+    grid-column: 1 / -1;
+    width: 100%;
+    border-radius: 16px;
+    position: relative;
+    z-index: 1;
   }
 
   .meeting-titlebar {
-    padding: 8px 10px;
-    font-size: 10px;
-  }
-
-  .meeting-dots span {
-    width: 6px;
-    height: 6px;
+    padding: 10px 14px;
+    font-size: 12px;
   }
 
   .participant {
-    padding: 14px 6px 10px;
+    padding: 20px 10px 16px;
   }
 
   .participant-avatar {
-    width: 32px;
-    height: 32px;
-    font-size: 12px;
-    margin-bottom: 4px;
+    width: 38px;
+    height: 38px;
+    font-size: 14px;
+    margin-bottom: 6px;
   }
 
   .participant-name {
-    font-size: 9px;
+    font-size: 10.5px;
   }
 
-  .participant-speaking {
-    top: 6px;
-    right: 6px;
-    height: 10px;
-  }
-
-  .speaking-bar {
-    width: 2px;
-  }
-
-  .speaking-bar:nth-child(1) { height: 4px; }
-  .speaking-bar:nth-child(2) { height: 9px; }
-  .speaking-bar:nth-child(3) { height: 6px; }
-
-  /* Float cards: positioned around the meeting window */
-  .float-card {
-    padding: 10px 12px;
-    border-radius: 14px;
-    font-size: 10px;
-    line-height: 1.45;
+  /* All float cards: positioned in grid flow */
+  .float-card,
+  .float-notes,
+  .float-actions,
+  .float-chat {
+    position: relative;
+    top: auto;
+    right: auto;
+    bottom: auto;
+    left: auto;
+    width: 100%;
+    border-radius: 16px;
+    padding: 14px 16px;
+    font-size: 12px;
+    line-height: 1.5;
+    animation: floatIn 0.6s ease-out both;
   }
 
   .float-card:hover {
     transform: none;
+    box-shadow: var(--glass-shadow);
   }
 
   .float-card-header {
-    font-size: 8px;
-    margin-bottom: 6px;
-    letter-spacing: 0.6px;
+    font-size: 9px;
+    margin-bottom: 8px;
+    letter-spacing: 0.8px;
   }
 
+  /* Live Notes: full width, overlaps meeting window */
   .float-notes {
-    top: -10px;
-    right: -4px;
-    width: 175px;
+    grid-column: 1 / -1;
+    margin-top: -16px;
+    z-index: 2;
+    animation-delay: 0.15s;
   }
 
   .float-notes-list p {
-    font-size: 9.5px;
-    margin-bottom: 3px;
+    font-size: 11.5px;
+    margin-bottom: 4px;
   }
 
+  /* Action Items: left column */
   .float-actions {
-    bottom: 40px;
-    left: -4px;
-    width: 175px;
+    grid-column: 1 / 2;
+    animation-delay: 0.25s;
+    align-self: start;
   }
 
   .action-item {
-    font-size: 9px;
-    gap: 5px;
+    font-size: 10.5px;
   }
 
   .action-check {
-    width: 13px;
-    height: 13px;
-    border-radius: 4px;
+    width: 14px;
+    height: 14px;
   }
 
-  .action-check svg {
-    width: 8px;
-    height: 8px;
-  }
-
+  /* Ask Noted: right column */
   .float-chat {
-    bottom: 20px;
-    right: -4px;
-    width: 185px;
+    grid-column: 2 / 3;
+    animation-delay: 0.3s;
+    align-self: start;
   }
 
   .float-chat-q {
-    font-size: 9px;
+    font-size: 10.5px;
   }
 
   .float-chat-a {
-    font-size: 9.5px;
-    line-height: 1.45;
+    font-size: 11px;
+    line-height: 1.5;
   }
 
+  /* Incognito badge: centered pill */
   .float-incognito {
-    position: absolute;
+    grid-column: 1 / -1;
+    position: relative;
     top: auto;
-    left: 50%;
-    bottom: -5px;
-    transform: translateX(-50%);
+    left: auto;
+    transform: none;
     width: auto;
-    padding: 6px 14px;
-    font-size: 9px;
-    border-radius: 20px;
+    justify-content: center;
     white-space: nowrap;
-    z-index: 3;
+    padding: 8px 18px;
+    font-size: 10.5px;
+    border-radius: 24px;
+    animation: floatIn 0.6s ease-out 0.4s both;
   }
 
   .float-incognito:hover {
-    transform: translateX(-50%);
+    transform: none;
   }
 
   /* Footer */
   .footer {
-    padding: 16px;
-    font-size: 11px;
+    padding: 20px;
+    font-size: 12px;
   }
 
   .footer-right .footer-logo {
@@ -1234,9 +1240,9 @@ button {
 
   /* Modal */
   .modal {
-    padding: 24px 16px;
-    border-radius: 16px;
-    width: 96%;
+    padding: 28px 20px;
+    border-radius: 18px;
+    width: 94%;
   }
 
   .modal-title {
@@ -1249,8 +1255,8 @@ button {
   }
 
   .modal-close {
-    top: 14px;
-    right: 14px;
+    top: 16px;
+    right: 16px;
   }
 
   .modal-close svg {
