@@ -1124,14 +1124,14 @@ button {
 
   /* Hero: owns the first viewport */
   .hero {
-    padding: 120px 24px 48px;
+    padding: 130px 24px 48px;
     gap: 56px;
   }
 
   .hero-title {
-    font-size: 42px;
-    letter-spacing: -1.8px;
-    margin-bottom: 18px;
+    font-size: 46px;
+    letter-spacing: -2px;
+    margin-bottom: 20px;
     line-height: 1.06;
   }
 
@@ -1140,13 +1140,13 @@ button {
   }
 
   .hero-subtitle {
-    font-size: 17px;
-    margin-bottom: 36px;
+    font-size: 18px;
+    margin-bottom: 40px;
     line-height: 1.5;
   }
 
   .signup-label {
-    font-size: 11px;
+    font-size: 12px;
     letter-spacing: 1.5px;
     margin-bottom: 14px;
   }
@@ -1158,7 +1158,7 @@ button {
   }
 
   .signup-input {
-    padding: 16px 20px;
+    padding: 17px 20px;
     font-size: 16px;
     width: 100%;
     border-radius: 14px;
@@ -1166,9 +1166,9 @@ button {
 
   .signup-btn {
     width: 100%;
-    padding: 16px;
+    padding: 17px;
     text-align: center;
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 600;
     border-radius: 14px;
   }
