@@ -1078,11 +1078,148 @@ button {
     font-size: 14px;
   }
 
-  /* Scene: keep floating layout from desktop, scale to fit mobile */
+  /* Scene: floating layout tailored for mobile */
+  .hero-right {
+    overflow: visible;
+  }
+
   .scene {
-    transform: scale(0.5);
-    margin-bottom: -155px;
-    margin-top: -45px;
+    width: 100%;
+    flex-shrink: 1;
+    transform: none;
+    margin-bottom: 0;
+    padding: 0;
+    position: relative;
+    height: 420px;
+  }
+
+  .meeting-window {
+    width: 240px;
+    border-radius: 12px;
+    margin: 0 auto;
+  }
+
+  .meeting-titlebar {
+    padding: 8px 10px;
+    font-size: 10px;
+  }
+
+  .meeting-dots span {
+    width: 6px;
+    height: 6px;
+  }
+
+  .participant {
+    padding: 14px 6px 10px;
+  }
+
+  .participant-avatar {
+    width: 32px;
+    height: 32px;
+    font-size: 12px;
+    margin-bottom: 4px;
+  }
+
+  .participant-name {
+    font-size: 9px;
+  }
+
+  .participant-speaking {
+    top: 6px;
+    right: 6px;
+    height: 10px;
+  }
+
+  .speaking-bar {
+    width: 2px;
+  }
+
+  .speaking-bar:nth-child(1) { height: 4px; }
+  .speaking-bar:nth-child(2) { height: 9px; }
+  .speaking-bar:nth-child(3) { height: 6px; }
+
+  /* Float cards: positioned around the meeting window */
+  .float-card {
+    padding: 10px 12px;
+    border-radius: 14px;
+    font-size: 10px;
+    line-height: 1.45;
+  }
+
+  .float-card:hover {
+    transform: none;
+  }
+
+  .float-card-header {
+    font-size: 8px;
+    margin-bottom: 6px;
+    letter-spacing: 0.6px;
+  }
+
+  .float-notes {
+    top: -10px;
+    right: -4px;
+    width: 175px;
+  }
+
+  .float-notes-list p {
+    font-size: 9.5px;
+    margin-bottom: 3px;
+  }
+
+  .float-actions {
+    bottom: 40px;
+    left: -4px;
+    width: 175px;
+  }
+
+  .action-item {
+    font-size: 9px;
+    gap: 5px;
+  }
+
+  .action-check {
+    width: 13px;
+    height: 13px;
+    border-radius: 4px;
+  }
+
+  .action-check svg {
+    width: 8px;
+    height: 8px;
+  }
+
+  .float-chat {
+    bottom: 20px;
+    right: -4px;
+    width: 185px;
+  }
+
+  .float-chat-q {
+    font-size: 9px;
+  }
+
+  .float-chat-a {
+    font-size: 9.5px;
+    line-height: 1.45;
+  }
+
+  .float-incognito {
+    position: absolute;
+    top: auto;
+    left: 50%;
+    bottom: -5px;
+    transform: translateX(-50%);
+    width: auto;
+    padding: 6px 14px;
+    font-size: 9px;
+    border-radius: 20px;
+    white-space: nowrap;
+    z-index: 3;
+  }
+
+  .float-incognito:hover {
+    transform: translateX(-50%);
   }
 
   /* Footer */
