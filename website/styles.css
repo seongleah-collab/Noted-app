@@ -1040,15 +1040,15 @@ button {
 
   /* Hero: generous spacing, strong hierarchy */
   .hero {
-    padding: 96px 20px 40px;
-    gap: 44px;
+    padding: 110px 20px 40px;
+    gap: 52px;
   }
 
   .hero-title {
-    font-size: 36px;
+    font-size: 40px;
     letter-spacing: -1.5px;
-    margin-bottom: 14px;
-    line-height: 1.08;
+    margin-bottom: 20px;
+    line-height: 1.1;
   }
 
   .hero-title br {
@@ -1056,8 +1056,8 @@ button {
   }
 
   .hero-subtitle {
-    font-size: 16px;
-    margin-bottom: 32px;
+    font-size: 17px;
+    margin-bottom: 40px;
     line-height: 1.5;
   }
 
