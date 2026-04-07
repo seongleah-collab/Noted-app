@@ -896,14 +896,18 @@ button {
   }
 
   .hero {
+    flex: none;
     flex-direction: column;
+    justify-content: flex-start;
     padding: 100px 20px 60px;
     gap: 48px;
     align-items: flex-start;
   }
 
   .hero-left {
+    flex: none;
     max-width: 100%;
+    width: 100%;
   }
 
   .hero-title {
@@ -925,61 +929,19 @@ button {
     max-width: 100%;
   }
 
+  /* Scene: keep desktop floating layout, scale to fit */
   .hero-right {
-    max-width: 100%;
-    justify-content: center;
+    flex: none;
     width: 100%;
-  }
-
-  /* Scene: stack everything vertically, no absolute positioning */
-  .scene {
-    padding: 0;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .meeting-window {
-    width: 100%;
-    max-width: 100%;
-  }
-
-  .float-card,
-  .float-notes,
-  .float-actions,
-  .float-chat {
-    position: relative;
-    top: auto;
-    right: auto;
-    bottom: auto;
-    left: auto;
-    width: 100%;
-    max-width: 100%;
-    margin: 10px 0 0;
-    animation: floatIn 0.5s ease-out both;
-  }
-
-  .float-card:hover {
-    transform: none;
-  }
-
-  .float-notes { margin-top: 14px; animation-delay: 0.1s; }
-  .float-actions { animation-delay: 0.15s; }
-  .float-chat { animation-delay: 0.2s; }
-
-  .float-incognito {
-    position: relative;
-    top: auto;
-    left: auto;
-    transform: none;
-    margin: 12px 0 0;
-    width: 100%;
     justify-content: center;
-    animation: floatIn 0.5s ease-out 0.25s both;
+    overflow: hidden;
   }
 
-  .float-incognito:hover {
-    transform: none;
+  .scene {
+    width: 680px;
+    flex-shrink: 0;
+    transform-origin: top center;
   }
 
   /* Footer */
@@ -1041,8 +1003,18 @@ button {
   }
 }
 
+/* Smaller tablets: scale scene */
+@media (max-width: 700px) {
+  .scene {
+    transform: scale(0.75);
+    margin-bottom: -82px;
+  }
+}
+
 /* ─── Responsive: Mobile ────────────────────────────── */
 @media (max-width: 480px) {
+
+  /* Nav: minimal — logo + Learn More only */
   .nav {
     padding: 14px 16px;
   }
@@ -1057,18 +1029,8 @@ button {
     height: 22px;
   }
 
-  .nav-right {
-    gap: 8px;
-  }
-
   .theme-toggle {
-    width: 34px;
-    height: 34px;
-  }
-
-  .theme-toggle svg {
-    width: 15px;
-    height: 15px;
+    display: none;
   }
 
   .nav-btn {
@@ -1076,9 +1038,10 @@ button {
     font-size: 12px;
   }
 
+  /* Hero: natural height, stacks top-down */
   .hero {
-    padding: 88px 16px 48px;
-    gap: 36px;
+    padding: 80px 16px 40px;
+    gap: 32px;
   }
 
   .hero-title {
@@ -1087,11 +1050,16 @@ button {
     margin-bottom: 16px;
   }
 
+  .hero-title br {
+    display: none;
+  }
+
   .hero-subtitle {
     font-size: 15px;
     margin-bottom: 28px;
   }
 
+  /* Signup: full-width stacked */
   .signup-form {
     flex-direction: column;
     gap: 8px;
@@ -1110,72 +1078,11 @@ button {
     font-size: 14px;
   }
 
-  /* Scene cards */
-  .meeting-window {
-    border-radius: 12px;
-  }
-
-  .meeting-titlebar {
-    padding: 8px 12px;
-    font-size: 11px;
-  }
-
-  .meeting-dots span {
-    width: 7px;
-    height: 7px;
-  }
-
-  .participant {
-    padding: 18px 8px 14px;
-  }
-
-  .participant-avatar {
-    width: 36px;
-    height: 36px;
-    font-size: 14px;
-    margin-bottom: 6px;
-  }
-
-  .participant-name {
-    font-size: 10px;
-  }
-
-  .float-card {
-    border-radius: 14px;
-    padding: 14px 14px;
-    font-size: 11px;
-  }
-
-  .float-card-header {
-    font-size: 9px;
-    margin-bottom: 8px;
-  }
-
-  .float-notes-list p {
-    font-size: 11px;
-  }
-
-  .action-item {
-    font-size: 10.5px;
-  }
-
-  .action-check {
-    width: 14px;
-    height: 14px;
-  }
-
-  .float-chat-q {
-    font-size: 10.5px;
-  }
-
-  .float-chat-a {
-    font-size: 11px;
-  }
-
-  .float-incognito {
-    padding: 7px 14px;
-    font-size: 10px;
-    border-radius: 20px;
+  /* Scene: keep floating layout from desktop, scale to fit mobile */
+  .scene {
+    transform: scale(0.5);
+    margin-bottom: -155px;
+    margin-top: -45px;
   }
 
   /* Footer */
