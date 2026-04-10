@@ -840,10 +840,11 @@ button {
 .float-actions-list {
   display: flex;
   flex-direction: column;
-  align-items: center;
   gap: 8px;
   position: relative;
   z-index: 1;
+  width: fit-content;
+  margin: 0 auto;
 }
 
 .action-item {
