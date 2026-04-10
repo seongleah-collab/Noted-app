@@ -852,6 +852,7 @@ button {
 .action-item strong {
   color: var(--glass-text);
   font-weight: 600;
+  margin-left: 0.25em;
 }
 
 .action-check {
