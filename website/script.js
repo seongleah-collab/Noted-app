@@ -102,39 +102,57 @@ if (scene && heroRight && window.matchMedia('(min-width: 901px)').matches) {
   });
 }
 
-// ─── Realistic Scene Animations ──────────────────────
+// ─── Scene Orchestrator ──────────────────────────────
+// One animation at a time: cursor moves to a card, triggers its
+// animation, waits for it to finish, then moves on.
 
-// --- Speaker Rotation ---
 (function() {
+  const cursor = document.getElementById('scene-cursor');
+  const ring = cursor && cursor.querySelector('.cursor-ring');
+  const notesList = document.getElementById('notes-list');
+  const actionsList = document.getElementById('actions-list');
+  const chatBody = document.getElementById('chat-body');
   const participants = document.querySelectorAll('.participant');
-  if (!participants.length) return;
 
-  // 0=Sarah, 1=You, 2=Mike, 3=Jane — "You" rarely speaks
-  const pattern = [0, 2, 0, 3, 2, 3, 0, 2, 0, 3];
-  let step = 0;
+  if (!cursor || !notesList || !actionsList || !chatBody) return;
 
-  function nextSpeaker() {
-    participants.forEach(p => p.classList.remove('speaking'));
+  // ── Utilities ──
+  function wait(ms) { return new Promise(r => setTimeout(r, ms)); }
 
-    const pause = 300 + Math.random() * 500;
-    setTimeout(() => {
-      const idx = pattern[step % pattern.length];
-      step++;
-      participants[idx].classList.add('speaking');
-    }, pause);
-
-    setTimeout(nextSpeaker, 3000 + Math.random() * 4000);
+  function moveTo(left, top, ms) {
+    return new Promise(resolve => {
+      cursor.style.transition = 'left ' + ms + 'ms cubic-bezier(0.4,0,0.2,1), top ' + ms + 'ms cubic-bezier(0.4,0,0.2,1)';
+      cursor.style.left = left;
+      cursor.style.top = top;
+      setTimeout(resolve, ms);
+    });
   }
 
-  setTimeout(nextSpeaker, 4000);
-})();
+  function click() {
+    return new Promise(resolve => {
+      ring.classList.remove('click');
+      void ring.offsetWidth;
+      ring.classList.add('click');
+      setTimeout(function() { ring.classList.remove('click'); resolve(); }, 450);
+    });
+  }
 
-// --- Live Notes Typing ---
-(function() {
-  const notesList = document.getElementById('notes-list');
-  if (!notesList) return;
+  // ── Speaker rotation (ambient — always runs in background) ──
+  var speakerPattern = [0, 2, 0, 3, 2, 3, 0, 2, 0, 3];
+  var speakerStep = 0;
 
-  const lines = [
+  function nextSpeaker() {
+    participants.forEach(function(p) { p.classList.remove('speaking'); });
+    setTimeout(function() {
+      var idx = speakerPattern[speakerStep % speakerPattern.length];
+      speakerStep++;
+      participants[idx].classList.add('speaking');
+    }, 300);
+    setTimeout(nextSpeaker, 4000 + Math.random() * 3000);
+  }
+
+  // ── Notes state & helpers ──
+  var noteLines = [
     '- Q3 revenue targets increased to **$2.4M**',
     '- New hire onboarding starts **Monday**',
     '- Marketing team to present campaign results',
@@ -144,198 +162,157 @@ if (scene && heroRight && window.matchMedia('(min-width: 901px)').matches) {
     '- Follow up w/ Sarah on client timeline',
     '- Need final sign-off from VP before **EOD**',
   ];
-
-  // Start seamlessly from static HTML state: first 2 lines done, 3rd partially typed
-  let completed = [lines[0], lines[1]];
-  let lineIdx = 2;
-  let charIdx = 24; // "- Marketing team to pres"
-  const MAX_VISIBLE = 3;
+  var noteCompleted = [noteLines[0], noteLines[1]];
+  var noteLineIdx = 2;
+  var noteCharIdx = 24; // picks up from static "- Marketing team to pres|"
 
   function boldify(t) { return t.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>'); }
   function strip(t) { return t.replace(/\*\*/g, ''); }
 
-  function render() {
-    const visible = completed.slice(-(MAX_VISIBLE - 1));
-    let html = visible.map(l => '<p>' + boldify(l) + '</p>').join('');
-    const raw = strip(lines[lineIdx % lines.length]);
-    const typed = raw.substring(0, charIdx);
-    if (charIdx < raw.length) {
+  function renderNotes(typing) {
+    var visible = noteCompleted.slice(-2);
+    var html = visible.map(function(l) { return '<p>' + boldify(l) + '</p>'; }).join('');
+    var raw = strip(noteLines[noteLineIdx % noteLines.length]);
+    var typed = raw.substring(0, noteCharIdx);
+    if (typing && noteCharIdx < raw.length) {
       html += '<p class="float-note-typing">' + typed + '<span class="cursor-blink">|</span></p>';
-    } else {
-      html += '<p>' + boldify(lines[lineIdx % lines.length]) + '</p>';
+    } else if (noteCharIdx > 0) {
+      html += '<p>' + (noteCharIdx >= raw.length ? boldify(noteLines[noteLineIdx % noteLines.length]) : typed) + '</p>';
     }
     notesList.innerHTML = html;
   }
 
-  function tick() {
-    const raw = strip(lines[lineIdx % lines.length]);
-    if (charIdx < raw.length) {
-      charIdx++;
-      render();
-      setTimeout(tick, 35 + Math.random() * 45);
-    } else {
-      completed.push(lines[lineIdx % lines.length]);
-      render();
-      lineIdx++;
-      charIdx = 0;
-      setTimeout(tick, 2000 + Math.random() * 2000);
-    }
+  function typeOneLine() {
+    return new Promise(function(resolve) {
+      var raw = strip(noteLines[noteLineIdx % noteLines.length]);
+      (function tick() {
+        if (noteCharIdx < raw.length) {
+          noteCharIdx++;
+          renderNotes(true);
+          setTimeout(tick, 40 + Math.random() * 40);
+        } else {
+          noteCompleted.push(noteLines[noteLineIdx % noteLines.length]);
+          renderNotes(false);
+          noteLineIdx++;
+          noteCharIdx = 0;
+          resolve();
+        }
+      })();
+    });
   }
 
-  // Seamlessly continue from static HTML after entrance animations
-  setTimeout(tick, 2500);
-})();
-
-// --- Action Items Checking ---
-(function() {
-  const actionsList = document.getElementById('actions-list');
-  if (!actionsList) return;
-
-  const items = actionsList.querySelectorAll('.action-item');
-  const checkSvg = '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>';
-  let step = 0;
+  // ── Action items helpers ──
+  var actionItems = actionsList.querySelectorAll('.action-item');
+  var checkSvg = '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>';
 
   function checkItem(item) {
-    const el = item.querySelector('.action-check-empty');
+    var el = item.querySelector('.action-check-empty');
     if (!el) return;
     el.classList.remove('action-check-empty');
     el.innerHTML = checkSvg;
     el.style.transition = 'transform 0.3s ease';
     el.style.transform = 'scale(1.2)';
-    setTimeout(() => { el.style.transform = 'scale(1)'; }, 300);
+    setTimeout(function() { el.style.transform = 'scale(1)'; }, 300);
   }
 
   function uncheckItem(item) {
-    const el = item.querySelector('.action-check');
+    var el = item.querySelector('.action-check');
     if (!el || el.classList.contains('action-check-empty')) return;
     el.classList.add('action-check-empty');
     el.innerHTML = '';
     el.style.transform = '';
   }
 
-  function cycle() {
-    if (step === 0) {
-      checkItem(items[1]);
-      setTimeout(cycle, 6000 + Math.random() * 3000);
-    } else if (step === 1) {
-      checkItem(items[2]);
-      setTimeout(cycle, 10000 + Math.random() * 5000);
-    } else {
-      uncheckItem(items[1]);
-      uncheckItem(items[2]);
-      setTimeout(cycle, 8000 + Math.random() * 4000);
-    }
-    step = (step + 1) % 3;
-  }
-
-  setTimeout(cycle, 8000);
-})();
-
-// --- Chat Q&A Cycling ---
-(function() {
-  const chatBody = document.getElementById('chat-body');
-  if (!chatBody) return;
-
-  const pairs = [
+  // ── Chat helpers ──
+  var chatPairs = [
     { q: "What's the deadline?", a: 'Budget proposal due <strong>Friday Oct 11</strong>. Late submissions won\'t be reviewed until next quarter.' },
     { q: 'What did Sarah say about Q4?', a: 'Sarah flagged <strong>pipeline risks</strong> for Q4 and suggested pushing the launch timeline by two weeks.' },
     { q: 'Who handles onboarding?', a: 'Mike is drafting the plan. New hires start <strong>Monday</strong>, orientation at 9 AM in Room 3B.' },
     { q: 'Summarize the action items', a: 'Three items: budget proposal by <strong>Friday</strong>, review the marketing deck, and schedule a follow-up with Sarah.' },
   ];
-
-  let pairIdx = 1; // 0 is already shown in static HTML
-  let ansCharIdx = 0;
+  var chatIdx = 1; // 0 already shown in static HTML
 
   function toPlain(html) {
-    const d = document.createElement('div');
+    var d = document.createElement('div');
     d.innerHTML = html;
     return d.textContent;
   }
 
-  function showPair() {
-    const pair = pairs[pairIdx % pairs.length];
-    chatBody.style.transition = 'opacity 0.4s ease';
-    chatBody.style.opacity = '0';
+  function typeChatPair() {
+    return new Promise(function(resolve) {
+      var pair = chatPairs[chatIdx % chatPairs.length];
+      chatBody.style.transition = 'opacity 0.4s ease';
+      chatBody.style.opacity = '0';
 
-    setTimeout(() => {
-      chatBody.innerHTML = '<div class="float-chat-q">' + pair.q + '</div><div class="float-chat-a"></div>';
-      chatBody.style.opacity = '1';
-      ansCharIdx = 0;
-      const plain = toPlain(pair.a);
-      setTimeout(() => typeAnswer(pair, plain), 800 + Math.random() * 600);
-    }, 400);
+      setTimeout(function() {
+        chatBody.innerHTML = '<div class="float-chat-q">' + pair.q + '</div><div class="float-chat-a"></div>';
+        chatBody.style.opacity = '1';
+        var plain = toPlain(pair.a);
+        var ci = 0;
+
+        setTimeout(function typeChar() {
+          var el = chatBody.querySelector('.float-chat-a');
+          if (!el) { resolve(); return; }
+          if (ci < plain.length) {
+            ci++;
+            el.textContent = plain.substring(0, ci);
+            setTimeout(typeChar, 25 + Math.random() * 25);
+          } else {
+            el.innerHTML = pair.a;
+            chatIdx++;
+            resolve();
+          }
+        }, 800);
+      }, 400);
+    });
   }
 
-  function typeAnswer(pair, plain) {
-    const el = chatBody.querySelector('.float-chat-a');
-    if (!el) return;
-    if (ansCharIdx < plain.length) {
-      ansCharIdx++;
-      el.textContent = plain.substring(0, ansCharIdx);
-      setTimeout(() => typeAnswer(pair, plain), 20 + Math.random() * 30);
-    } else {
-      el.innerHTML = pair.a;
-      pairIdx++;
-      setTimeout(showPair, 8000 + Math.random() * 4000);
-    }
+  // ── Main sequence — one phase at a time ──
+  async function run() {
+    // Phase 1: Notes — cursor watches while a line types out
+    await moveTo('70%', '14%', 1200);
+    await wait(600);
+    await moveTo('68%', '22%', 700);
+    await typeOneLine();
+    await wait(1200);
+
+    // Phase 2: Action items — cursor clicks to check them
+    await moveTo('18%', '74%', 1400);
+    await wait(500);
+    await moveTo('19%', '79%', 400);
+    await click();
+    checkItem(actionItems[1]);
+    await wait(1000);
+    await moveTo('20%', '86%', 400);
+    await click();
+    checkItem(actionItems[2]);
+    await wait(1500);
+
+    // Phase 3: Chat — cursor clicks, question appears, answer types
+    await moveTo('68%', '82%', 1300);
+    await wait(400);
+    await moveTo('67%', '90%', 400);
+    await click();
+    await typeChatPair();
+    await wait(2000);
+
+    // Phase 4: Drift back to meeting window while we reset
+    await moveTo('45%', '40%', 1200);
+    await wait(1500);
+    uncheckItem(actionItems[1]);
+    uncheckItem(actionItems[2]);
+
+    // Loop
+    run();
   }
 
-  setTimeout(showPair, 12000);
-})();
+  // ── Boot ──
+  setTimeout(nextSpeaker, 4000);
 
-// --- Floating Cursor ---
-(function() {
-  const cursor = document.getElementById('scene-cursor');
-  if (!cursor) return;
-
-  const ring = cursor.querySelector('.cursor-ring');
-
-  // Waypoints: positions relative to scene, near each card
-  const waypoints = [
-    { left: '70%', top: '12%',  dur: 1400, pause: 2500 },              // near notes card top
-    { left: '66%', top: '22%',  dur: 900,  pause: 2000 },              // watching notes type
-    { left: '42%', top: '45%',  dur: 1200, pause: 1800 },              // meeting window
-    { left: '16%', top: '70%',  dur: 1300, pause: 800 },               // action items card
-    { left: '18%', top: '78%',  dur: 500,  pause: 600,  click: true }, // click check item
-    { left: '20%', top: '85%',  dur: 500,  pause: 600,  click: true }, // click next item
-    { left: '55%', top: '50%',  dur: 1100, pause: 1500 },              // back to center
-    { left: '68%', top: '80%',  dur: 1200, pause: 800 },               // chat card
-    { left: '66%', top: '88%',  dur: 400,  pause: 500,  click: true }, // click chat
-    { left: '72%', top: '85%',  dur: 600,  pause: 3000 },              // watching chat reply
-    { left: '50%', top: '35%',  dur: 1300, pause: 2000 },              // back to meeting
-    { left: '74%', top: '18%',  dur: 1100, pause: 2500 },              // notes again
-  ];
-
-  let wpIdx = 0;
-
-  function doClick() {
-    ring.classList.remove('click');
-    void ring.offsetWidth;
-    ring.classList.add('click');
-    setTimeout(() => ring.classList.remove('click'), 450);
-  }
-
-  function moveNext() {
-    const wp = waypoints[wpIdx % waypoints.length];
-
-    cursor.style.setProperty('--move-dur', wp.dur + 'ms');
-    cursor.classList.add('moving');
-    cursor.style.left = wp.left;
-    cursor.style.top = wp.top;
-
-    if (wp.click) {
-      setTimeout(doClick, wp.dur);
-    }
-
-    wpIdx++;
-    setTimeout(moveNext, wp.dur + wp.pause);
-  }
-
-  // Fade in after entrance animations, then start moving
-  setTimeout(() => {
+  setTimeout(function() {
     cursor.classList.add('visible');
-    setTimeout(moveNext, 1200);
-  }, 3500);
+    setTimeout(run, 1200);
+  }, 3000);
 })();
 
 // ─── Signup Form ───────────────────────────────────
