@@ -15,11 +15,11 @@
   --text-dim: #5a5a6e;
   --accent: #7c3aed;
   --accent-hover: #6d28d9;
-  --accent-glow: rgba(124, 58, 237, 0.3);
-  --border: rgba(255, 255, 255, 0.06);
-  --border-focus: rgba(124, 58, 237, 0.5);
-  --user-bubble: rgba(124, 58, 237, 0.15);
-  --assistant-bubble: rgba(255, 255, 255, 0.04);
+  --accent-glow: rgba(124, 58, 237, 0.45);
+  --border: rgba(255, 255, 255, 0.1);
+  --border-focus: rgba(124, 58, 237, 0.7);
+  --user-bubble: rgba(124, 58, 237, 0.18);
+  --assistant-bubble: rgba(255, 255, 255, 0.06);
   --radius: 14px;
   --radius-sm: 10px;
   --shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
@@ -261,7 +261,7 @@ kbd {
 
 .message.user .message-bubble {
   background: var(--user-bubble);
-  border: 1px solid rgba(124, 58, 237, 0.15);
+  border: 1px solid rgba(124, 58, 237, 0.3);
   border-radius: var(--radius-sm) var(--radius-sm) 4px var(--radius-sm);
 }
 
