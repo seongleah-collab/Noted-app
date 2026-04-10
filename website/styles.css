@@ -23,7 +23,7 @@ body {
 }
 
 @media (min-width: 901px) {
-  body {
+  body.home {
     overflow: hidden;
   }
 }
