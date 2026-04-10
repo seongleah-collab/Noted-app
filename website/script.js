@@ -283,6 +283,61 @@ if (scene && heroRight && window.matchMedia('(min-width: 901px)').matches) {
   setTimeout(showPair, 12000);
 })();
 
+// --- Floating Cursor ---
+(function() {
+  const cursor = document.getElementById('scene-cursor');
+  if (!cursor) return;
+
+  const ring = cursor.querySelector('.cursor-ring');
+
+  // Waypoints: positions relative to scene, near each card
+  const waypoints = [
+    { left: '70%', top: '12%',  dur: 1400, pause: 2500 },              // near notes card top
+    { left: '66%', top: '22%',  dur: 900,  pause: 2000 },              // watching notes type
+    { left: '42%', top: '45%',  dur: 1200, pause: 1800 },              // meeting window
+    { left: '16%', top: '70%',  dur: 1300, pause: 800 },               // action items card
+    { left: '18%', top: '78%',  dur: 500,  pause: 600,  click: true }, // click check item
+    { left: '20%', top: '85%',  dur: 500,  pause: 600,  click: true }, // click next item
+    { left: '55%', top: '50%',  dur: 1100, pause: 1500 },              // back to center
+    { left: '68%', top: '80%',  dur: 1200, pause: 800 },               // chat card
+    { left: '66%', top: '88%',  dur: 400,  pause: 500,  click: true }, // click chat
+    { left: '72%', top: '85%',  dur: 600,  pause: 3000 },              // watching chat reply
+    { left: '50%', top: '35%',  dur: 1300, pause: 2000 },              // back to meeting
+    { left: '74%', top: '18%',  dur: 1100, pause: 2500 },              // notes again
+  ];
+
+  let wpIdx = 0;
+
+  function doClick() {
+    ring.classList.remove('click');
+    void ring.offsetWidth;
+    ring.classList.add('click');
+    setTimeout(() => ring.classList.remove('click'), 450);
+  }
+
+  function moveNext() {
+    const wp = waypoints[wpIdx % waypoints.length];
+
+    cursor.style.setProperty('--move-dur', wp.dur + 'ms');
+    cursor.classList.add('moving');
+    cursor.style.left = wp.left;
+    cursor.style.top = wp.top;
+
+    if (wp.click) {
+      setTimeout(doClick, wp.dur);
+    }
+
+    wpIdx++;
+    setTimeout(moveNext, wp.dur + wp.pause);
+  }
+
+  // Fade in after entrance animations, then start moving
+  setTimeout(() => {
+    cursor.classList.add('visible');
+    setTimeout(moveNext, 1200);
+  }, 3500);
+})();
+
 // ─── Signup Form ───────────────────────────────────
 const signupForm = document.getElementById('signup-form');
 const signupInput = signupForm.querySelector('.signup-input');
