@@ -74,7 +74,7 @@
             <span class="meeting-time" id="meeting-time">32:14</span>
           </div>
           <div class="meeting-grid">
-            <div class="participant">
+            <div class="participant speaking" style="--ring-color: 59,130,246">
               <div class="participant-avatar" style="background: linear-gradient(135deg, #3b82f6, #60a5fa);">S</div>
               <span class="participant-name">Sarah Chen</span>
               <span class="participant-speaking">
@@ -83,17 +83,32 @@
                 <span class="speaking-bar"></span>
               </span>
             </div>
-            <div class="participant">
+            <div class="participant" style="--ring-color: 139,92,246">
               <div class="participant-avatar" style="background: linear-gradient(135deg, #8b5cf6, #a78bfa);">Y</div>
               <span class="participant-name">You</span>
+              <span class="participant-speaking">
+                <span class="speaking-bar"></span>
+                <span class="speaking-bar"></span>
+                <span class="speaking-bar"></span>
+              </span>
             </div>
-            <div class="participant">
+            <div class="participant" style="--ring-color: 245,158,11">
               <div class="participant-avatar" style="background: linear-gradient(135deg, #f59e0b, #fbbf24);">M</div>
               <span class="participant-name">Mike Ross</span>
+              <span class="participant-speaking">
+                <span class="speaking-bar"></span>
+                <span class="speaking-bar"></span>
+                <span class="speaking-bar"></span>
+              </span>
             </div>
-            <div class="participant">
+            <div class="participant" style="--ring-color: 16,185,129">
               <div class="participant-avatar" style="background: linear-gradient(135deg, #10b981, #34d399);">J</div>
               <span class="participant-name">Jane Park</span>
+              <span class="participant-speaking">
+                <span class="speaking-bar"></span>
+                <span class="speaking-bar"></span>
+                <span class="speaking-bar"></span>
+              </span>
             </div>
           </div>
         </div>
@@ -105,7 +120,7 @@
             <span class="header-dot header-dot-green"></span>
             <span>Live Notes</span>
           </div>
-          <div class="float-notes-list">
+          <div class="float-notes-list" id="notes-list">
             <p>- Q3 revenue targets increased to $2.4M</p>
             <p>- New hire onboarding starts <strong>Monday</strong></p>
             <p class="float-note-typing">- Marketing team to pres<span class="cursor-blink">|</span></p>
@@ -119,7 +134,7 @@
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
             <span>Action Items</span>
           </div>
-          <div class="float-actions-list">
+          <div class="float-actions-list" id="actions-list">
             <div class="action-item">
               <span class="action-check">
                 <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
@@ -144,7 +159,7 @@
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
             <span>Ask Noted</span>
           </div>
-          <div class="float-chat-body">
+          <div class="float-chat-body" id="chat-body">
             <div class="float-chat-q">What's the deadline?</div>
             <div class="float-chat-a">Budget proposal due <strong>Friday Oct 11</strong>. Late submissions won't be reviewed until next quarter.</div>
           </div>
