@@ -215,6 +215,7 @@ button {
   margin: 0 auto;
   width: 100%;
   gap: 80px;
+  min-height: 100vh;
 }
 
 .hero-left {
