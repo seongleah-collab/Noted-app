@@ -1551,7 +1551,8 @@ button {
   }
 
   .theme-toggle {
-    display: none;
+    width: 36px;
+    height: 36px;
   }
 
   .nav-btn {
