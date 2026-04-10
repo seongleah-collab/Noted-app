@@ -1321,15 +1321,43 @@ button {
 /* Eye-slash blink for incognito — color inherited from parent icon */
 .mf-eye-blink {
   color: inherit;
+  transform-origin: center;
+  animation: mfEyeClose 3s ease-in-out infinite;
 }
 
 .mf-eye-slash {
-  animation: mfEyeBlink 3s ease-in-out infinite;
+  animation: mfEyeSlash 3s ease-in-out infinite;
 }
 
-@keyframes mfEyeBlink {
-  0%, 38%, 42%, 100% { opacity: 1; }
+@keyframes mfEyeClose {
+  0%, 35%, 45%, 100% { transform: scaleY(1); }
+  40% { transform: scaleY(0.15); }
+}
+
+@keyframes mfEyeSlash {
+  0%, 35%, 45%, 100% { opacity: 1; }
   40% { opacity: 0; }
+}
+
+/* Shield pulse for private-by-design */
+.mf-shield {
+  transform-origin: center;
+  animation: mfShieldPulse 2.5s ease-in-out infinite;
+}
+
+@keyframes mfShieldPulse {
+  0%, 100% { transform: scale(1); opacity: 0.85; }
+  50% { transform: scale(1.1); opacity: 1; }
+}
+
+/* Monitor float for works-everywhere */
+.mf-monitor {
+  animation: mfMonitorFloat 3s ease-in-out infinite;
+}
+
+@keyframes mfMonitorFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-2px); }
 }
 
 /* ─── Legal Pages ──────────────────────────────────── */
