@@ -1128,12 +1128,9 @@ button {
 .modal-title {
   font-size: 32px;
   font-weight: 700;
+  color: var(--text);
   margin-bottom: 12px;
   letter-spacing: -1px;
-  background: linear-gradient(135deg, #4ade80, #3b82f6, #a78bfa);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
 }
 
 .modal-desc {
