@@ -764,7 +764,7 @@ button {
 
 /* ─── Floating: Live Notes ──────────────────────────── */
 .float-notes {
-  top: 0;
+  top: -20px;
   right: -20px;
   width: 275px;
   border-color: rgba(74, 222, 128, 0.45);
@@ -878,7 +878,7 @@ button {
 
 /* ─── Floating: Chatbot ─────────────────────────────── */
 .float-chat {
-  bottom: 10px;
+  bottom: -20px;
   right: -10px;
   width: 245px;
   border-color: rgba(59, 130, 246, 0.45);
