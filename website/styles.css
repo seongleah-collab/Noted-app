@@ -900,6 +900,7 @@ button {
   gap: 10px;
   position: relative;
   z-index: 1;
+  min-height: 105px;
 }
 
 .float-chat-q {
