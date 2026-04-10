@@ -37,8 +37,8 @@ body {
   --nav-btn-bg: #fff;
   --nav-btn-color: #0a0a0a;
   --logo-color: #fff;
-  --logo-icon-bg: rgba(255, 255, 255, 0.08);
-  --logo-icon-border: rgba(255, 255, 255, 0.12);
+  --logo-icon-bg: rgba(255, 255, 255, 0.15);
+  --logo-icon-border: rgba(255, 255, 255, 0.3);
   --input-bg: #141414;
   --signup-btn-bg: #fff;
   --signup-btn-color: #0a0a0a;
@@ -73,8 +73,8 @@ body {
   --nav-btn-bg: #1a1a1a;
   --nav-btn-color: #fff;
   --logo-color: #1a1a1a;
-  --logo-icon-bg: rgba(0, 0, 0, 0.04);
-  --logo-icon-border: rgba(0, 0, 0, 0.1);
+  --logo-icon-bg: #fff;
+  --logo-icon-border: rgba(0, 0, 0, 0.15);
   --input-bg: #fff;
   --signup-btn-bg: #1a1a1a;
   --signup-btn-color: #fff;
@@ -128,7 +128,7 @@ button {
   align-items: center;
   gap: 10px;
   font-size: 28px;
-  font-weight: 700;
+  font-weight: 500;
   letter-spacing: -0.5px;
   color: var(--logo-color);
   line-height: 1;
