@@ -54,21 +54,51 @@ if (meetingTimeEl) {
   }, 1000);
 }
 
-// ─── Parallax tilt on scene (mouse-based, desktop only) ──
+// ─── Switch cards from entrance → idle animation after entrance completes ──
+const floatCards = document.querySelectorAll('.float-notes, .float-actions, .float-chat, .float-incognito');
+floatCards.forEach((card) => {
+  card.addEventListener('animationend', (e) => {
+    // Only trigger on the entrance animation, not on idle
+    if (e.animationName.startsWith('floatIn')) {
+      card.classList.add('animated');
+    }
+  });
+});
+
+// ─── Gentle parallax tilt on scene (desktop only) ──
 const scene = document.querySelector('.scene');
 const heroRight = document.querySelector('.hero-right');
 if (scene && heroRight && window.matchMedia('(min-width: 901px)').matches) {
+  let targetX = 0, targetY = 0, currentX = 0, currentY = 0;
+  let rafId = null;
+
+  function lerp(a, b, t) { return a + (b - a) * t; }
+
+  function updateTilt() {
+    currentX = lerp(currentX, targetX, 0.08);
+    currentY = lerp(currentY, targetY, 0.08);
+    scene.style.transform = `rotateY(${currentX}deg) rotateX(${currentY}deg)`;
+
+    if (Math.abs(currentX - targetX) > 0.01 || Math.abs(currentY - targetY) > 0.01) {
+      rafId = requestAnimationFrame(updateTilt);
+    } else {
+      rafId = null;
+    }
+  }
+
   heroRight.addEventListener('mousemove', (e) => {
     const rect = heroRight.getBoundingClientRect();
     const x = (e.clientX - rect.left) / rect.width - 0.5;
     const y = (e.clientY - rect.top) / rect.height - 0.5;
-    scene.style.transform = `rotateY(${x * 4}deg) rotateX(${-y * 3}deg)`;
+    targetX = x * 3;
+    targetY = -y * 2;
+    if (!rafId) rafId = requestAnimationFrame(updateTilt);
   });
 
   heroRight.addEventListener('mouseleave', () => {
-    scene.style.transition = 'transform 0.6s ease-out';
-    scene.style.transform = 'rotateY(0) rotateX(0)';
-    setTimeout(() => { scene.style.transition = ''; }, 600);
+    targetX = 0;
+    targetY = 0;
+    if (!rafId) rafId = requestAnimationFrame(updateTilt);
   });
 }
 

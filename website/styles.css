@@ -288,15 +288,13 @@ button {
   align-items: center;
   justify-content: center;
   max-width: 640px;
-  perspective: 1200px;
 }
 
 .scene {
   position: relative;
   width: 100%;
   padding: 40px 0;
-  transform-style: preserve-3d;
-  will-change: transform;
+  transition: transform 0.15s ease-out;
 }
 
 /* ─── Ambient Gradient Orbs ────────────────────────── */
@@ -476,25 +474,19 @@ button {
   position: relative;
   z-index: 1;
   opacity: 0;
-  animation: meetingEnter 1s cubic-bezier(0.16, 1, 0.3, 1) 0.1s forwards,
-             meetingFloat 8s ease-in-out 1.5s infinite;
+  animation: meetingEnter 1s cubic-bezier(0.16, 1, 0.3, 1) 0.1s forwards;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25), 0 0 0 0.5px rgba(255, 255, 255, 0.06) inset;
 }
 
 @keyframes meetingEnter {
   from {
     opacity: 0;
-    transform: scale(0.92) rotateX(4deg) translateY(20px);
+    transform: scale(0.94) translateY(20px);
   }
   to {
     opacity: 1;
-    transform: scale(1) rotateX(0) translateY(0);
+    transform: scale(1) translateY(0);
   }
-}
-
-@keyframes meetingFloat {
-  0%, 100% { transform: translateY(0) rotateX(0deg); }
-  50% { transform: translateY(-4px) rotateX(0.5deg); }
 }
 
 .meeting-titlebar {
@@ -630,7 +622,7 @@ button {
 
 .float-card:hover {
   animation-play-state: paused;
-  transform: translateY(-8px) scale(1.02) !important;
+  transform: translateY(-8px) scale(1.02);
   box-shadow: var(--glass-shadow), 0 24px 70px rgba(0, 0, 0, 0.2);
 }
 
@@ -716,7 +708,11 @@ button {
   width: 275px;
   border-color: rgba(74, 222, 128, 0.25);
   box-shadow: var(--glass-shadow), 0 0 40px rgba(74, 222, 128, 0.12), 0 0 80px rgba(74, 222, 128, 0.05);
-  animation: floatInNotes 1s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both, idleFloatNotes 7s ease-in-out 1.5s infinite, glowPulseGreen 4s ease-in-out 2s infinite;
+  animation: floatInNotes 1s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
+}
+
+.float-notes.animated {
+  animation: idleFloatNotes 7s ease-in-out infinite;
 }
 
 .float-notes:hover {
@@ -763,7 +759,11 @@ button {
   width: 255px;
   border-color: rgba(245, 158, 11, 0.22);
   box-shadow: var(--glass-shadow), 0 0 40px rgba(245, 158, 11, 0.1), 0 0 80px rgba(245, 158, 11, 0.04);
-  animation: floatInActions 1s cubic-bezier(0.16, 1, 0.3, 1) 0.5s both, idleFloatActions 8s ease-in-out 2s infinite, glowPulseAmber 5s ease-in-out 2.5s infinite;
+  animation: floatInActions 1s cubic-bezier(0.16, 1, 0.3, 1) 0.5s both;
+}
+
+.float-actions.animated {
+  animation: idleFloatActions 8s ease-in-out infinite;
 }
 
 .float-actions:hover {
@@ -819,7 +819,11 @@ button {
   width: 245px;
   border-color: rgba(59, 130, 246, 0.25);
   box-shadow: var(--glass-shadow), 0 0 40px rgba(59, 130, 246, 0.12), 0 0 80px rgba(59, 130, 246, 0.05);
-  animation: floatInChat 1s cubic-bezier(0.16, 1, 0.3, 1) 0.8s both, idleFloatChat 9s ease-in-out 2.3s infinite, glowPulseBlue 4.5s ease-in-out 3s infinite;
+  animation: floatInChat 1s cubic-bezier(0.16, 1, 0.3, 1) 0.8s both;
+}
+
+.float-chat.animated {
+  animation: idleFloatChat 9s ease-in-out infinite;
 }
 
 .float-chat:hover {
@@ -881,7 +885,6 @@ button {
 }
 
 .float-incognito:hover {
-  animation-play-state: paused;
   transform: translateY(calc(-50% - 6px)) scale(1.02);
   border-color: rgba(139, 92, 246, 0.4);
   box-shadow: var(--glass-shadow), 0 0 50px rgba(139, 92, 246, 0.15);
@@ -928,52 +931,32 @@ button {
   }
 }
 
-/* --- Unique idle float paths (multi-axis, organic movement) --- */
+/* --- Unique idle float paths (smooth, organic) --- */
 @keyframes idleFloatNotes {
-  0%   { transform: translateY(0) translateX(0) rotate(0deg); }
-  20%  { transform: translateY(-6px) translateX(3px) rotate(0.5deg); }
-  40%  { transform: translateY(-3px) translateX(-2px) rotate(-0.3deg); }
-  60%  { transform: translateY(-8px) translateX(1px) rotate(0.2deg); }
-  80%  { transform: translateY(-2px) translateX(-1px) rotate(-0.1deg); }
-  100% { transform: translateY(0) translateX(0) rotate(0deg); }
+  0%, 100% { transform: translateY(0) translateX(0); }
+  33%  { transform: translateY(-6px) translateX(2px); }
+  66%  { transform: translateY(-3px) translateX(-1px); }
 }
 
 @keyframes idleFloatActions {
-  0%   { transform: translateY(0) translateX(0) rotate(0deg); }
-  25%  { transform: translateY(-4px) translateX(-3px) rotate(-0.4deg); }
-  50%  { transform: translateY(-7px) translateX(2px) rotate(0.3deg); }
-  75%  { transform: translateY(-3px) translateX(-1px) rotate(-0.2deg); }
-  100% { transform: translateY(0) translateX(0) rotate(0deg); }
+  0%, 100% { transform: translateY(0) translateX(0); }
+  40%  { transform: translateY(-5px) translateX(-2px); }
+  70%  { transform: translateY(-2px) translateX(1px); }
 }
 
 @keyframes idleFloatChat {
-  0%   { transform: translateY(0) translateX(0) rotate(0deg); }
-  30%  { transform: translateY(-5px) translateX(4px) rotate(0.6deg); }
-  60%  { transform: translateY(-9px) translateX(-2px) rotate(-0.3deg); }
-  80%  { transform: translateY(-3px) translateX(1px) rotate(0.1deg); }
-  100% { transform: translateY(0) translateX(0) rotate(0deg); }
-}
-
-/* --- Color glow pulses --- */
-@keyframes glowPulseGreen {
-  0%, 100% { box-shadow: var(--glass-shadow), 0 0 40px rgba(74, 222, 128, 0.1), 0 0 80px rgba(74, 222, 128, 0.04); }
-  50% { box-shadow: var(--glass-shadow), 0 0 55px rgba(74, 222, 128, 0.2), 0 0 100px rgba(74, 222, 128, 0.08); }
-}
-
-@keyframes glowPulseAmber {
-  0%, 100% { box-shadow: var(--glass-shadow), 0 0 40px rgba(245, 158, 11, 0.08), 0 0 80px rgba(245, 158, 11, 0.03); }
-  50% { box-shadow: var(--glass-shadow), 0 0 55px rgba(245, 158, 11, 0.18), 0 0 100px rgba(245, 158, 11, 0.07); }
-}
-
-@keyframes glowPulseBlue {
-  0%, 100% { box-shadow: var(--glass-shadow), 0 0 40px rgba(59, 130, 246, 0.1), 0 0 80px rgba(59, 130, 246, 0.04); }
-  50% { box-shadow: var(--glass-shadow), 0 0 55px rgba(59, 130, 246, 0.2), 0 0 100px rgba(59, 130, 246, 0.08); }
+  0%, 100% { transform: translateY(0) translateX(0); }
+  35%  { transform: translateY(-4px) translateX(3px); }
+  70%  { transform: translateY(-7px) translateX(-1px); }
 }
 
 /* --- Incognito badge --- */
 .float-incognito {
-  animation: floatInIncog 1s cubic-bezier(0.16, 1, 0.3, 1) 1.1s both,
-             idleFloatIncog 6s ease-in-out 2.5s infinite;
+  animation: floatInIncog 1s cubic-bezier(0.16, 1, 0.3, 1) 1.1s both;
+}
+
+.float-incognito.animated {
+  animation: idleFloatIncog 6s ease-in-out infinite;
 }
 
 @keyframes floatInIncog {
@@ -1378,7 +1361,6 @@ button {
     display: flex;
     justify-content: center;
     overflow: hidden;
-    perspective: none;
   }
 
   .scene {
@@ -1537,7 +1519,6 @@ button {
   /* ── Scene: layered card composition ── */
   .hero-right {
     overflow: visible;
-    perspective: none;
   }
 
   .scene {
@@ -1589,7 +1570,10 @@ button {
   .float-card,
   .float-notes,
   .float-actions,
-  .float-chat {
+  .float-chat,
+  .float-notes.animated,
+  .float-actions.animated,
+  .float-chat.animated {
     position: relative;
     top: auto;
     right: auto;
@@ -1600,16 +1584,16 @@ button {
     padding: 16px 18px;
     font-size: 12.5px;
     line-height: 1.55;
-    animation: floatIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) both !important;
+    animation: floatIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
   }
 
   .float-card:hover {
     animation-play-state: running;
-    transform: translateY(-4px) !important;
+    transform: translateY(-4px);
   }
 
   .meeting-window {
-    animation: floatIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.05s both !important;
+    animation: floatIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.05s both;
   }
 
   .shimmer { display: none; }
@@ -1688,26 +1672,12 @@ button {
     transform: none;
   }
 
-  /* Idle float — keeps cards feeling alive like desktop */
-  @keyframes idleFloat {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-5px); }
-  }
+  /* Staggered entrance delays */
+  .float-notes  { animation-delay: 0.15s; }
+  .float-actions { animation-delay: 0.3s; }
+  .float-chat   { animation-delay: 0.4s; }
 
-  .float-notes {
-    animation: floatIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both,
-               idleFloat 6s ease-in-out 1s infinite !important;
-  }
-
-  .float-actions {
-    animation: floatIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both,
-               idleFloat 6s ease-in-out 1.4s infinite !important;
-  }
-
-  .float-chat {
-    animation: floatIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.4s both,
-               idleFloat 6s ease-in-out 1.8s infinite !important;
-  }
+  .float-incognito.animated { animation: none; }
 
   /* Legal pages */
   .legal-page {
