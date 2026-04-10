@@ -37,8 +37,8 @@ body {
   --nav-btn-bg: #fff;
   --nav-btn-color: #0a0a0a;
   --logo-color: #fff;
-  --logo-icon-bg: rgba(255, 255, 255, 0.15);
-  --logo-icon-border: rgba(255, 255, 255, 0.3);
+  --logo-icon-bg: #000;
+  --logo-icon-border: rgba(255, 255, 255, 0.4);
   --input-bg: #141414;
   --signup-btn-bg: #fff;
   --signup-btn-color: #0a0a0a;
