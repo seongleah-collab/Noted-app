@@ -126,9 +126,9 @@ button {
 .nav-logo {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   font-size: 28px;
-  font-weight: 400;
+  font-weight: 700;
   letter-spacing: -0.5px;
   color: var(--logo-color);
   line-height: 1;
@@ -137,9 +137,8 @@ button {
 .nav-logo-icon {
   flex-shrink: 0;
   display: block;
-  width: 26px;
-  height: 26px;
-  translate: 0 -0.5px;
+  width: 34px;
+  height: 34px;
 }
 
 .nav-right {
