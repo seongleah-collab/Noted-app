@@ -53,16 +53,29 @@
     <div class="hero-right">
       <div class="scene">
 
+        <!-- Ambient gradient orbs -->
+        <div class="scene-orb scene-orb-1"></div>
+        <div class="scene-orb scene-orb-2"></div>
+        <div class="scene-orb scene-orb-3"></div>
+
+        <!-- Sparkle elements -->
+        <div class="sparkle sparkle-1"></div>
+        <div class="sparkle sparkle-2"></div>
+        <div class="sparkle sparkle-3"></div>
+        <div class="sparkle sparkle-4"></div>
+        <div class="sparkle sparkle-5"></div>
+        <div class="sparkle sparkle-6"></div>
+
         <!-- Meeting window -->
         <div class="meeting-window">
           <div class="meeting-titlebar">
             <div class="meeting-dots"><span></span><span></span><span></span></div>
             <span class="meeting-title">Zoom Meeting</span>
-            <span class="meeting-time">32:14</span>
+            <span class="meeting-time" id="meeting-time">32:14</span>
           </div>
           <div class="meeting-grid">
             <div class="participant">
-              <div class="participant-avatar" style="background:#3b82f6;">S</div>
+              <div class="participant-avatar" style="background: linear-gradient(135deg, #3b82f6, #60a5fa);">S</div>
               <span class="participant-name">Sarah Chen</span>
               <span class="participant-speaking">
                 <span class="speaking-bar"></span>
@@ -71,15 +84,15 @@
               </span>
             </div>
             <div class="participant">
-              <div class="participant-avatar" style="background:#8b5cf6;">Y</div>
+              <div class="participant-avatar" style="background: linear-gradient(135deg, #8b5cf6, #a78bfa);">Y</div>
               <span class="participant-name">You</span>
             </div>
             <div class="participant">
-              <div class="participant-avatar" style="background:#f59e0b;">M</div>
+              <div class="participant-avatar" style="background: linear-gradient(135deg, #f59e0b, #fbbf24);">M</div>
               <span class="participant-name">Mike Ross</span>
             </div>
             <div class="participant">
-              <div class="participant-avatar" style="background:#10b981;">J</div>
+              <div class="participant-avatar" style="background: linear-gradient(135deg, #10b981, #34d399);">J</div>
               <span class="participant-name">Jane Park</span>
             </div>
           </div>
@@ -87,8 +100,9 @@
 
         <!-- Floating: Live Notes -->
         <div class="float-card float-notes">
+          <div class="shimmer"></div>
           <div class="float-card-header">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2"><circle cx="12" cy="12" r="5" fill="#4ade80" opacity="0.3"/><circle cx="12" cy="12" r="2" fill="#4ade80"/></svg>
+            <span class="header-dot header-dot-green"></span>
             <span>Live Notes</span>
           </div>
           <div class="float-notes-list">
@@ -100,6 +114,7 @@
 
         <!-- Floating: Action Items -->
         <div class="float-card float-actions">
+          <div class="shimmer"></div>
           <div class="float-card-header">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
             <span>Action Items</span>
@@ -124,6 +139,7 @@
 
         <!-- Floating: Chatbot -->
         <div class="float-card float-chat">
+          <div class="shimmer"></div>
           <div class="float-card-header">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
             <span>Ask Noted</span>
@@ -139,6 +155,30 @@
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/><line x1="1" y1="1" x2="23" y2="23"/></svg>
           <span>Invisible to others · No bot joined</span>
         </div>
+
+        <!-- Connection lines -->
+        <svg class="scene-connections" viewBox="0 0 640 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path class="conn-line conn-line-1" d="M320 200 Q400 100 500 60" stroke="url(#grad-green)" stroke-width="1" opacity="0.3"/>
+          <path class="conn-line conn-line-2" d="M320 300 Q200 350 120 380" stroke="url(#grad-amber)" stroke-width="1" opacity="0.3"/>
+          <path class="conn-line conn-line-3" d="M320 300 Q440 380 520 400" stroke="url(#grad-blue)" stroke-width="1" opacity="0.3"/>
+          <defs>
+            <linearGradient id="grad-green" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#4ade80" stop-opacity="0"/>
+              <stop offset="50%" stop-color="#4ade80" stop-opacity="1"/>
+              <stop offset="100%" stop-color="#4ade80" stop-opacity="0"/>
+            </linearGradient>
+            <linearGradient id="grad-amber" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#f59e0b" stop-opacity="0"/>
+              <stop offset="50%" stop-color="#f59e0b" stop-opacity="1"/>
+              <stop offset="100%" stop-color="#f59e0b" stop-opacity="0"/>
+            </linearGradient>
+            <linearGradient id="grad-blue" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#3b82f6" stop-opacity="0"/>
+              <stop offset="50%" stop-color="#3b82f6" stop-opacity="1"/>
+              <stop offset="100%" stop-color="#3b82f6" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+        </svg>
 
       </div>
     </div>

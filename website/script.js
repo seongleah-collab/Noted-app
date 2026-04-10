@@ -42,6 +42,36 @@ document.addEventListener('keydown', (e) => {
   }
 });
 
+// ─── Meeting Timer (ticks up like a real call) ─────
+const meetingTimeEl = document.getElementById('meeting-time');
+if (meetingTimeEl) {
+  let seconds = 32 * 60 + 14; // starts at 32:14
+  setInterval(() => {
+    seconds++;
+    const m = Math.floor(seconds / 60);
+    const s = seconds % 60;
+    meetingTimeEl.textContent = `${m}:${s.toString().padStart(2, '0')}`;
+  }, 1000);
+}
+
+// ─── Parallax tilt on scene (mouse-based, desktop only) ──
+const scene = document.querySelector('.scene');
+const heroRight = document.querySelector('.hero-right');
+if (scene && heroRight && window.matchMedia('(min-width: 901px)').matches) {
+  heroRight.addEventListener('mousemove', (e) => {
+    const rect = heroRight.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width - 0.5;
+    const y = (e.clientY - rect.top) / rect.height - 0.5;
+    scene.style.transform = `rotateY(${x * 4}deg) rotateX(${-y * 3}deg)`;
+  });
+
+  heroRight.addEventListener('mouseleave', () => {
+    scene.style.transition = 'transform 0.6s ease-out';
+    scene.style.transform = 'rotateY(0) rotateX(0)';
+    setTimeout(() => { scene.style.transition = ''; }, 600);
+  });
+}
+
 // ─── Signup Form ───────────────────────────────────
 const signupForm = document.getElementById('signup-form');
 const signupInput = signupForm.querySelector('.signup-input');
