@@ -1128,9 +1128,12 @@ button {
 .modal-title {
   font-size: 32px;
   font-weight: 700;
-  color: var(--text);
   margin-bottom: 12px;
   letter-spacing: -1px;
+  background: linear-gradient(135deg, #4ade80, #3b82f6, #a78bfa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .modal-desc {
@@ -1188,6 +1191,25 @@ button {
   border-color: var(--border-hover);
 }
 
+/* ─── Per-tile accent colors ──────────────────────── */
+.mf-tile:nth-child(1) { border-left: 2.5px solid rgba(74, 222, 128, 0.6); }
+.mf-tile:nth-child(2) { border-left: 2.5px solid rgba(59, 130, 246, 0.6); }
+.mf-tile:nth-child(3) { border-left: 2.5px solid rgba(167, 139, 250, 0.6); }
+.mf-tile:nth-child(4) { border-left: 2.5px solid rgba(245, 158, 11, 0.6); }
+.mf-tile:nth-child(5) { border-left: 2.5px solid rgba(34, 211, 238, 0.6); }
+
+.mf-tile:nth-child(1) .modal-feature-icon { background: rgba(74, 222, 128, 0.12); border-color: rgba(74, 222, 128, 0.25); color: #4ade80; }
+.mf-tile:nth-child(2) .modal-feature-icon { background: rgba(59, 130, 246, 0.12); border-color: rgba(59, 130, 246, 0.25); color: #3b82f6; }
+.mf-tile:nth-child(3) .modal-feature-icon { background: rgba(167, 139, 250, 0.12); border-color: rgba(167, 139, 250, 0.25); color: #a78bfa; }
+.mf-tile:nth-child(4) .modal-feature-icon { background: rgba(245, 158, 11, 0.12); border-color: rgba(245, 158, 11, 0.25); color: #f59e0b; }
+.mf-tile:nth-child(5) .modal-feature-icon { background: rgba(34, 211, 238, 0.12); border-color: rgba(34, 211, 238, 0.25); color: #22d3ee; }
+
+.mf-tile:nth-child(1):hover { border-color: rgba(74, 222, 128, 0.5); box-shadow: 0 8px 32px rgba(74, 222, 128, 0.1), 0 0 0 0.5px rgba(255,255,255,0.08) inset; }
+.mf-tile:nth-child(2):hover { border-color: rgba(59, 130, 246, 0.5); box-shadow: 0 8px 32px rgba(59, 130, 246, 0.1), 0 0 0 0.5px rgba(255,255,255,0.08) inset; }
+.mf-tile:nth-child(3):hover { border-color: rgba(167, 139, 250, 0.5); box-shadow: 0 8px 32px rgba(167, 139, 250, 0.1), 0 0 0 0.5px rgba(255,255,255,0.08) inset; }
+.mf-tile:nth-child(4):hover { border-color: rgba(245, 158, 11, 0.5); box-shadow: 0 8px 32px rgba(245, 158, 11, 0.1), 0 0 0 0.5px rgba(255,255,255,0.08) inset; }
+.mf-tile:nth-child(5):hover { border-color: rgba(34, 211, 238, 0.5); box-shadow: 0 8px 32px rgba(34, 211, 238, 0.1), 0 0 0 0.5px rgba(255,255,255,0.08) inset; }
+
 /* Stagger entrance when modal is active */
 .modal-overlay.active .mf-tile {
   animation: mfSlideIn 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
@@ -1229,6 +1251,19 @@ button {
   margin-bottom: 3px;
   letter-spacing: -0.2px;
 }
+
+.mf-tile:nth-child(1) h3 { color: #4ade80; }
+.mf-tile:nth-child(2) h3 { color: #60a5fa; }
+.mf-tile:nth-child(3) h3 { color: #a78bfa; }
+.mf-tile:nth-child(4) h3 { color: #fbbf24; }
+.mf-tile:nth-child(5) h3 { color: #22d3ee; }
+
+/* Light theme: darker accent headings for readability */
+[data-theme="light"] .mf-tile:nth-child(1) h3 { color: #16a34a; }
+[data-theme="light"] .mf-tile:nth-child(2) h3 { color: #2563eb; }
+[data-theme="light"] .mf-tile:nth-child(3) h3 { color: #7c3aed; }
+[data-theme="light"] .mf-tile:nth-child(4) h3 { color: #d97706; }
+[data-theme="light"] .mf-tile:nth-child(5) h3 { color: #0891b2; }
 
 .mf-tile p {
   font-size: 12.5px;
@@ -1285,9 +1320,9 @@ button {
   30% { opacity: 1; transform: translateY(-4px); }
 }
 
-/* Eye-slash blink for incognito */
+/* Eye-slash blink for incognito — color inherited from parent icon */
 .mf-eye-blink {
-  color: var(--modal-feature-icon);
+  color: inherit;
 }
 
 .mf-eye-slash {
