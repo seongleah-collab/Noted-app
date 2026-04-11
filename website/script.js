@@ -315,57 +315,74 @@ if (scene && heroRight && window.matchMedia('(min-width: 901px)').matches) {
   }, 3000);
 })();
 
+// ─── Scroll Reveal ─────────────────────────────────
+const revealEls = document.querySelectorAll('.reveal');
+if (revealEls.length) {
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.16, rootMargin: '0px 0px -40px 0px' });
+
+  revealEls.forEach((el) => revealObserver.observe(el));
+}
+
 // ─── Signup Form ───────────────────────────────────
 const signupForm = document.getElementById('signup-form');
-const signupInput = signupForm.querySelector('.signup-input');
-const signupBtn = signupForm.querySelector('.signup-btn');
+const signupInput = signupForm && signupForm.querySelector('.signup-input');
+const signupBtn = signupForm && signupForm.querySelector('.signup-btn');
 
-signupForm.addEventListener('submit', async (e) => {
-  e.preventDefault();
-  const email = signupInput.value.trim();
-  if (!email) return;
+if (signupForm && signupInput && signupBtn) {
+  signupForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const email = signupInput.value.trim();
+    if (!email) return;
 
-  signupBtn.textContent = 'Joining...';
-  signupBtn.disabled = true;
+    signupBtn.textContent = 'Joining...';
+    signupBtn.disabled = true;
 
-  try {
-    const res = await fetch('/api/waitlist', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email })
-    });
+    try {
+      const res = await fetch('/api/waitlist', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email })
+      });
 
-    if (res.ok) {
-      signupInput.value = '';
-      signupInput.placeholder = 'You\'re on the list!';
-      signupBtn.textContent = 'Joined';
-      setTimeout(() => {
-        signupBtn.textContent = 'Join Waitlist';
-        signupBtn.disabled = false;
-        signupInput.placeholder = 'Enter your email';
-      }, 3000);
-    } else {
-      const data = await res.json().catch(() => null);
-      if (data?.message?.includes('already')) {
+      if (res.ok) {
         signupInput.value = '';
-        signupInput.placeholder = 'You\'re already on the list!';
+        signupInput.placeholder = 'You\'re on the list!';
         signupBtn.textContent = 'Joined';
+        setTimeout(() => {
+          signupBtn.textContent = 'Join Waitlist';
+          signupBtn.disabled = false;
+          signupInput.placeholder = 'Enter your email';
+        }, 3000);
       } else {
-        signupInput.placeholder = 'Something went wrong. Try again.';
-        signupBtn.textContent = 'Join Waitlist';
+        const data = await res.json().catch(() => null);
+        if (data?.message?.includes('already')) {
+          signupInput.value = '';
+          signupInput.placeholder = 'You\'re already on the list!';
+          signupBtn.textContent = 'Joined';
+        } else {
+          signupInput.placeholder = 'Something went wrong. Try again.';
+          signupBtn.textContent = 'Join Waitlist';
+        }
+        setTimeout(() => {
+          signupBtn.textContent = 'Join Waitlist';
+          signupBtn.disabled = false;
+          signupInput.placeholder = 'Enter your email';
+        }, 3000);
       }
+    } catch {
+      signupInput.placeholder = 'Network error. Try again.';
+      signupBtn.textContent = 'Join Waitlist';
+      signupBtn.disabled = false;
       setTimeout(() => {
-        signupBtn.textContent = 'Join Waitlist';
-        signupBtn.disabled = false;
         signupInput.placeholder = 'Enter your email';
       }, 3000);
     }
-  } catch {
-    signupInput.placeholder = 'Network error. Try again.';
-    signupBtn.textContent = 'Join Waitlist';
-    signupBtn.disabled = false;
-    setTimeout(() => {
-      signupInput.placeholder = 'Enter your email';
-    }, 3000);
-  }
-});
+  });
+}
