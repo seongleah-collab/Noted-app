@@ -72,10 +72,20 @@ document.getElementById('theme-toggle').addEventListener('click', () => {
   draw();
 })();
 
-// ─── Scrolled Nav ─────────────────────────────────
+// ─── Scrolled Nav + Scroll Progress ──────────────
 const nav = document.querySelector('.nav');
+const scrollProgress = document.getElementById('scroll-progress');
+
 window.addEventListener('scroll', () => {
   nav.classList.toggle('scrolled', window.scrollY > 60);
+
+  // Scroll progress bar
+  if (scrollProgress) {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    scrollProgress.style.width = scrollPercent + '%';
+  }
 });
 
 // ─── Smooth Scroll ────────────────────────────────
@@ -104,14 +114,14 @@ const revealObserver = new IntersectionObserver((entries) => {
       revealObserver.unobserve(entry.target);
     }
   });
-}, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+}, { threshold: 0.05, rootMargin: '0px 0px -60px 0px' });
 
 revealEls.forEach((el, i) => {
   el.classList.add('reveal');
   // Stagger within each section's group
   const siblings = el.parentElement ? Array.from(el.parentElement.children) : [];
   const idx = siblings.indexOf(el);
-  el.style.transitionDelay = `${(idx >= 0 ? idx : i % 6) * 0.07}s`;
+  el.style.transitionDelay = `${(idx >= 0 ? idx : i % 6) * 0.1}s`;
   revealObserver.observe(el);
 });
 
@@ -155,6 +165,27 @@ document.querySelectorAll('.faq-question').forEach(btn => {
     item.classList.toggle('open', !isOpen);
   });
 });
+
+// ─── Section Nav Dots ────────────────────────────
+(function() {
+  const dots = document.querySelectorAll('.section-dots .dot');
+  if (!dots.length) return;
+
+  const sectionIds = Array.from(dots).map(d => d.dataset.section);
+  const sectionEls = sectionIds.map(id => document.getElementById(id)).filter(Boolean);
+
+  const dotObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        dots.forEach(d => d.classList.remove('active'));
+        const activeDot = document.querySelector('.section-dots .dot[data-section="' + entry.target.id + '"]');
+        if (activeDot) activeDot.classList.add('active');
+      }
+    });
+  }, { threshold: 0.3 });
+
+  sectionEls.forEach(el => dotObserver.observe(el));
+})();
 
 // ─── Glow Card Mouse Tracking ─────────────────────
 document.querySelectorAll('.glow-card').forEach(card => {
