@@ -11,6 +11,9 @@
 </head>
 <body>
 
+  <!-- Particle Canvas Background -->
+  <canvas id="particles" class="particles-canvas"></canvas>
+
   <!-- Navigation -->
   <nav class="nav">
     <a href="#" class="nav-logo">
@@ -27,6 +30,7 @@
     <div class="nav-links">
       <a href="#features">Features</a>
       <a href="#how-it-works">How It Works</a>
+      <a href="#compare">Compare</a>
       <a href="#privacy">Privacy</a>
     </div>
     <div class="nav-right">
@@ -38,23 +42,25 @@
     </div>
   </nav>
 
-  <!-- Mobile Nav Toggle -->
-  <button class="mobile-nav-toggle" id="mobile-nav-toggle" aria-label="Toggle menu">
-    <span></span><span></span><span></span>
-  </button>
-
   <!-- Hero -->
   <section class="hero" id="hero">
     <div class="hero-left">
+      <div class="hero-badge">
+        <span class="hero-badge-dot"></span>
+        Now available on all platforms
+      </div>
       <h1 class="hero-title">
-        Your memory<br>
+        <span class="gradient-text">Your memory</span><br>
         just got an<br>
         upgrade,<br>
-        literally.
+        <span class="gradient-text-alt">literally.</span>
       </h1>
       <p class="hero-subtitle">The AI assistant that listens, takes notes, and answers your questions — all while staying completely invisible.</p>
       <div class="hero-ctas">
-        <a href="#download" class="btn-primary">Download for Mac</a>
+        <a href="#download" class="btn-primary btn-glow">
+          <span>Download for Mac</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
         <a href="#features" class="btn-secondary">See Features</a>
       </div>
       <p class="hero-platforms">Also available on Windows, iOS & Android</p>
@@ -62,13 +68,10 @@
 
     <div class="hero-right">
       <div class="scene">
-
-        <!-- Ambient gradient orbs -->
         <div class="scene-orb scene-orb-1"></div>
         <div class="scene-orb scene-orb-2"></div>
         <div class="scene-orb scene-orb-3"></div>
 
-        <!-- Sparkle elements -->
         <div class="sparkle sparkle-1"></div>
         <div class="sparkle sparkle-2"></div>
         <div class="sparkle sparkle-3"></div>
@@ -76,7 +79,6 @@
         <div class="sparkle sparkle-5"></div>
         <div class="sparkle sparkle-6"></div>
 
-        <!-- Meeting window -->
         <div class="meeting-window">
           <div class="meeting-titlebar">
             <div class="meeting-dots"><span></span><span></span><span></span></div>
@@ -87,43 +89,26 @@
             <div class="participant speaking" style="--ring-color: 59,130,246">
               <div class="participant-avatar" style="background: linear-gradient(135deg, #3b82f6, #60a5fa);">S</div>
               <span class="participant-name">Sarah Chen</span>
-              <span class="participant-speaking">
-                <span class="speaking-bar"></span>
-                <span class="speaking-bar"></span>
-                <span class="speaking-bar"></span>
-              </span>
+              <span class="participant-speaking"><span class="speaking-bar"></span><span class="speaking-bar"></span><span class="speaking-bar"></span></span>
             </div>
             <div class="participant" style="--ring-color: 139,92,246">
               <div class="participant-avatar" style="background: linear-gradient(135deg, #8b5cf6, #a78bfa);">Y</div>
               <span class="participant-name">You</span>
-              <span class="participant-speaking">
-                <span class="speaking-bar"></span>
-                <span class="speaking-bar"></span>
-                <span class="speaking-bar"></span>
-              </span>
+              <span class="participant-speaking"><span class="speaking-bar"></span><span class="speaking-bar"></span><span class="speaking-bar"></span></span>
             </div>
             <div class="participant" style="--ring-color: 245,158,11">
               <div class="participant-avatar" style="background: linear-gradient(135deg, #f59e0b, #fbbf24);">M</div>
               <span class="participant-name">Mike Ross</span>
-              <span class="participant-speaking">
-                <span class="speaking-bar"></span>
-                <span class="speaking-bar"></span>
-                <span class="speaking-bar"></span>
-              </span>
+              <span class="participant-speaking"><span class="speaking-bar"></span><span class="speaking-bar"></span><span class="speaking-bar"></span></span>
             </div>
             <div class="participant" style="--ring-color: 16,185,129">
               <div class="participant-avatar" style="background: linear-gradient(135deg, #10b981, #34d399);">J</div>
               <span class="participant-name">Jane Park</span>
-              <span class="participant-speaking">
-                <span class="speaking-bar"></span>
-                <span class="speaking-bar"></span>
-                <span class="speaking-bar"></span>
-              </span>
+              <span class="participant-speaking"><span class="speaking-bar"></span><span class="speaking-bar"></span><span class="speaking-bar"></span></span>
             </div>
           </div>
         </div>
 
-        <!-- Floating: Live Notes -->
         <div class="float-card float-notes">
           <div class="shimmer"></div>
           <div class="float-card-header">
@@ -137,7 +122,6 @@
           </div>
         </div>
 
-        <!-- Floating: Action Items -->
         <div class="float-card float-actions">
           <div class="shimmer"></div>
           <div class="float-card-header">
@@ -146,9 +130,7 @@
           </div>
           <div class="float-actions-list" id="actions-list">
             <div class="action-item">
-              <span class="action-check">
-                <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
-              </span>
+              <span class="action-check"><svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
               Submit budget proposal by <strong>Friday</strong>
             </div>
             <div class="action-item">
@@ -162,7 +144,6 @@
           </div>
         </div>
 
-        <!-- Floating: Chatbot -->
         <div class="float-card float-chat">
           <div class="shimmer"></div>
           <div class="float-card-header">
@@ -175,44 +156,77 @@
           </div>
         </div>
 
-        <!-- Incognito badge -->
         <div class="float-incognito">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/><line x1="1" y1="1" x2="23" y2="23"/></svg>
           <span>Invisible to others · No bot joined</span>
         </div>
 
-        <!-- Floating cursor -->
         <div class="scene-cursor" id="scene-cursor">
-          <svg width="13" height="16" viewBox="0 0 13 16" fill="none">
-            <path d="M1 1v13l3.5-3.5H12L1 1z" fill="#b0b0b0"/>
-          </svg>
+          <svg width="13" height="16" viewBox="0 0 13 16" fill="none"><path d="M1 1v13l3.5-3.5H12L1 1z" fill="#b0b0b0"/></svg>
           <span class="cursor-ring"></span>
         </div>
 
-        <!-- Connection lines -->
         <svg class="scene-connections" viewBox="0 0 640 500" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path class="conn-line conn-line-1" d="M320 200 Q400 100 500 60" stroke="url(#grad-green)" stroke-width="1" opacity="0.3"/>
           <path class="conn-line conn-line-2" d="M320 300 Q200 350 120 380" stroke="url(#grad-amber)" stroke-width="1" opacity="0.3"/>
           <path class="conn-line conn-line-3" d="M320 300 Q440 380 520 400" stroke="url(#grad-blue)" stroke-width="1" opacity="0.3"/>
           <defs>
-            <linearGradient id="grad-green" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stop-color="#4ade80" stop-opacity="0"/>
-              <stop offset="50%" stop-color="#4ade80" stop-opacity="1"/>
-              <stop offset="100%" stop-color="#4ade80" stop-opacity="0"/>
-            </linearGradient>
-            <linearGradient id="grad-amber" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stop-color="#f59e0b" stop-opacity="0"/>
-              <stop offset="50%" stop-color="#f59e0b" stop-opacity="1"/>
-              <stop offset="100%" stop-color="#f59e0b" stop-opacity="0"/>
-            </linearGradient>
-            <linearGradient id="grad-blue" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stop-color="#3b82f6" stop-opacity="0"/>
-              <stop offset="50%" stop-color="#3b82f6" stop-opacity="1"/>
-              <stop offset="100%" stop-color="#3b82f6" stop-opacity="0"/>
-            </linearGradient>
+            <linearGradient id="grad-green" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#4ade80" stop-opacity="0"/><stop offset="50%" stop-color="#4ade80" stop-opacity="1"/><stop offset="100%" stop-color="#4ade80" stop-opacity="0"/></linearGradient>
+            <linearGradient id="grad-amber" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#f59e0b" stop-opacity="0"/><stop offset="50%" stop-color="#f59e0b" stop-opacity="1"/><stop offset="100%" stop-color="#f59e0b" stop-opacity="0"/></linearGradient>
+            <linearGradient id="grad-blue" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#3b82f6" stop-opacity="0"/><stop offset="50%" stop-color="#3b82f6" stop-opacity="1"/><stop offset="100%" stop-color="#3b82f6" stop-opacity="0"/></linearGradient>
           </defs>
         </svg>
+      </div>
+    </div>
+  </section>
 
+  <!-- Marquee Ticker -->
+  <div class="marquee">
+    <div class="marquee-track">
+      <span class="marquee-item"><span class="marquee-dot" style="background:#4ade80"></span>Real-Time Notes</span>
+      <span class="marquee-item"><span class="marquee-dot" style="background:#3b82f6"></span>AI Chatbot</span>
+      <span class="marquee-item"><span class="marquee-dot" style="background:#a78bfa"></span>Incognito Mode</span>
+      <span class="marquee-item"><span class="marquee-dot" style="background:#f59e0b"></span>Action Items</span>
+      <span class="marquee-item"><span class="marquee-dot" style="background:#22d3ee"></span>Screen + Audio</span>
+      <span class="marquee-item"><span class="marquee-dot" style="background:#f472b6"></span>Learns Your Style</span>
+      <span class="marquee-item"><span class="marquee-dot" style="background:#34d399"></span>On-Device AI</span>
+      <span class="marquee-item"><span class="marquee-dot" style="background:#fbbf24"></span>Meeting Mode</span>
+      <span class="marquee-item"><span class="marquee-dot" style="background:#818cf8"></span>Lecture Mode</span>
+      <span class="marquee-item"><span class="marquee-dot" style="background:#fb923c"></span>Cross-Session Memory</span>
+      <!-- Duplicate for seamless loop -->
+      <span class="marquee-item"><span class="marquee-dot" style="background:#4ade80"></span>Real-Time Notes</span>
+      <span class="marquee-item"><span class="marquee-dot" style="background:#3b82f6"></span>AI Chatbot</span>
+      <span class="marquee-item"><span class="marquee-dot" style="background:#a78bfa"></span>Incognito Mode</span>
+      <span class="marquee-item"><span class="marquee-dot" style="background:#f59e0b"></span>Action Items</span>
+      <span class="marquee-item"><span class="marquee-dot" style="background:#22d3ee"></span>Screen + Audio</span>
+      <span class="marquee-item"><span class="marquee-dot" style="background:#f472b6"></span>Learns Your Style</span>
+      <span class="marquee-item"><span class="marquee-dot" style="background:#34d399"></span>On-Device AI</span>
+      <span class="marquee-item"><span class="marquee-dot" style="background:#fbbf24"></span>Meeting Mode</span>
+      <span class="marquee-item"><span class="marquee-dot" style="background:#818cf8"></span>Lecture Mode</span>
+      <span class="marquee-item"><span class="marquee-dot" style="background:#fb923c"></span>Cross-Session Memory</span>
+    </div>
+  </div>
+
+  <!-- Stats -->
+  <section class="section stats-section">
+    <div class="section-inner">
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-number" data-target="100" data-suffix="%">0%</div>
+          <div class="stat-label">On-device processing</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" data-target="0" data-suffix="">0</div>
+          <div class="stat-label">Bots that join your calls</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" data-target="10" data-suffix="x">0x</div>
+          <div class="stat-label">Richer than audio-only notes</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" data-target="2" data-suffix="">0</div>
+          <div class="stat-label">Specialized modes</div>
+        </div>
       </div>
     </div>
   </section>
@@ -221,12 +235,11 @@
   <section class="section features" id="features">
     <div class="section-inner">
       <p class="section-label">Features</p>
-      <h2 class="section-title">Everything you need.<br>Nothing anyone can see.</h2>
+      <h2 class="section-title">Everything you need.<br><span class="gradient-text">Nothing anyone can see.</span></h2>
       <p class="section-subtitle">Noted captures audio, reads your screen, takes notes, answers questions, and tracks action items — all in real time, all completely invisible.</p>
 
       <div class="features-grid">
-
-        <div class="feature-card feature-card-wide">
+        <div class="feature-card glow-card feature-card-wide" style="--glow-color: 74, 222, 128">
           <div class="feature-icon" style="--accent: #4ade80;">
             <span class="mf-pulse-dot"></span>
           </div>
@@ -234,46 +247,45 @@
           <p>Notes generate live as your meeting or lecture happens — not after the fact. Choose your depth, style, and format. Request changes mid-session so you're never stuck with notes you don't want.</p>
         </div>
 
-        <div class="feature-card">
+        <div class="feature-card glow-card" style="--glow-color: 59, 130, 246">
           <div class="feature-icon" style="--accent: #3b82f6;">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
           </div>
           <h3>Context-aware chatbot</h3>
-          <p>Ask questions mid-meeting and get answers grounded in what's actually being said. "What did she just say about the exam?" — answered instantly, no copy-pasting into a separate AI.</p>
+          <p>Ask questions mid-meeting and get answers grounded in what's actually being said. "What did she just say about the exam?" — answered instantly.</p>
         </div>
 
-        <div class="feature-card">
+        <div class="feature-card glow-card" style="--glow-color: 167, 139, 250">
           <div class="feature-icon" style="--accent: #a78bfa;">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/><line x1="1" y1="1" x2="23" y2="23"/></svg>
           </div>
           <h3>Completely incognito</h3>
-          <p>No bots join your call. No one gets notified. No screen indicators. Noted captures system audio locally — it's invisible to everyone but you.</p>
+          <p>No bots join your call. No one gets notified. No screen indicators. Noted captures system audio locally — invisible to everyone but you.</p>
         </div>
 
-        <div class="feature-card">
+        <div class="feature-card glow-card" style="--glow-color: 245, 158, 11">
           <div class="feature-icon" style="--accent: #f59e0b;">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><polyline points="9 16 10.5 18 15 13"/></svg>
           </div>
           <h3>Action items & reminders</h3>
-          <p>Noted automatically detects deadlines, to-dos, and assignments mentioned during your meeting. Everything gets organized with dates so nothing slips through the cracks.</p>
+          <p>Automatically detects deadlines, to-dos, and assignments. Everything gets organized with dates so nothing slips through.</p>
         </div>
 
-        <div class="feature-card">
+        <div class="feature-card glow-card" style="--glow-color: 34, 211, 238">
           <div class="feature-icon" style="--accent: #22d3ee;">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
           </div>
           <h3>Screen context + audio</h3>
-          <p>Noted sees your screen and hears the audio simultaneously. Notes reference what's being shown — "the chart John presented on slide 3" — making them 10x richer than audio-only tools.</p>
+          <p>Sees your screen and hears audio simultaneously. Notes reference what's shown — "the chart John presented on slide 3" — 10x richer than audio-only.</p>
         </div>
 
-        <div class="feature-card feature-card-wide">
+        <div class="feature-card glow-card feature-card-wide" style="--glow-color: 244, 114, 182">
           <div class="feature-icon" style="--accent: #f472b6;">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
           </div>
           <h3>Learns how you think</h3>
           <p>Over time, Noted adapts to your vocabulary, your note-taking preferences, and how you like things explained. It builds off the way you think — creating a truly personal AI assistant that no competitor offers.</p>
         </div>
-
       </div>
     </div>
   </section>
@@ -282,11 +294,11 @@
   <section class="section modes" id="modes">
     <div class="section-inner">
       <p class="section-label">Two modes, one tool</p>
-      <h2 class="section-title">Meeting mode.<br>Lecture mode.</h2>
-      <p class="section-subtitle">Noted adapts to your context. The way notes are structured and what the AI prioritizes changes depending on the mode you choose.</p>
+      <h2 class="section-title">Meeting mode.<br><span class="gradient-text-alt">Lecture mode.</span></h2>
+      <p class="section-subtitle">The way notes are structured and what the AI prioritizes changes depending on the mode you choose.</p>
 
       <div class="modes-grid">
-        <div class="mode-card">
+        <div class="mode-card glow-card" style="--glow-color: 59, 130, 246">
           <div class="mode-icon mode-icon-meeting">
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
           </div>
@@ -299,12 +311,12 @@
             <li>Suggested questions to ask</li>
           </ul>
         </div>
-        <div class="mode-card">
+        <div class="mode-card glow-card" style="--glow-color: 167, 139, 250">
           <div class="mode-icon mode-icon-lecture">
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><line x1="8" y1="7" x2="16" y2="7"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
           </div>
           <h3>Lecture Mode</h3>
-          <p>Study-ready notes with definitions, formulas, key concepts, and structured outlines. Perfect for classes, webinars, and training sessions where you need to absorb information, not just track a conversation.</p>
+          <p>Study-ready notes with definitions, formulas, key concepts, and structured outlines. Perfect for classes, webinars, and training sessions where you need to absorb information.</p>
           <ul class="mode-details">
             <li>Definitions, formulas & key terms</li>
             <li>Structured study outlines</li>
@@ -320,7 +332,7 @@
   <section class="section how-it-works" id="how-it-works">
     <div class="section-inner">
       <p class="section-label">How it works</p>
-      <h2 class="section-title">One click. Fully present.</h2>
+      <h2 class="section-title">One click. <span class="gradient-text">Fully present.</span></h2>
       <p class="section-subtitle">Start a recording and forget about it. Noted handles the rest.</p>
 
       <div class="steps-grid">
@@ -337,13 +349,94 @@
         <div class="step-card">
           <div class="step-number">03</div>
           <h3>Watch notes appear</h3>
-          <p>Real-time notes, action items, and key highlights float on your screen as the session progresses. Ask the chatbot anything mid-session.</p>
+          <p>Real-time notes, action items, and key highlights float on your screen. Ask the chatbot anything mid-session.</p>
         </div>
         <div class="step-card">
           <div class="step-number">04</div>
           <h3>Review & export</h3>
-          <p>After the session, get a complete summary, to-do list, and organized notes. Export to Notion, Google Drive, or keep everything in Noted.</p>
+          <p>Get a complete summary, to-do list, and organized notes. Export to Notion, Google Drive, or keep everything in Noted.</p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Comparison -->
+  <section class="section compare" id="compare">
+    <div class="section-inner">
+      <p class="section-label">Why Noted</p>
+      <h2 class="section-title">See how we <span class="gradient-text-alt">stack up.</span></h2>
+      <p class="section-subtitle">Noted was built to solve the problems other tools ignore.</p>
+
+      <div class="compare-table-wrap">
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th>Feature</th>
+              <th class="compare-noted">Noted</th>
+              <th>Fireflies.ai</th>
+              <th>Cluely</th>
+              <th>Otter.ai</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Real-time notes during session</td>
+              <td class="compare-noted"><span class="check-yes"></span></td>
+              <td><span class="check-no"></span></td>
+              <td><span class="check-no"></span></td>
+              <td><span class="check-partial">Partial</span></td>
+            </tr>
+            <tr>
+              <td>Completely incognito</td>
+              <td class="compare-noted"><span class="check-yes"></span></td>
+              <td><span class="check-no"></span></td>
+              <td><span class="check-yes"></span></td>
+              <td><span class="check-no"></span></td>
+            </tr>
+            <tr>
+              <td>Live AI chatbot with context</td>
+              <td class="compare-noted"><span class="check-yes"></span></td>
+              <td><span class="check-no"></span></td>
+              <td><span class="check-partial">Partial</span></td>
+              <td><span class="check-no"></span></td>
+            </tr>
+            <tr>
+              <td>Screen + audio capture</td>
+              <td class="compare-noted"><span class="check-yes"></span></td>
+              <td><span class="check-no"></span></td>
+              <td><span class="check-yes"></span></td>
+              <td><span class="check-no"></span></td>
+            </tr>
+            <tr>
+              <td>On-device processing</td>
+              <td class="compare-noted"><span class="check-yes"></span></td>
+              <td><span class="check-no"></span></td>
+              <td><span class="check-no"></span></td>
+              <td><span class="check-no"></span></td>
+            </tr>
+            <tr>
+              <td>Lecture mode</td>
+              <td class="compare-noted"><span class="check-yes"></span></td>
+              <td><span class="check-no"></span></td>
+              <td><span class="check-no"></span></td>
+              <td><span class="check-no"></span></td>
+            </tr>
+            <tr>
+              <td>Learns your vocabulary</td>
+              <td class="compare-noted"><span class="check-yes"></span></td>
+              <td><span class="check-no"></span></td>
+              <td><span class="check-no"></span></td>
+              <td><span class="check-no"></span></td>
+            </tr>
+            <tr>
+              <td>Works offline</td>
+              <td class="compare-noted"><span class="check-yes"></span></td>
+              <td><span class="check-no"></span></td>
+              <td><span class="check-no"></span></td>
+              <td><span class="check-no"></span></td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </section>
@@ -352,30 +445,30 @@
   <section class="section memory" id="memory">
     <div class="section-inner">
       <p class="section-label">Built for continuity</p>
-      <h2 class="section-title">Your notes get smarter<br>over time.</h2>
+      <h2 class="section-title">Your notes get smarter<br><span class="gradient-text">over time.</span></h2>
       <p class="section-subtitle">Noted connects across sessions so your context grows richer with every meeting and lecture.</p>
 
       <div class="memory-grid">
-        <div class="memory-item">
+        <div class="memory-item glow-card" style="--glow-color: 139, 92, 246">
           <div class="memory-icon">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
           </div>
           <h3>Organize with folders</h3>
           <p>Create folders like "English 101" or "Meetings with Sarah" to group related sessions. Noted builds cross-session context within each folder.</p>
         </div>
-        <div class="memory-item">
+        <div class="memory-item glow-card" style="--glow-color: 139, 92, 246">
           <div class="memory-icon">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
           </div>
           <h3>Cross-session recall</h3>
-          <p>Had a meeting 3 weeks ago? Noted remembers what you discussed, open action items, and what's changed since — so you walk into the next one fully prepared.</p>
+          <p>Had a meeting 3 weeks ago? Noted remembers what you discussed, open action items, and what's changed since.</p>
         </div>
-        <div class="memory-item">
+        <div class="memory-item glow-card" style="--glow-color: 139, 92, 246">
           <div class="memory-icon">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
           </div>
           <h3>Upload & refine</h3>
-          <p>Have pre-recorded lectures or unfinished notes? Upload them and Noted will generate structured notes, fill in gaps, and restructure them to your preferences.</p>
+          <p>Have pre-recorded lectures or unfinished notes? Upload them and Noted will generate structured notes and fill in gaps.</p>
         </div>
       </div>
     </div>
@@ -385,25 +478,25 @@
   <section class="section privacy" id="privacy">
     <div class="section-inner">
       <p class="section-label">Privacy first</p>
-      <h2 class="section-title">Your data stays yours.<br>Period.</h2>
+      <h2 class="section-title">Your data stays yours.<br><span class="gradient-text-alt">Period.</span></h2>
       <p class="section-subtitle">Noted is built from the ground up to keep your information private and under your control.</p>
 
       <div class="privacy-grid">
-        <div class="privacy-card privacy-card-main">
+        <div class="privacy-card privacy-card-main glow-card" style="--glow-color: 74, 222, 128">
           <div class="privacy-icon">
             <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
           </div>
           <h3>On-device processing</h3>
           <p>Audio transcription and AI note generation happen entirely on your machine. Nothing gets sent to a server. This means Noted works offline too — record a lecture on a plane and still get full notes.</p>
         </div>
-        <div class="privacy-card">
+        <div class="privacy-card glow-card" style="--glow-color: 74, 222, 128">
           <div class="privacy-icon">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg>
           </div>
           <h3>Zero-knowledge design</h3>
           <p>We can't see your notes, recordings, or transcripts. Everything is encrypted and stored locally on your device.</p>
         </div>
-        <div class="privacy-card">
+        <div class="privacy-card glow-card" style="--glow-color: 74, 222, 128">
           <div class="privacy-icon">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
           </div>
@@ -414,14 +507,85 @@
     </div>
   </section>
 
+  <!-- FAQ -->
+  <section class="section faq" id="faq">
+    <div class="section-inner">
+      <p class="section-label">FAQ</p>
+      <h2 class="section-title">Got questions?</h2>
+
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>How is Noted different from Fireflies or Otter?</span>
+            <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer">
+            <p>Unlike Fireflies and Otter, Noted generates notes in real-time during your session — not after. It also captures your screen alongside audio for richer context, runs completely on-device for privacy, and is 100% incognito (no bots join your call).</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Is Noted really invisible to other participants?</span>
+            <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer">
+            <p>Yes. Noted captures system audio directly from your machine — no bot joins the call, no notifications are sent, and there's no indication to anyone that it's running. It's your personal tool running locally.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Does Noted work offline?</span>
+            <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer">
+            <p>Yes. Because all AI processing happens on your device, Noted works without an internet connection. Record an in-person lecture or meeting anywhere and get full notes.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>What platforms does Noted support?</span>
+            <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer">
+            <p>Noted is available as a desktop app for Mac and Windows, plus mobile apps for iOS and Android. The desktop app is the core experience for recording, while mobile and web let you review notes, search sessions, and chat with the AI from anywhere.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Can I use Noted with Zoom, Google Meet, and Teams?</span>
+            <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer">
+            <p>Yes — Noted works with any app. It captures system audio and your screen, so it works with Zoom, Meet, Teams, Webex, or any other platform. It also works for in-person meetings and lectures via your microphone.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Can I export my notes?</span>
+            <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer">
+            <p>Absolutely. Export notes, transcripts, and calendars to Notion, Google Drive, and more. We believe your data is yours — we'll never lock you in.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Download CTA -->
   <section class="section download" id="download">
+    <div class="download-glow"></div>
     <div class="section-inner download-inner">
-      <h2 class="download-title">Be fully present.<br>Let Noted handle the rest.</h2>
+      <h2 class="download-title">Be fully present.<br><span class="gradient-text">Let Noted handle the rest.</span></h2>
       <p class="download-subtitle">Download Noted and never miss a thing in your meetings and lectures again.</p>
       <div class="download-buttons">
-        <a href="#" class="btn-primary btn-large">Download for Mac</a>
-        <a href="#" class="btn-primary btn-large btn-windows">Download for Windows</a>
+        <a href="#" class="btn-primary btn-large btn-glow">
+          <span>Download for Mac</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+        <a href="#" class="btn-primary btn-large btn-windows">
+          <span>Download for Windows</span>
+        </a>
       </div>
       <div class="download-mobile">
         <a href="#" class="store-badge">

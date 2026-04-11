@@ -17,17 +17,68 @@ document.getElementById('theme-toggle').addEventListener('click', () => {
   setTheme(current === 'dark' ? 'light' : 'dark');
 });
 
+// ─── Particle Background ──────────────────────────
+(function() {
+  const canvas = document.getElementById('particles');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let particles = [];
+  let w, h;
+
+  function resize() {
+    w = canvas.width = window.innerWidth;
+    h = canvas.height = window.innerHeight * 5; // cover full scroll
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  function createParticles() {
+    particles = [];
+    const count = Math.floor((w * h) / 25000);
+    for (let i = 0; i < count; i++) {
+      particles.push({
+        x: Math.random() * w,
+        y: Math.random() * h,
+        r: Math.random() * 1.5 + 0.5,
+        dx: (Math.random() - 0.5) * 0.3,
+        dy: (Math.random() - 0.5) * 0.15,
+        opacity: Math.random() * 0.5 + 0.1,
+      });
+    }
+  }
+  createParticles();
+
+  function draw() {
+    ctx.clearRect(0, 0, w, h);
+    const isDark = document.documentElement.getAttribute('data-theme') !== 'light';
+    const color = isDark ? '255,255,255' : '0,0,0';
+
+    particles.forEach(p => {
+      p.x += p.dx;
+      p.y += p.dy;
+      if (p.x < 0) p.x = w;
+      if (p.x > w) p.x = 0;
+      if (p.y < 0) p.y = h;
+      if (p.y > h) p.y = 0;
+
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(${color}, ${p.opacity})`;
+      ctx.fill();
+    });
+
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+
 // ─── Scrolled Nav ─────────────────────────────────
 const nav = document.querySelector('.nav');
 window.addEventListener('scroll', () => {
-  if (window.scrollY > 60) {
-    nav.classList.add('scrolled');
-  } else {
-    nav.classList.remove('scrolled');
-  }
+  nav.classList.toggle('scrolled', window.scrollY > 60);
 });
 
-// ─── Smooth Scroll for Nav Links ──────────────────
+// ─── Smooth Scroll ────────────────────────────────
 document.querySelectorAll('a[href^="#"]').forEach(link => {
   link.addEventListener('click', (e) => {
     const target = document.querySelector(link.getAttribute('href'));
@@ -39,7 +90,13 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
 });
 
 // ─── Scroll Reveal ────────────────────────────────
-const revealEls = document.querySelectorAll('.feature-card, .mode-card, .step-card, .memory-item, .privacy-card, .section-label, .section-title, .section-subtitle, .download-title, .download-subtitle, .download-buttons, .download-mobile');
+const revealEls = document.querySelectorAll(
+  '.feature-card, .mode-card, .step-card, .memory-item, .privacy-card, ' +
+  '.stat-card, .faq-item, .compare-table-wrap, ' +
+  '.section-label, .section-title, .section-subtitle, ' +
+  '.download-title, .download-subtitle, .download-buttons, .download-mobile'
+);
+
 const revealObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
@@ -47,15 +104,68 @@ const revealObserver = new IntersectionObserver((entries) => {
       revealObserver.unobserve(entry.target);
     }
   });
-}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+}, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
 
 revealEls.forEach((el, i) => {
   el.classList.add('reveal');
-  el.style.transitionDelay = `${(i % 6) * 0.08}s`;
+  // Stagger within each section's group
+  const siblings = el.parentElement ? Array.from(el.parentElement.children) : [];
+  const idx = siblings.indexOf(el);
+  el.style.transitionDelay = `${(idx >= 0 ? idx : i % 6) * 0.07}s`;
   revealObserver.observe(el);
 });
 
-// ─── Meeting Timer (ticks up like a real call) ─────
+// ─── Stats Counter ────────────────────────────────
+const statNumbers = document.querySelectorAll('.stat-number');
+const statsObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const el = entry.target;
+      const target = parseInt(el.dataset.target);
+      const suffix = el.dataset.suffix || '';
+      const duration = 1500;
+      const start = performance.now();
+
+      function tick(now) {
+        const progress = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3); // ease-out cubic
+        const current = Math.round(target * eased);
+        el.textContent = current + suffix;
+        if (progress < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+      statsObserver.unobserve(el);
+    }
+  });
+}, { threshold: 0.5 });
+
+statNumbers.forEach(el => statsObserver.observe(el));
+
+// ─── FAQ Accordion ────────────────────────────────
+document.querySelectorAll('.faq-question').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const item = btn.parentElement;
+    const isOpen = item.classList.contains('open');
+
+    // Close all others
+    document.querySelectorAll('.faq-item.open').forEach(other => {
+      if (other !== item) other.classList.remove('open');
+    });
+
+    item.classList.toggle('open', !isOpen);
+  });
+});
+
+// ─── Glow Card Mouse Tracking ─────────────────────
+document.querySelectorAll('.glow-card').forEach(card => {
+  card.addEventListener('mousemove', (e) => {
+    const rect = card.getBoundingClientRect();
+    card.style.setProperty('--mouse-x', (e.clientX - rect.left) + 'px');
+    card.style.setProperty('--mouse-y', (e.clientY - rect.top) + 'px');
+  });
+});
+
+// ─── Meeting Timer ────────────────────────────────
 const meetingTimeEl = document.getElementById('meeting-time');
 if (meetingTimeEl) {
   let seconds = 32 * 60 + 14;
@@ -67,7 +177,7 @@ if (meetingTimeEl) {
   }, 1000);
 }
 
-// ─── Switch cards from entrance → idle animation after entrance completes ──
+// ─── Float card entrance → idle ───────────────────
 const floatCards = document.querySelectorAll('.float-notes, .float-actions, .float-chat, .float-incognito');
 floatCards.forEach((card) => {
   card.addEventListener('animationend', (e) => {
@@ -77,7 +187,7 @@ floatCards.forEach((card) => {
   });
 });
 
-// ─── Gentle parallax tilt on scene (desktop only) ──
+// ─── Scene parallax tilt (desktop) ────────────────
 const scene = document.querySelector('.scene');
 const heroRight = document.querySelector('.hero-right');
 if (scene && heroRight && window.matchMedia('(min-width: 901px)').matches) {
@@ -90,7 +200,6 @@ if (scene && heroRight && window.matchMedia('(min-width: 901px)').matches) {
     currentX = lerp(currentX, targetX, 0.08);
     currentY = lerp(currentY, targetY, 0.08);
     scene.style.transform = `rotateY(${currentX}deg) rotateX(${currentY}deg)`;
-
     if (Math.abs(currentX - targetX) > 0.01 || Math.abs(currentY - targetY) > 0.01) {
       rafId = requestAnimationFrame(updateTilt);
     } else {
@@ -145,7 +254,6 @@ if (scene && heroRight && window.matchMedia('(min-width: 901px)').matches) {
     });
   }
 
-  // Speaker rotation
   var speakerPattern = [0, 2, 0, 3, 2, 3, 0, 2, 0, 3];
   var speakerStep = 0;
 
@@ -159,7 +267,6 @@ if (scene && heroRight && window.matchMedia('(min-width: 901px)').matches) {
     setTimeout(nextSpeaker, 4000 + Math.random() * 3000);
   }
 
-  // Notes state
   var noteLines = [
     '- Q3 revenue targets increased to **$2.4M**',
     '- New hire onboarding starts **Monday**',
@@ -209,7 +316,6 @@ if (scene && heroRight && window.matchMedia('(min-width: 901px)').matches) {
     });
   }
 
-  // Action items
   var actionItems = actionsList.querySelectorAll('.action-item');
   var checkSvg = '<svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>';
 
@@ -231,7 +337,6 @@ if (scene && heroRight && window.matchMedia('(min-width: 901px)').matches) {
     el.style.transform = '';
   }
 
-  // Chat
   var chatPairs = [
     { q: "What's the deadline?", a: 'Budget proposal due <strong>Friday Oct 11</strong>. Late submissions won\'t be reviewed until next quarter.' },
     { q: 'What did Sarah say about Q4?', a: 'Sarah flagged <strong>pipeline risks</strong> for Q4 and suggested pushing the launch timeline by two weeks.' },
@@ -240,24 +345,18 @@ if (scene && heroRight && window.matchMedia('(min-width: 901px)').matches) {
   ];
   var chatIdx = 1;
 
-  function toPlain(html) {
-    var d = document.createElement('div');
-    d.innerHTML = html;
-    return d.textContent;
-  }
+  function toPlain(html) { var d = document.createElement('div'); d.innerHTML = html; return d.textContent; }
 
   function typeChatPair() {
     return new Promise(function(resolve) {
       var pair = chatPairs[chatIdx % chatPairs.length];
       chatBody.style.transition = 'opacity 0.4s ease';
       chatBody.style.opacity = '0';
-
       setTimeout(function() {
         chatBody.innerHTML = '<div class="float-chat-q">' + pair.q + '</div><div class="float-chat-a"></div>';
         chatBody.style.opacity = '1';
         var plain = toPlain(pair.a);
         var ci = 0;
-
         setTimeout(function typeChar() {
           var el = chatBody.querySelector('.float-chat-a');
           if (!el) { resolve(); return; }
@@ -275,7 +374,6 @@ if (scene && heroRight && window.matchMedia('(min-width: 901px)').matches) {
     });
   }
 
-  // Main sequence
   async function run() {
     await moveTo('70%', '14%', 1200);
     await wait(600);
@@ -310,7 +408,6 @@ if (scene && heroRight && window.matchMedia('(min-width: 901px)').matches) {
   }
 
   setTimeout(nextSpeaker, 4000);
-
   setTimeout(function() {
     cursor.classList.add('visible');
     setTimeout(run, 1200);
