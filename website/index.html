@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
-<body class="home">
+<body>
 
   <!-- Navigation -->
   <nav class="nav">
@@ -24,17 +24,27 @@
       </svg>
       <span>Noted</span>
     </a>
+    <div class="nav-links">
+      <a href="#features">Features</a>
+      <a href="#how-it-works">How It Works</a>
+      <a href="#privacy">Privacy</a>
+    </div>
     <div class="nav-right">
       <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
         <svg class="theme-icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
         <svg class="theme-icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
       </button>
-      <button class="nav-btn" id="learn-more-btn">Learn More</button>
+      <a href="#download" class="nav-btn">Download</a>
     </div>
   </nav>
 
+  <!-- Mobile Nav Toggle -->
+  <button class="mobile-nav-toggle" id="mobile-nav-toggle" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+
   <!-- Hero -->
-  <main class="hero">
+  <section class="hero" id="hero">
     <div class="hero-left">
       <h1 class="hero-title">
         Your memory<br>
@@ -42,17 +52,12 @@
         upgrade,<br>
         literally.
       </h1>
-      <p class="hero-subtitle">The invisible AI copilot for meetings and lectures. Capture notes live, ask questions in context, surface deadlines, refine old notes, and walk in with better prep.</p>
-      <div class="hero-pills">
-        <span>Live notes</span>
-        <span>Recorded lecture analysis</span>
-        <span>Meeting prep overlay</span>
+      <p class="hero-subtitle">The AI assistant that listens, takes notes, and answers your questions — all while staying completely invisible.</p>
+      <div class="hero-ctas">
+        <a href="#download" class="btn-primary">Download for Mac</a>
+        <a href="#features" class="btn-secondary">See Features</a>
       </div>
-      <p class="signup-label">Join the waitlist</p>
-      <form class="signup-form" id="signup-form">
-        <input type="email" class="signup-input" placeholder="Enter your email" required>
-        <button type="submit" class="signup-btn">Join Waitlist</button>
-      </form>
+      <p class="hero-platforms">Also available on Windows, iOS & Android</p>
     </div>
 
     <div class="hero-right">
@@ -210,144 +215,225 @@
 
       </div>
     </div>
-  </main>
+  </section>
 
-  <section class="product-band">
-    <div class="band-copy">
-      <p class="eyebrow">Why it feels different</p>
-      <h2>Noted is not just a note taker. It is your live meeting and lecture layer.</h2>
-      <p>It listens in real time, organizes what matters, lets you shape how notes are written, and keeps the assistant grounded in the exact conversation instead of guessing with zero context.</p>
-    </div>
-    <div class="band-metrics">
-      <div class="metric-card">
-        <strong>Live</strong>
-        <span>Notes and answers while the meeting or lecture is still happening</span>
+  <!-- Features -->
+  <section class="section features" id="features">
+    <div class="section-inner">
+      <p class="section-label">Features</p>
+      <h2 class="section-title">Everything you need.<br>Nothing anyone can see.</h2>
+      <p class="section-subtitle">Noted captures audio, reads your screen, takes notes, answers questions, and tracks action items — all in real time, all completely invisible.</p>
+
+      <div class="features-grid">
+
+        <div class="feature-card feature-card-wide">
+          <div class="feature-icon" style="--accent: #4ade80;">
+            <span class="mf-pulse-dot"></span>
+          </div>
+          <h3>Real-time notes, your way</h3>
+          <p>Notes generate live as your meeting or lecture happens — not after the fact. Choose your depth, style, and format. Request changes mid-session so you're never stuck with notes you don't want.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon" style="--accent: #3b82f6;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          </div>
+          <h3>Context-aware chatbot</h3>
+          <p>Ask questions mid-meeting and get answers grounded in what's actually being said. "What did she just say about the exam?" — answered instantly, no copy-pasting into a separate AI.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon" style="--accent: #a78bfa;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/><line x1="1" y1="1" x2="23" y2="23"/></svg>
+          </div>
+          <h3>Completely incognito</h3>
+          <p>No bots join your call. No one gets notified. No screen indicators. Noted captures system audio locally — it's invisible to everyone but you.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon" style="--accent: #f59e0b;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><polyline points="9 16 10.5 18 15 13"/></svg>
+          </div>
+          <h3>Action items & reminders</h3>
+          <p>Noted automatically detects deadlines, to-dos, and assignments mentioned during your meeting. Everything gets organized with dates so nothing slips through the cracks.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon" style="--accent: #22d3ee;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          </div>
+          <h3>Screen context + audio</h3>
+          <p>Noted sees your screen and hears the audio simultaneously. Notes reference what's being shown — "the chart John presented on slide 3" — making them 10x richer than audio-only tools.</p>
+        </div>
+
+        <div class="feature-card feature-card-wide">
+          <div class="feature-icon" style="--accent: #f472b6;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+          </div>
+          <h3>Learns how you think</h3>
+          <p>Over time, Noted adapts to your vocabulary, your note-taking preferences, and how you like things explained. It builds off the way you think — creating a truly personal AI assistant that no competitor offers.</p>
+        </div>
+
       </div>
-      <div class="metric-card">
-        <strong>Custom</strong>
-        <span>Choose the format, depth, specificity, and structure of your notes</span>
+    </div>
+  </section>
+
+  <!-- Modes -->
+  <section class="section modes" id="modes">
+    <div class="section-inner">
+      <p class="section-label">Two modes, one tool</p>
+      <h2 class="section-title">Meeting mode.<br>Lecture mode.</h2>
+      <p class="section-subtitle">Noted adapts to your context. The way notes are structured and what the AI prioritizes changes depending on the mode you choose.</p>
+
+      <div class="modes-grid">
+        <div class="mode-card">
+          <div class="mode-icon mode-icon-meeting">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <h3>Meeting Mode</h3>
+          <p>Conversational notes built for back-and-forth discussions. Tracks who said what, surfaces action items, and generates follow-up emails. Before your meeting, Noted pulls background info on attendees so you walk in prepared.</p>
+          <ul class="mode-details">
+            <li>Conversation-style structured notes</li>
+            <li>Pre-meeting attendee research</li>
+            <li>Auto-generated follow-up emails</li>
+            <li>Suggested questions to ask</li>
+          </ul>
+        </div>
+        <div class="mode-card">
+          <div class="mode-icon mode-icon-lecture">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><line x1="8" y1="7" x2="16" y2="7"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+          </div>
+          <h3>Lecture Mode</h3>
+          <p>Study-ready notes with definitions, formulas, key concepts, and structured outlines. Perfect for classes, webinars, and training sessions where you need to absorb information, not just track a conversation.</p>
+          <ul class="mode-details">
+            <li>Definitions, formulas & key terms</li>
+            <li>Structured study outlines</li>
+            <li>Assignment tracking with due dates</li>
+            <li>Cross-session memory across lectures</li>
+          </ul>
+        </div>
       </div>
-      <div class="metric-card">
-        <strong>Invisible</strong>
-        <span>No bot joins the call and nothing announces itself to everyone else</span>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="section how-it-works" id="how-it-works">
+    <div class="section-inner">
+      <p class="section-label">How it works</p>
+      <h2 class="section-title">One click. Fully present.</h2>
+      <p class="section-subtitle">Start a recording and forget about it. Noted handles the rest.</p>
+
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-number">01</div>
+          <h3>Open Noted</h3>
+          <p>Launch the app. It sits quietly in your menu bar, ready whenever you are. Select meeting mode or lecture mode.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">02</div>
+          <h3>Start your session</h3>
+          <p>Join your Zoom, Meet, Teams call — or walk into a lecture hall. Hit record. Noted captures system audio and your screen silently.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">03</div>
+          <h3>Watch notes appear</h3>
+          <p>Real-time notes, action items, and key highlights float on your screen as the session progresses. Ask the chatbot anything mid-session.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">04</div>
+          <h3>Review & export</h3>
+          <p>After the session, get a complete summary, to-do list, and organized notes. Export to Notion, Google Drive, or keep everything in Noted.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="feature-section" id="full-system">
-    <div class="section-heading reveal">
-      <p class="eyebrow">Everything in the system</p>
-      <h2>The full Noted toolset, all in one workflow.</h2>
-      <p>Built from the product vision in your PDF: lectures, meetings, pre-work, post-work, note cleanup, reminders, and contextual answers all working together.</p>
-    </div>
+  <!-- Cross-Session Memory -->
+  <section class="section memory" id="memory">
+    <div class="section-inner">
+      <p class="section-label">Built for continuity</p>
+      <h2 class="section-title">Your notes get smarter<br>over time.</h2>
+      <p class="section-subtitle">Noted connects across sessions so your context grows richer with every meeting and lecture.</p>
 
-    <div class="feature-grid">
-      <article class="feature-card reveal">
-        <span class="feature-kicker">01</span>
-        <h3>Live meeting and lecture capture</h3>
-        <p>Records what is happening in the moment, writes notes as it goes, and highlights key moments, dates, assignments, and decisions while they are being said.</p>
-      </article>
-      <article class="feature-card reveal">
-        <span class="feature-kicker">02</span>
-        <h3>In-context chat built into the experience</h3>
-        <p>Ask questions during the session and get answers based on the actual lecture or meeting instead of a generic model trying to guess without context.</p>
-      </article>
-      <article class="feature-card reveal">
-        <span class="feature-kicker">03</span>
-        <h3>Custom note styles and depth</h3>
-        <p>Tell Noted exactly what kind of notes you want, how specific they should be, and what structure or tone works best for you.</p>
-      </article>
-      <article class="feature-card reveal">
-        <span class="feature-kicker">04</span>
-        <h3>Recorded lecture analysis</h3>
-        <p>Drop in recorded lectures or meetings later and have Noted analyze them, generate notes, and pull out important follow-ups after the fact.</p>
-      </article>
-      <article class="feature-card reveal">
-        <span class="feature-kicker">05</span>
-        <h3>Note refinement for unfinished work</h3>
-        <p>Paste in rough or incomplete notes from earlier sessions and let Noted restructure, expand, and clean them up into something worth keeping.</p>
-      </article>
-      <article class="feature-card reveal">
-        <span class="feature-kicker">06</span>
-        <h3>To-dos, reminders, and deadlines</h3>
-        <p>Turns raw conversations into action items, assignment lists, due dates, reminders, and clear next steps you can actually work from.</p>
-      </article>
-      <article class="feature-card reveal">
-        <span class="feature-kicker">07</span>
-        <h3>Pre-meeting intelligence</h3>
-        <p>Before a meeting, type in the person you are meeting with and Noted pulls background information from the web into an on-screen layer so you walk in informed.</p>
-      </article>
-      <article class="feature-card reveal">
-        <span class="feature-kicker">08</span>
-        <h3>Questions before, emails after</h3>
-        <p>Generates smart questions to ask going in, then helps draft follow-up emails and summaries once the conversation ends.</p>
-      </article>
-      <article class="feature-card reveal">
-        <span class="feature-kicker">09</span>
-        <h3>Works as software, not as a call participant</h3>
-        <p>Runs as a software layer that can work across apps and settings, staying incognito instead of joining your call like Fireflies or other meeting bots.</p>
-      </article>
+      <div class="memory-grid">
+        <div class="memory-item">
+          <div class="memory-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+          </div>
+          <h3>Organize with folders</h3>
+          <p>Create folders like "English 101" or "Meetings with Sarah" to group related sessions. Noted builds cross-session context within each folder.</p>
+        </div>
+        <div class="memory-item">
+          <div class="memory-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <h3>Cross-session recall</h3>
+          <p>Had a meeting 3 weeks ago? Noted remembers what you discussed, open action items, and what's changed since — so you walk into the next one fully prepared.</p>
+        </div>
+        <div class="memory-item">
+          <div class="memory-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          </div>
+          <h3>Upload & refine</h3>
+          <p>Have pre-recorded lectures or unfinished notes? Upload them and Noted will generate structured notes, fill in gaps, and restructure them to your preferences.</p>
+        </div>
+      </div>
     </div>
   </section>
 
-  <section class="workflow-section">
-    <div class="section-heading reveal">
-      <p class="eyebrow">How it works</p>
-      <h2>Before, during, and after every conversation.</h2>
-    </div>
+  <!-- Privacy -->
+  <section class="section privacy" id="privacy">
+    <div class="section-inner">
+      <p class="section-label">Privacy first</p>
+      <h2 class="section-title">Your data stays yours.<br>Period.</h2>
+      <p class="section-subtitle">Noted is built from the ground up to keep your information private and under your control.</p>
 
-    <div class="workflow-grid">
-      <article class="workflow-card reveal">
-        <span class="workflow-step">Before</span>
-        <h3>Prep mode</h3>
-        <p>Pull in web research on the people you are meeting, generate questions to ask, and set the note style you want before anything begins.</p>
-      </article>
-      <article class="workflow-card reveal">
-        <span class="workflow-step">During</span>
-        <h3>Live mode</h3>
-        <p>Watch notes appear in real time, flag deadlines and assignments, and ask follow-up questions while the lecture or meeting is still in motion.</p>
-      </article>
-      <article class="workflow-card reveal">
-        <span class="workflow-step">After</span>
-        <h3>Output mode</h3>
-        <p>Get polished summaries, to-dos, reminders, emails to send, and a permanent page that explains exactly what happened.</p>
-      </article>
-    </div>
-  </section>
-
-  <section class="use-cases">
-    <div class="section-heading reveal">
-      <p class="eyebrow">Built for both sides</p>
-      <h2>Made for lectures and meetings, without forcing one workflow onto the other.</h2>
-    </div>
-
-    <div class="split-grid">
-      <article class="split-card reveal">
-        <h3>For lectures</h3>
-        <ul class="split-list">
-          <li>Catch assignments, deadlines, and exam details as they happen</li>
-          <li>Analyze recorded lectures later and merge them with your older notes</li>
-          <li>Choose how detailed your class notes should be</li>
-          <li>Stay present instead of scrambling to capture every line</li>
-        </ul>
-      </article>
-      <article class="split-card reveal">
-        <h3>For meetings</h3>
-        <ul class="split-list">
-          <li>Walk in with instant background research on who you are meeting</li>
-          <li>See action items, decisions, and follow-ups in real time</li>
-          <li>Ask the assistant about the conversation while it is happening</li>
-          <li>Leave with draft emails, reminders, and organized next steps</li>
-        </ul>
-      </article>
+      <div class="privacy-grid">
+        <div class="privacy-card privacy-card-main">
+          <div class="privacy-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3>On-device processing</h3>
+          <p>Audio transcription and AI note generation happen entirely on your machine. Nothing gets sent to a server. This means Noted works offline too — record a lecture on a plane and still get full notes.</p>
+        </div>
+        <div class="privacy-card">
+          <div class="privacy-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg>
+          </div>
+          <h3>Zero-knowledge design</h3>
+          <p>We can't see your notes, recordings, or transcripts. Everything is encrypted and stored locally on your device.</p>
+        </div>
+        <div class="privacy-card">
+          <div class="privacy-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+          </div>
+          <h3>User-owned data</h3>
+          <p>Export everything — notes, transcripts, calendars — to Notion, Google Drive, or wherever you want. Your data is never locked in.</p>
+        </div>
+      </div>
     </div>
   </section>
 
-  <section class="closing-cta reveal">
-    <p class="eyebrow">The pitch</p>
-    <h2>A cheat code for staying fully present.</h2>
-    <p>Noted is designed to feel invisible on the outside and incredibly capable on the inside: a live translator, note-taker, answer engine, reminder system, and prep layer in one product.</p>
-    <a href="#signup-form" class="closing-link">Join the waitlist</a>
+  <!-- Download CTA -->
+  <section class="section download" id="download">
+    <div class="section-inner download-inner">
+      <h2 class="download-title">Be fully present.<br>Let Noted handle the rest.</h2>
+      <p class="download-subtitle">Download Noted and never miss a thing in your meetings and lectures again.</p>
+      <div class="download-buttons">
+        <a href="#" class="btn-primary btn-large">Download for Mac</a>
+        <a href="#" class="btn-primary btn-large btn-windows">Download for Windows</a>
+      </div>
+      <div class="download-mobile">
+        <a href="#" class="store-badge">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+          App Store
+        </a>
+        <a href="#" class="store-badge">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M3.18 23.72c.59.35 1.31.37 1.92.05l12.09-6.95-3.01-3.01-11 9.91zm17.24-10.96L17.1 11 14 14.1l3.52 3.52 2.92-1.68c.72-.41 1.14-1.16 1.14-1.97s-.44-1.58-1.16-1.31zm-17.72 11.1L15.07 12 3.47.23C3.02-.06 2.48-.08 2.01.15c-.38.18-.62.57-.62 1.01v21.68c0 .44.24.83.62 1.01.17.09.35.13.53.13.24 0 .48-.07.69-.2l-.01.08zM14.37 11.28L17.1 8.55l-12.09-6.95c-.61-.32-1.33-.3-1.92.05l11 9.63z"/></svg>
+          Google Play
+        </a>
+      </div>
+    </div>
   </section>
 
   <!-- Footer -->
@@ -363,69 +449,6 @@
       <span class="footer-logo">Noted</span>
     </div>
   </footer>
-
-  <!-- Learn More Modal -->
-  <div class="modal-overlay" id="modal-overlay">
-    <div class="modal" id="modal">
-      <button class="modal-close" id="modal-close" aria-label="Close">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-      </button>
-      <h2 class="modal-title">Meet your invisible assistant.</h2>
-      <p class="modal-desc">
-        Noted listens so you don't have to. It captures everything, surfaces what matters, and never lets anyone know it's there.
-      </p>
-
-      <div class="modal-features">
-        <div class="modal-feature mf-tile">
-          <div class="modal-feature-icon">
-            <span class="mf-pulse-dot"></span>
-          </div>
-          <div>
-            <h3>Real-time notes that you can shape</h3>
-            <p>Noted writes live notes during the actual meeting or lecture, not just afterward. You decide the format, specificity, depth, and style so the output feels usable from the first pass.</p>
-          </div>
-        </div>
-        <div class="modal-feature mf-tile">
-          <div class="modal-feature-icon">
-            <span class="mf-typing">
-              <span></span><span></span><span></span>
-            </span>
-          </div>
-          <div>
-            <h3>An in-context chatbot</h3>
-            <p>Ask questions while the lecture or meeting is happening and get answers grounded in the exact conversation, instead of throwing a blind question at a model with no context.</p>
-          </div>
-        </div>
-        <div class="modal-feature mf-tile">
-          <div class="modal-feature-icon">
-            <svg class="mf-eye-blink" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/><line class="mf-eye-slash" x1="1" y1="1" x2="23" y2="23"/></svg>
-          </div>
-          <div>
-            <h3>Completely incognito</h3>
-            <p>No bots join your call. No one gets notified. Invisible to everyone but you.</p>
-          </div>
-        </div>
-        <div class="modal-feature mf-tile">
-          <div class="modal-feature-icon">
-            <svg class="mf-shield" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          </div>
-          <div>
-            <h3>Refinement, reminders, and recorded sessions</h3>
-            <p>Bring in unfinished notes, recorded lectures, and older material. Noted can refine what you already have, generate cleaner pages, and pull out the dates, assignments, reminders, and emails that come next.</p>
-          </div>
-        </div>
-        <div class="modal-feature mf-tile">
-          <div class="modal-feature-icon">
-            <svg class="mf-monitor" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-          </div>
-          <div>
-            <h3>Prep overlay for real meetings</h3>
-            <p>Type in who you are about to meet and Noted can surface web background on top of your screen, helping you walk in prepared with instant context and questions to ask.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <script src="script.js"></script>
 </body>

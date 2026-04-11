@@ -17,35 +17,48 @@ document.getElementById('theme-toggle').addEventListener('click', () => {
   setTheme(current === 'dark' ? 'light' : 'dark');
 });
 
-// ─── Learn More Modal ──────────────────────────────
-const learnMoreBtn = document.getElementById('learn-more-btn');
-const modalOverlay = document.getElementById('modal-overlay');
-const modalClose = document.getElementById('modal-close');
-
-learnMoreBtn.addEventListener('click', () => {
-  modalOverlay.classList.add('active');
-});
-
-modalClose.addEventListener('click', () => {
-  modalOverlay.classList.remove('active');
-});
-
-modalOverlay.addEventListener('click', (e) => {
-  if (e.target === modalOverlay) {
-    modalOverlay.classList.remove('active');
+// ─── Scrolled Nav ─────────────────────────────────
+const nav = document.querySelector('.nav');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 60) {
+    nav.classList.add('scrolled');
+  } else {
+    nav.classList.remove('scrolled');
   }
 });
 
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') {
-    modalOverlay.classList.remove('active');
-  }
+// ─── Smooth Scroll for Nav Links ──────────────────
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+  link.addEventListener('click', (e) => {
+    const target = document.querySelector(link.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth' });
+    }
+  });
+});
+
+// ─── Scroll Reveal ────────────────────────────────
+const revealEls = document.querySelectorAll('.feature-card, .mode-card, .step-card, .memory-item, .privacy-card, .section-label, .section-title, .section-subtitle, .download-title, .download-subtitle, .download-buttons, .download-mobile');
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('reveal', 'visible');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+revealEls.forEach((el, i) => {
+  el.classList.add('reveal');
+  el.style.transitionDelay = `${(i % 6) * 0.08}s`;
+  revealObserver.observe(el);
 });
 
 // ─── Meeting Timer (ticks up like a real call) ─────
 const meetingTimeEl = document.getElementById('meeting-time');
 if (meetingTimeEl) {
-  let seconds = 32 * 60 + 14; // starts at 32:14
+  let seconds = 32 * 60 + 14;
   setInterval(() => {
     seconds++;
     const m = Math.floor(seconds / 60);
@@ -58,7 +71,6 @@ if (meetingTimeEl) {
 const floatCards = document.querySelectorAll('.float-notes, .float-actions, .float-chat, .float-incognito');
 floatCards.forEach((card) => {
   card.addEventListener('animationend', (e) => {
-    // Only trigger on the entrance animation, not on idle
     if (e.animationName.startsWith('floatIn')) {
       card.classList.add('animated');
     }
@@ -103,9 +115,6 @@ if (scene && heroRight && window.matchMedia('(min-width: 901px)').matches) {
 }
 
 // ─── Scene Orchestrator ──────────────────────────────
-// One animation at a time: cursor moves to a card, triggers its
-// animation, waits for it to finish, then moves on.
-
 (function() {
   const cursor = document.getElementById('scene-cursor');
   const ring = cursor && cursor.querySelector('.cursor-ring');
@@ -116,7 +125,6 @@ if (scene && heroRight && window.matchMedia('(min-width: 901px)').matches) {
 
   if (!cursor || !notesList || !actionsList || !chatBody) return;
 
-  // ── Utilities ──
   function wait(ms) { return new Promise(r => setTimeout(r, ms)); }
 
   function moveTo(left, top, ms) {
@@ -137,7 +145,7 @@ if (scene && heroRight && window.matchMedia('(min-width: 901px)').matches) {
     });
   }
 
-  // ── Speaker rotation (ambient — always runs in background) ──
+  // Speaker rotation
   var speakerPattern = [0, 2, 0, 3, 2, 3, 0, 2, 0, 3];
   var speakerStep = 0;
 
@@ -151,7 +159,7 @@ if (scene && heroRight && window.matchMedia('(min-width: 901px)').matches) {
     setTimeout(nextSpeaker, 4000 + Math.random() * 3000);
   }
 
-  // ── Notes state & helpers ──
+  // Notes state
   var noteLines = [
     '- Q3 revenue targets increased to **$2.4M**',
     '- New hire onboarding starts **Monday**',
@@ -164,7 +172,7 @@ if (scene && heroRight && window.matchMedia('(min-width: 901px)').matches) {
   ];
   var noteCompleted = [noteLines[0], noteLines[1]];
   var noteLineIdx = 2;
-  var noteCharIdx = 24; // picks up from static "- Marketing team to pres|"
+  var noteCharIdx = 24;
 
   function boldify(t) { return t.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>'); }
   function strip(t) { return t.replace(/\*\*/g, ''); }
@@ -201,7 +209,7 @@ if (scene && heroRight && window.matchMedia('(min-width: 901px)').matches) {
     });
   }
 
-  // ── Action items helpers ──
+  // Action items
   var actionItems = actionsList.querySelectorAll('.action-item');
   var checkSvg = '<svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>';
 
@@ -223,14 +231,14 @@ if (scene && heroRight && window.matchMedia('(min-width: 901px)').matches) {
     el.style.transform = '';
   }
 
-  // ── Chat helpers ──
+  // Chat
   var chatPairs = [
     { q: "What's the deadline?", a: 'Budget proposal due <strong>Friday Oct 11</strong>. Late submissions won\'t be reviewed until next quarter.' },
     { q: 'What did Sarah say about Q4?', a: 'Sarah flagged <strong>pipeline risks</strong> for Q4 and suggested pushing the launch timeline by two weeks.' },
     { q: 'Who handles onboarding?', a: 'Mike is drafting the plan. New hires start <strong>Monday</strong>, orientation at 9 AM in Room 3B.' },
     { q: 'Summarize the action items', a: 'Three items: budget proposal by <strong>Friday</strong>, review the marketing deck, and schedule a follow-up with Sarah.' },
   ];
-  var chatIdx = 1; // 0 already shown in static HTML
+  var chatIdx = 1;
 
   function toPlain(html) {
     var d = document.createElement('div');
@@ -267,16 +275,14 @@ if (scene && heroRight && window.matchMedia('(min-width: 901px)').matches) {
     });
   }
 
-  // ── Main sequence — one phase at a time ──
+  // Main sequence
   async function run() {
-    // Phase 1: Notes — cursor watches while a line types out
     await moveTo('70%', '14%', 1200);
     await wait(600);
     await moveTo('68%', '22%', 700);
     await typeOneLine();
     await wait(1200);
 
-    // Phase 2: Action items — cursor clicks to check them
     await moveTo('18%', '74%', 1400);
     await wait(500);
     await moveTo('19%', '79%', 400);
@@ -288,7 +294,6 @@ if (scene && heroRight && window.matchMedia('(min-width: 901px)').matches) {
     checkItem(actionItems[2]);
     await wait(1500);
 
-    // Phase 3: Chat — cursor clicks, question appears, answer types
     await moveTo('68%', '82%', 1300);
     await wait(400);
     await moveTo('67%', '90%', 400);
@@ -296,17 +301,14 @@ if (scene && heroRight && window.matchMedia('(min-width: 901px)').matches) {
     await typeChatPair();
     await wait(2000);
 
-    // Phase 4: Drift back to meeting window while we reset
     await moveTo('45%', '40%', 1200);
     await wait(1500);
     uncheckItem(actionItems[1]);
     uncheckItem(actionItems[2]);
 
-    // Loop
     run();
   }
 
-  // ── Boot ──
   setTimeout(nextSpeaker, 4000);
 
   setTimeout(function() {
@@ -314,75 +316,3 @@ if (scene && heroRight && window.matchMedia('(min-width: 901px)').matches) {
     setTimeout(run, 1200);
   }, 3000);
 })();
-
-// ─── Scroll Reveal ─────────────────────────────────
-const revealEls = document.querySelectorAll('.reveal');
-if (revealEls.length) {
-  const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('is-visible');
-        revealObserver.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.16, rootMargin: '0px 0px -40px 0px' });
-
-  revealEls.forEach((el) => revealObserver.observe(el));
-}
-
-// ─── Signup Form ───────────────────────────────────
-const signupForm = document.getElementById('signup-form');
-const signupInput = signupForm && signupForm.querySelector('.signup-input');
-const signupBtn = signupForm && signupForm.querySelector('.signup-btn');
-
-if (signupForm && signupInput && signupBtn) {
-  signupForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const email = signupInput.value.trim();
-    if (!email) return;
-
-    signupBtn.textContent = 'Joining...';
-    signupBtn.disabled = true;
-
-    try {
-      const res = await fetch('/api/waitlist', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email })
-      });
-
-      if (res.ok) {
-        signupInput.value = '';
-        signupInput.placeholder = 'You\'re on the list!';
-        signupBtn.textContent = 'Joined';
-        setTimeout(() => {
-          signupBtn.textContent = 'Join Waitlist';
-          signupBtn.disabled = false;
-          signupInput.placeholder = 'Enter your email';
-        }, 3000);
-      } else {
-        const data = await res.json().catch(() => null);
-        if (data?.message?.includes('already')) {
-          signupInput.value = '';
-          signupInput.placeholder = 'You\'re already on the list!';
-          signupBtn.textContent = 'Joined';
-        } else {
-          signupInput.placeholder = 'Something went wrong. Try again.';
-          signupBtn.textContent = 'Join Waitlist';
-        }
-        setTimeout(() => {
-          signupBtn.textContent = 'Join Waitlist';
-          signupBtn.disabled = false;
-          signupInput.placeholder = 'Enter your email';
-        }, 3000);
-      }
-    } catch {
-      signupInput.placeholder = 'Network error. Try again.';
-      signupBtn.textContent = 'Join Waitlist';
-      signupBtn.disabled = false;
-      setTimeout(() => {
-        signupInput.placeholder = 'Enter your email';
-      }, 3000);
-    }
-  });
-}
