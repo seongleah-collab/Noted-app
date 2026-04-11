@@ -606,7 +606,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .steps-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
 .step-card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 20px; padding: 28px 24px; transition: transform 0.4s ease, box-shadow 0.4s ease; }
 .step-card:hover { transform: translateY(-6px); box-shadow: 0 16px 48px rgba(0, 0, 0, 0.15); }
-.step-number { font-size: 40px; font-weight: 800; letter-spacing: -1px; margin-bottom: 16px; line-height: 1; background: linear-gradient(135deg, var(--text-dim), transparent); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+.step-number { width: 56px; height: 56px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 700; letter-spacing: -0.5px; margin-bottom: 20px; line-height: 1; background: var(--surface); border: 2px solid var(--card-border); }
 .step-card h3 { font-size: 16px; font-weight: 600; color: var(--text); margin-bottom: 8px; }
 .step-card p { font-size: 13.5px; line-height: 1.6; color: var(--text-secondary); }
 
@@ -842,6 +842,218 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .legal-section h2 { font-size: 18px; font-weight: 600; color: var(--text); margin-bottom: 12px; }
 .legal-section p { font-size: 15px; line-height: 1.7; color: var(--text-secondary); margin-bottom: 10px; }
 
+/* ─── Section Visual Variety ─────────────────────── */
+
+/* Features: ambient glow + colored left borders on cards */
+.features::before {
+  content: '';
+  position: absolute;
+  top: -80px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 900px;
+  height: 600px;
+  background: radial-gradient(ellipse at center, rgba(74, 222, 128, 0.05) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.feature-card {
+  border-left: 3px solid rgba(var(--glow-color), 0.35);
+}
+
+.feature-card-wide {
+  background: linear-gradient(135deg, rgba(var(--glow-color), 0.05) 0%, var(--card-bg) 50%);
+}
+
+[data-theme="light"] .feature-card-wide {
+  background: linear-gradient(135deg, rgba(var(--glow-color), 0.08) 0%, var(--card-bg) 50%);
+}
+
+/* Modes: gradient fills + VS divider + colored bullets */
+.modes-grid {
+  position: relative;
+  gap: 40px;
+}
+
+.modes-grid::after {
+  content: 'vs';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--surface);
+  border: 1px solid var(--card-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  z-index: 2;
+}
+
+.mode-card:first-child {
+  background: linear-gradient(155deg, rgba(59, 130, 246, 0.1) 0%, var(--card-bg) 40%);
+  border-color: rgba(59, 130, 246, 0.2);
+}
+.mode-card:first-child:hover {
+  border-color: rgba(59, 130, 246, 0.45);
+  box-shadow: 0 16px 48px rgba(59, 130, 246, 0.1);
+}
+.mode-card:last-child {
+  background: linear-gradient(155deg, rgba(167, 139, 250, 0.1) 0%, var(--card-bg) 40%);
+  border-color: rgba(167, 139, 250, 0.2);
+}
+.mode-card:last-child:hover {
+  border-color: rgba(167, 139, 250, 0.45);
+  box-shadow: 0 16px 48px rgba(167, 139, 250, 0.1);
+}
+
+[data-theme="light"] .mode-card:first-child {
+  background: linear-gradient(155deg, rgba(59, 130, 246, 0.07) 0%, var(--card-bg) 40%);
+}
+[data-theme="light"] .mode-card:last-child {
+  background: linear-gradient(155deg, rgba(167, 139, 250, 0.07) 0%, var(--card-bg) 40%);
+}
+
+.mode-card:first-child .mode-details li::before {
+  background: #3b82f6;
+  box-shadow: 0 0 8px rgba(59, 130, 246, 0.5);
+}
+.mode-card:last-child .mode-details li::before {
+  background: #a78bfa;
+  box-shadow: 0 0 8px rgba(167, 139, 250, 0.5);
+}
+
+/* How It Works: timeline connector + colored step badges */
+.how-it-works .steps-grid {
+  position: relative;
+}
+
+.how-it-works .steps-grid::before {
+  content: '';
+  position: absolute;
+  top: 42px;
+  left: calc(12.5% + 12px);
+  right: calc(12.5% + 12px);
+  height: 2px;
+  background: linear-gradient(90deg, #4ade80, #3b82f6, #a78bfa, #f59e0b);
+  opacity: 0.2;
+  border-radius: 1px;
+  z-index: 0;
+}
+
+.step-card {
+  border-top: 2px solid transparent;
+}
+.step-card:nth-child(1) { border-top-color: rgba(74, 222, 128, 0.3); }
+.step-card:nth-child(2) { border-top-color: rgba(59, 130, 246, 0.3); }
+.step-card:nth-child(3) { border-top-color: rgba(167, 139, 250, 0.3); }
+.step-card:nth-child(4) { border-top-color: rgba(245, 158, 11, 0.3); }
+
+.step-card:nth-child(1):hover { border-top-color: rgba(74, 222, 128, 0.6); }
+.step-card:nth-child(2):hover { border-top-color: rgba(59, 130, 246, 0.6); }
+.step-card:nth-child(3):hover { border-top-color: rgba(167, 139, 250, 0.6); }
+.step-card:nth-child(4):hover { border-top-color: rgba(245, 158, 11, 0.6); }
+
+.step-card:nth-child(1) .step-number { border-color: rgba(74, 222, 128, 0.35); color: #4ade80; }
+.step-card:nth-child(2) .step-number { border-color: rgba(59, 130, 246, 0.35); color: #3b82f6; }
+.step-card:nth-child(3) .step-number { border-color: rgba(167, 139, 250, 0.35); color: #a78bfa; }
+.step-card:nth-child(4) .step-number { border-color: rgba(245, 158, 11, 0.35); color: #f59e0b; }
+
+/* Comparison: enhanced Noted column highlight */
+.compare-table th.compare-noted {
+  background: linear-gradient(180deg, rgba(74, 222, 128, 0.12), rgba(74, 222, 128, 0.04));
+}
+
+.compare-table td.compare-noted {
+  background: rgba(74, 222, 128, 0.06);
+  box-shadow: inset 2px 0 0 rgba(74, 222, 128, 0.25);
+}
+
+/* Memory: purple ambient glow + connecting dots */
+.memory::before {
+  content: '';
+  position: absolute;
+  top: -50px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 900px;
+  height: 600px;
+  background: radial-gradient(ellipse at center, rgba(139, 92, 246, 0.04) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.memory-grid {
+  position: relative;
+}
+
+.memory-grid::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 16.67%;
+  right: 16.67%;
+  height: 2px;
+  background: repeating-linear-gradient(90deg, rgba(139, 92, 246, 0.25) 0px, rgba(139, 92, 246, 0.25) 4px, transparent 4px, transparent 14px);
+  z-index: 0;
+  transform: translateY(-50%);
+}
+
+/* Privacy: green ambient glow + dramatic main card */
+.privacy::before {
+  content: '';
+  position: absolute;
+  top: -50px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 900px;
+  height: 600px;
+  background: radial-gradient(ellipse at center, rgba(74, 222, 128, 0.04) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.privacy-card-main {
+  background: linear-gradient(145deg, rgba(74, 222, 128, 0.06) 0%, var(--card-bg) 50%);
+  border-color: rgba(74, 222, 128, 0.25);
+}
+.privacy-card-main:hover {
+  border-color: rgba(74, 222, 128, 0.5);
+  box-shadow: 0 16px 48px rgba(74, 222, 128, 0.08);
+}
+
+[data-theme="light"] .privacy-card-main {
+  background: linear-gradient(145deg, rgba(74, 222, 128, 0.08) 0%, var(--card-bg) 50%);
+}
+
+/* FAQ: accent on open items */
+.faq-item.open {
+  border-left: 3px solid #4ade80;
+  background: linear-gradient(90deg, rgba(74, 222, 128, 0.03) 0%, transparent 25%);
+}
+
+[data-theme="light"] .faq-item.open {
+  background: linear-gradient(90deg, rgba(74, 222, 128, 0.06) 0%, transparent 25%);
+}
+
+/* Download: enhanced gradient backdrop */
+.download::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 0%, rgba(74, 222, 128, 0.03) 30%, rgba(59, 130, 246, 0.02) 70%, transparent 100%);
+  pointer-events: none;
+  z-index: 0;
+}
+
 /* ─── Responsive: Tablet ────────────────────────────── */
 @media (max-width: 900px) {
   .nav { padding: 16px 20px; }
@@ -864,6 +1076,10 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   .privacy-grid { grid-template-columns: 1fr; }
   .privacy-card-main { grid-column: 1; }
   .download-buttons { flex-direction: column; }
+  .modes-grid::after { display: none; }
+  .modes-grid { gap: 20px; }
+  .how-it-works .steps-grid::before { display: none; }
+  .memory-grid::before { display: none; }
   .footer { flex-direction: column; gap: 12px; padding: 20px; text-align: center; }
 }
 
@@ -913,6 +1129,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   .modes-grid { gap: 12px; }
   .mode-card { padding: 24px 20px; border-radius: 20px; }
   .steps-grid { grid-template-columns: 1fr; gap: 12px; }
+  .step-number { width: 48px; height: 48px; font-size: 16px; }
   .memory-grid { gap: 12px; }
   .privacy-grid { gap: 12px; }
   .download { padding: 64px 24px 80px; }
