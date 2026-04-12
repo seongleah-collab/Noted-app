@@ -841,12 +841,12 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   width: 100%;
   padding: 8px;
   border-radius: 10px;
-  background: linear-gradient(135deg, #4ade80, #22d3ee);
-  color: #0a0a0a;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #e4e4e7;
   font-size: 10px;
   font-weight: 600;
   text-align: center;
-  box-shadow: 0 0 20px rgba(74, 222, 128, 0.25);
 }
 
 [data-theme="light"] .sm-menubar { background: rgba(0, 0, 0, 0.04); backdrop-filter: blur(20px); color: #18181b; }
@@ -856,7 +856,8 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 [data-theme="light"] .sm-dropdown-header { color: #0a0a0a; }
 [data-theme="light"] .sm-mode { color: #18181b; background: rgba(0, 0, 0, 0.03); }
 [data-theme="light"] .sm-mode-active { color: #1e40af; background: rgba(59,130,246,0.1); border-color: rgba(59,130,246,0.25); box-shadow: 0 0 12px rgba(59,130,246,0.08); }
-[data-theme="light"] .sm-record-btn { color: #0a0a0a; }
+[data-theme="light"] .sm-record-btn { background: rgba(0, 0, 0, 0.06); border-color: rgba(0, 0, 0, 0.1); color: #18181b; }
+[data-theme="light"] .sm-wave-bar { background: rgba(0, 0, 0, 0.3); }
 
 /* Step 2: Recording */
 .sm-app-mini {
@@ -908,11 +909,10 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 .sm-wave-bar {
   width: 3px;
-  background: linear-gradient(to top, #4ade80, #22d3ee);
+  background: rgba(255, 255, 255, 0.7);
   border-radius: 2px;
   animation: waveAnim 0.8s ease-in-out infinite alternate;
   animation-delay: var(--d);
-  box-shadow: 0 0 6px rgba(74, 222, 128, 0.3);
 }
 @keyframes waveAnim {
   0% { height: 6px; }
@@ -1031,7 +1031,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   gap: 4px;
 }
 .sm-export-stat { text-align: center; }
-.sm-export-num { display: block; font-size: 20px; font-weight: 800; background: linear-gradient(135deg, #818cf8, #c084fc); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; letter-spacing: -1px; }
+.sm-export-num { display: block; font-size: 20px; font-weight: 800; color: #fff; letter-spacing: -1px; }
 .sm-export-label { font-size: 9px; color: #71717a; font-weight: 500; }
 .sm-export-buttons {
   display: flex;
@@ -1061,7 +1061,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 [data-theme="light"] .sm-export-window { background: rgba(255, 255, 255, 0.6); backdrop-filter: blur(24px) saturate(1.4); border-color: rgba(129, 140, 248, 0.15); box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06), 0 0 20px rgba(129, 140, 248, 0.04); }
 [data-theme="light"] .sm-export-window::before { background: linear-gradient(90deg, transparent, rgba(129, 140, 248, 0.3), transparent); }
 [data-theme="light"] .sm-export-bar { background: rgba(0, 0, 0, 0.02); border-bottom-color: rgba(0, 0, 0, 0.05); color: #0a0a0a; }
-[data-theme="light"] .sm-export-num { background: none; -webkit-background-clip: unset; -webkit-text-fill-color: #0a0a0a; background-clip: unset; color: #0a0a0a; }
+[data-theme="light"] .sm-export-num { color: #0a0a0a; }
 [data-theme="light"] .sm-export-label { color: #18181b; }
 [data-theme="light"] .sm-export-btn { background: rgba(129, 140, 248, 0.06); border-color: rgba(129, 140, 248, 0.12); color: #18181b; }
 
