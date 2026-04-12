@@ -849,11 +849,14 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   box-shadow: 0 0 20px rgba(74, 222, 128, 0.25);
 }
 
-[data-theme="light"] .sm-menubar { background: rgba(0, 0, 0, 0.04); backdrop-filter: blur(20px); color: #3f3f46; }
+[data-theme="light"] .sm-menubar { background: rgba(0, 0, 0, 0.04); backdrop-filter: blur(20px); color: #18181b; }
+[data-theme="light"] .sm-menubar-right { color: #18181b; }
+[data-theme="light"] .sm-tray-icon { color: #18181b; }
 [data-theme="light"] .sm-dropdown { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(24px) saturate(1.4); border-color: rgba(0, 0, 0, 0.08); box-shadow: 0 8px 32px rgba(0,0,0,0.08), 0 0 0 0.5px rgba(255, 255, 255, 0.5) inset; }
-[data-theme="light"] .sm-dropdown-header { color: #18181b; }
-[data-theme="light"] .sm-mode { color: #71717a; background: rgba(0, 0, 0, 0.03); }
+[data-theme="light"] .sm-dropdown-header { color: #0a0a0a; }
+[data-theme="light"] .sm-mode { color: #18181b; background: rgba(0, 0, 0, 0.03); }
 [data-theme="light"] .sm-mode-active { color: #1e40af; background: rgba(59,130,246,0.1); border-color: rgba(59,130,246,0.25); box-shadow: 0 0 12px rgba(59,130,246,0.08); }
+[data-theme="light"] .sm-record-btn { color: #0a0a0a; }
 
 /* Step 2: Recording */
 .sm-app-mini {
@@ -932,7 +935,8 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
 [data-theme="light"] .sm-app-mini { background: rgba(255, 255, 255, 0.65); backdrop-filter: blur(24px) saturate(1.4); border-color: rgba(0, 0, 0, 0.08); box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06), 0 0 0 0.5px rgba(255, 255, 255, 0.5) inset; }
 [data-theme="light"] .sm-app-mini::before { background: linear-gradient(90deg, transparent, rgba(74, 222, 128, 0.3), transparent); }
-[data-theme="light"] .sm-mini-header { color: #18181b; }
+[data-theme="light"] .sm-mini-header { color: #0a0a0a; }
+[data-theme="light"] .sm-source { color: #18181b; }
 
 /* Step 3: Live notes */
 .sm-notes-window {
@@ -980,11 +984,14 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
 [data-theme="light"] .sm-notes-window { background: rgba(255, 255, 255, 0.6); backdrop-filter: blur(24px) saturate(1.4); border-color: rgba(74, 222, 128, 0.15); box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06), 0 0 20px rgba(74, 222, 128, 0.04); }
 [data-theme="light"] .sm-notes-window::before { background: linear-gradient(90deg, transparent, rgba(74, 222, 128, 0.3), transparent); }
-[data-theme="light"] .sm-notes-bar { background: rgba(0, 0, 0, 0.02); border-bottom-color: rgba(0, 0, 0, 0.05); color: #18181b; }
-[data-theme="light"] .sm-note-line { color: #52525b; }
-[data-theme="light"] .sm-note-line strong { color: #18181b; }
+[data-theme="light"] .sm-notes-bar { background: rgba(0, 0, 0, 0.02); border-bottom-color: rgba(0, 0, 0, 0.05); color: #0a0a0a; }
+[data-theme="light"] .sm-note-line { color: #18181b; }
+[data-theme="light"] .sm-note-line strong { color: #0a0a0a; }
+[data-theme="light"] .sm-note-typing { color: #3f3f46; }
 [data-theme="light"] .sm-note-divider { background: rgba(0, 0, 0, 0.06); }
-[data-theme="light"] .sm-note-action { color: #52525b; }
+[data-theme="light"] .sm-note-section { color: #b45309; }
+[data-theme="light"] .sm-note-action { color: #18181b; }
+[data-theme="light"] .sm-note-action strong { color: #0a0a0a; }
 [data-theme="light"] .sm-check-empty { background: rgba(0, 0, 0, 0.06); }
 
 /* Step 4: Export */
@@ -1053,8 +1060,9 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
 [data-theme="light"] .sm-export-window { background: rgba(255, 255, 255, 0.6); backdrop-filter: blur(24px) saturate(1.4); border-color: rgba(129, 140, 248, 0.15); box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06), 0 0 20px rgba(129, 140, 248, 0.04); }
 [data-theme="light"] .sm-export-window::before { background: linear-gradient(90deg, transparent, rgba(129, 140, 248, 0.3), transparent); }
-[data-theme="light"] .sm-export-bar { background: rgba(0, 0, 0, 0.02); border-bottom-color: rgba(0, 0, 0, 0.05); color: #18181b; }
-[data-theme="light"] .sm-export-btn { background: rgba(129, 140, 248, 0.06); border-color: rgba(129, 140, 248, 0.12); color: #3f3f46; }
+[data-theme="light"] .sm-export-bar { background: rgba(0, 0, 0, 0.02); border-bottom-color: rgba(0, 0, 0, 0.05); color: #0a0a0a; }
+[data-theme="light"] .sm-export-label { color: #18181b; }
+[data-theme="light"] .sm-export-btn { background: rgba(129, 140, 248, 0.06); border-color: rgba(129, 140, 248, 0.12); color: #18181b; }
 
 /* ─── Comparison Table ─────────────────────────────── */
 .compare-table-wrap {
