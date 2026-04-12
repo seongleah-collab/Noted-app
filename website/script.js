@@ -299,6 +299,23 @@ if (meetingTimeEl) {
   }, 1000);
 }
 
+// ─── Recording Timers ────────────────────────────
+function startTimer(el, startSeconds) {
+  let secs = startSeconds;
+  function fmt(s) {
+    const m = Math.floor(s / 60);
+    return m + ':' + (s % 60).toString().padStart(2, '0');
+  }
+  el.textContent = fmt(secs);
+  setInterval(() => { secs++; el.textContent = fmt(secs); }, 1000);
+}
+
+const showcaseTimer = document.getElementById('showcase-timer');
+if (showcaseTimer) startTimer(showcaseTimer, 14 * 60 + 23);
+
+const stepTimer = document.getElementById('step-timer');
+if (stepTimer) startTimer(stepTimer, 3);
+
 // ─── Float card entrance → idle ───────────────────
 const floatCards = document.querySelectorAll('.float-notes, .float-actions, .float-chat, .float-incognito');
 floatCards.forEach((card) => {
