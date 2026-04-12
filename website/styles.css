@@ -27,46 +27,46 @@ body::before {
   pointer-events: none;
   z-index: 0;
   background:
-    radial-gradient(ellipse 50% 40% at 15% 20%, rgba(74, 222, 128, 0.04) 0%, transparent 70%),
-    radial-gradient(ellipse 40% 50% at 85% 60%, rgba(59, 130, 246, 0.035) 0%, transparent 70%),
-    radial-gradient(ellipse 45% 35% at 50% 90%, rgba(167, 139, 250, 0.03) 0%, transparent 70%);
+    radial-gradient(ellipse 50% 40% at 15% 20%, rgba(74, 222, 128, 0.05) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 50% at 85% 60%, rgba(59, 130, 246, 0.045) 0%, transparent 70%),
+    radial-gradient(ellipse 45% 35% at 50% 90%, rgba(167, 139, 250, 0.04) 0%, transparent 70%);
 }
 [data-theme="light"] body::before { opacity: 0; }
 
 /* ─── Theme Variables ───────────────────────────────── */
 :root, [data-theme="dark"] {
-  --bg: #030308;
+  --bg: #0e0e14;
   --text: #e5e5e5;
-  --text-secondary: #888;
-  --text-dim: #555;
-  --surface: #111;
-  --surface-raised: #161616;
-  --surface-hover: #222;
-  --border: #222;
+  --text-secondary: #9a9a9a;
+  --text-dim: #666;
+  --surface: #181820;
+  --surface-raised: #1e1e28;
+  --surface-hover: #2a2a36;
+  --border: #2a2a36;
   --border-hover: #444;
   --nav-btn-bg: #fff;
   --nav-btn-color: #0a0a0a;
   --logo-color: #fff;
-  --logo-icon-bg: #000;
-  --logo-icon-border: rgba(255, 255, 255, 0.4);
+  --logo-icon-bg: #12121a;
+  --logo-icon-border: rgba(255, 255, 255, 0.35);
   --signup-btn-bg: #fff;
   --signup-btn-color: #0a0a0a;
-  --footer-border: #1a1a1a;
-  --footer-text: #555;
-  --footer-logo: #333;
+  --footer-border: #222230;
+  --footer-text: #666;
+  --footer-logo: #3a3a48;
   --toggle-bg: transparent;
-  --toggle-border: #333;
-  --toggle-color: #888;
+  --toggle-border: #3a3a48;
+  --toggle-color: #999;
   --glass-bg: rgba(255, 255, 255, 0.06);
   --glass-border: rgba(255, 255, 255, 0.1);
-  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), 0 0 0 0.5px rgba(255, 255, 255, 0.05) inset;
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 0 0 0.5px rgba(255, 255, 255, 0.05) inset;
   --glass-text: rgba(255, 255, 255, 0.85);
   --glass-text-secondary: rgba(255, 255, 255, 0.55);
   --glass-text-dim: rgba(255, 255, 255, 0.35);
   --card-bg: rgba(255, 255, 255, 0.03);
   --card-border: rgba(255, 255, 255, 0.08);
   --section-label: #818cf8;
-  --particle-color: rgba(255, 255, 255, 0.15);
+  --particle-color: rgba(255, 255, 255, 0.12);
 }
 
 [data-theme="light"] {
@@ -1567,8 +1567,8 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   display: flex;
   align-items: center;
   padding: 10px 14px;
-  background: #232323;
-  border-bottom: 1px solid #333;
+  background: #1e1e28;
+  border-bottom: 1px solid #2a2a36;
   gap: 10px;
 }
 .zoom-title {
@@ -1588,7 +1588,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
 .zoom-body {
   display: flex;
-  background: #1a1a1a;
+  background: #161620;
   min-height: 220px;
 }
 
@@ -1667,7 +1667,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
 .zoom-sidebar {
   width: 80px;
-  background: #111;
+  background: #181820;
   display: flex;
   flex-direction: column;
   gap: 4px;
@@ -1680,7 +1680,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   align-items: center;
   gap: 3px;
   padding: 8px 4px;
-  background: #1a1a1a;
+  background: #161620;
   border-radius: 6px;
   position: relative;
 }
@@ -1728,8 +1728,8 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   justify-content: center;
   gap: 4px;
   padding: 8px 12px;
-  background: #232323;
-  border-top: 1px solid #333;
+  background: #1e1e28;
+  border-top: 1px solid #2a2a36;
 }
 .zoom-tool {
   display: flex;
