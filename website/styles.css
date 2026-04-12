@@ -1061,6 +1061,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 [data-theme="light"] .sm-export-window { background: rgba(255, 255, 255, 0.6); backdrop-filter: blur(24px) saturate(1.4); border-color: rgba(129, 140, 248, 0.15); box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06), 0 0 20px rgba(129, 140, 248, 0.04); }
 [data-theme="light"] .sm-export-window::before { background: linear-gradient(90deg, transparent, rgba(129, 140, 248, 0.3), transparent); }
 [data-theme="light"] .sm-export-bar { background: rgba(0, 0, 0, 0.02); border-bottom-color: rgba(0, 0, 0, 0.05); color: #0a0a0a; }
+[data-theme="light"] .sm-export-num { background: none; -webkit-background-clip: unset; -webkit-text-fill-color: #0a0a0a; background-clip: unset; color: #0a0a0a; }
 [data-theme="light"] .sm-export-label { color: #18181b; }
 [data-theme="light"] .sm-export-btn { background: rgba(129, 140, 248, 0.06); border-color: rgba(129, 140, 248, 0.12); color: #18181b; }
 
