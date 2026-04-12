@@ -740,12 +740,252 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 
 /* ─── How It Works ─────────────────────────────────── */
-.steps-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
-.step-card { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.06); border-radius: 20px; padding: 28px 24px; backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s; }
+.steps-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+.step-card { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.06); border-radius: 20px; padding: 0; backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s; overflow: hidden; display: flex; flex-direction: column; }
 .step-card:hover { transform: translateY(-6px); box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25); }
-.step-number { width: 56px; height: 56px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 700; letter-spacing: -0.5px; margin-bottom: 20px; line-height: 1; background: rgba(255, 255, 255, 0.04); border: 2px solid rgba(255, 255, 255, 0.08); }
-.step-card h3 { font-size: 16px; font-weight: 600; color: var(--text); margin-bottom: 8px; }
-.step-card p { font-size: 13.5px; line-height: 1.6; color: var(--text-secondary); }
+.step-text { padding: 24px; }
+.step-number { width: 40px; height: 40px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 700; letter-spacing: -0.5px; margin-bottom: 14px; line-height: 1; background: rgba(255, 255, 255, 0.04); border: 2px solid rgba(255, 255, 255, 0.08); }
+.step-card h3 { font-size: 16px; font-weight: 600; color: var(--text); margin-bottom: 6px; }
+.step-card p { font-size: 13px; line-height: 1.6; color: var(--text-secondary); }
+
+/* Step Mockups */
+.step-mockup {
+  background: #111;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+[data-theme="light"] .step-mockup { background: #f0f0f2; border-bottom-color: rgba(0,0,0,0.06); }
+
+/* Step 1: Menu bar + dropdown */
+.sm-menubar {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 10px;
+  background: #1e1e1e;
+  border-radius: 6px 6px 0 0;
+  font-size: 9px;
+  color: #a1a1aa;
+}
+.sm-menubar-items { display: flex; gap: 10px; }
+.sm-menubar-item { opacity: 0.7; }
+.sm-menubar-right { display: flex; align-items: center; gap: 6px; font-size: 8px; color: #71717a; }
+.sm-tray-icon { display: flex; align-items: center; color: #a1a1aa; font-size: 6px; }
+.sm-tray-icon:first-child { color: #4ade80; }
+
+.sm-dropdown {
+  width: 160px;
+  background: #1e1e1e;
+  border: 1px solid #333;
+  border-radius: 10px;
+  padding: 10px;
+  margin-top: 6px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.5);
+}
+.sm-dropdown-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #e4e4e7;
+  margin-bottom: 10px;
+}
+.sm-status-dot { width: 6px; height: 6px; border-radius: 50%; background: #4ade80; margin-left: auto; }
+.sm-mode-select { display: flex; gap: 4px; margin-bottom: 10px; }
+.sm-mode {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 5px 8px;
+  border-radius: 6px;
+  font-size: 9px;
+  font-weight: 500;
+  color: #71717a;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid transparent;
+}
+.sm-mode-active {
+  color: #e4e4e7;
+  background: rgba(59, 130, 246, 0.15);
+  border-color: rgba(59, 130, 246, 0.3);
+}
+.sm-record-btn {
+  width: 100%;
+  padding: 7px;
+  border-radius: 8px;
+  background: #4ade80;
+  color: #0a0a0a;
+  font-size: 10px;
+  font-weight: 600;
+  text-align: center;
+}
+
+[data-theme="light"] .sm-menubar { background: #e4e4e7; color: #3f3f46; }
+[data-theme="light"] .sm-dropdown { background: #fff; border-color: #d4d4d8; box-shadow: 0 8px 30px rgba(0,0,0,0.12); }
+[data-theme="light"] .sm-dropdown-header { color: #18181b; }
+[data-theme="light"] .sm-mode { color: #71717a; background: #f4f4f5; }
+[data-theme="light"] .sm-mode-active { color: #1e40af; background: rgba(59,130,246,0.1); border-color: rgba(59,130,246,0.25); }
+
+/* Step 2: Recording */
+.sm-app-mini {
+  width: 180px;
+  background: #1e1e1e;
+  border: 1px solid #333;
+  border-radius: 12px;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.sm-mini-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 10px;
+  font-weight: 600;
+  color: #e4e4e7;
+}
+.sm-rec-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: #ef4444;
+  animation: recPulse 1.5s ease-in-out infinite;
+}
+@keyframes recPulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+
+.sm-mini-wave {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  height: 32px;
+}
+.sm-wave-bar {
+  width: 3px;
+  background: #4ade80;
+  border-radius: 2px;
+  animation: waveAnim 0.8s ease-in-out infinite alternate;
+  animation-delay: var(--d);
+}
+@keyframes waveAnim {
+  0% { height: 6px; }
+  100% { height: 26px; }
+}
+
+.sm-mini-sources {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+.sm-source {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 9px;
+  font-weight: 500;
+  color: #71717a;
+}
+
+[data-theme="light"] .sm-app-mini { background: #fff; border-color: #d4d4d8; }
+[data-theme="light"] .sm-mini-header { color: #18181b; }
+
+/* Step 3: Live notes */
+.sm-notes-window {
+  width: 100%;
+  max-width: 260px;
+  background: #1e1e1e;
+  border: 1px solid #333;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.sm-notes-bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 10px;
+  background: #252525;
+  font-size: 10px;
+  font-weight: 600;
+  color: #e4e4e7;
+  border-bottom: 1px solid #333;
+}
+.sm-notes-body { padding: 10px 12px; }
+.sm-note-line { font-size: 10px; color: #a1a1aa; line-height: 1.7; }
+.sm-note-line strong { color: #e4e4e7; }
+.sm-note-typing { color: #71717a; }
+.sm-note-divider { height: 1px; background: #333; margin: 6px 0; }
+.sm-note-section { font-size: 9px; font-weight: 600; color: #f59e0b; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
+.sm-note-action { font-size: 10px; color: #a1a1aa; display: flex; align-items: center; gap: 5px; line-height: 1.7; }
+.sm-note-action strong { color: #e4e4e7; }
+.sm-check { font-size: 7px; width: 12px; height: 12px; border-radius: 3px; background: rgba(74,222,128,0.15); color: #4ade80; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.sm-check-empty { background: rgba(255,255,255,0.06); color: transparent; }
+
+[data-theme="light"] .sm-notes-window { background: #fff; border-color: #d4d4d8; }
+[data-theme="light"] .sm-notes-bar { background: #f4f4f5; border-bottom-color: #e4e4e7; color: #18181b; }
+[data-theme="light"] .sm-note-line { color: #52525b; }
+[data-theme="light"] .sm-note-line strong { color: #18181b; }
+[data-theme="light"] .sm-note-divider { background: #e4e4e7; }
+[data-theme="light"] .sm-note-action { color: #52525b; }
+[data-theme="light"] .sm-check-empty { background: #e4e4e7; }
+
+/* Step 4: Export */
+.sm-export-window {
+  width: 100%;
+  max-width: 220px;
+  background: #1e1e1e;
+  border: 1px solid #333;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.sm-export-bar {
+  padding: 8px 12px;
+  background: #252525;
+  font-size: 10px;
+  font-weight: 600;
+  color: #e4e4e7;
+  border-bottom: 1px solid #333;
+}
+.sm-export-body {
+  display: flex;
+  justify-content: space-around;
+  padding: 14px 10px;
+  gap: 4px;
+}
+.sm-export-stat { text-align: center; }
+.sm-export-num { display: block; font-size: 20px; font-weight: 800; color: #818cf8; letter-spacing: -1px; }
+.sm-export-label { font-size: 9px; color: #71717a; font-weight: 500; }
+.sm-export-buttons {
+  display: flex;
+  gap: 6px;
+  padding: 0 10px 10px;
+}
+.sm-export-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.08);
+  font-size: 9px;
+  font-weight: 600;
+  color: #a1a1aa;
+}
+
+[data-theme="light"] .sm-export-window { background: #fff; border-color: #d4d4d8; }
+[data-theme="light"] .sm-export-bar { background: #f4f4f5; border-bottom-color: #e4e4e7; color: #18181b; }
+[data-theme="light"] .sm-export-btn { background: #f4f4f5; border-color: #d4d4d8; color: #3f3f46; }
 
 /* ─── Comparison Table ─────────────────────────────── */
 .compare-table-wrap {
@@ -1534,24 +1774,6 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   box-shadow: 0 0 8px rgba(167, 139, 250, 0.5);
 }
 
-/* How It Works: timeline connector + colored step badges */
-.how-it-works .steps-grid {
-  position: relative;
-}
-
-.how-it-works .steps-grid::before {
-  content: '';
-  position: absolute;
-  top: 42px;
-  left: calc(12.5% + 12px);
-  right: calc(12.5% + 12px);
-  height: 2px;
-  background: linear-gradient(90deg, #4ade80, #3b82f6, #a78bfa, #f59e0b);
-  opacity: 0.2;
-  border-radius: 1px;
-  z-index: 0;
-}
-
 .step-card {
   border-top: 2px solid transparent;
 }
@@ -1673,7 +1895,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   .download-buttons { flex-direction: column; }
   .modes-grid::after { display: none; }
   .modes-grid { gap: 20px; }
-  .how-it-works .steps-grid::before { display: none; }
+
   .footer { flex-direction: column; gap: 12px; padding: 20px; text-align: center; }
 }
 
@@ -1720,7 +1942,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   .modes-grid { gap: 12px; }
   .mode-card { padding: 24px 20px; border-radius: 20px; }
   .steps-grid { grid-template-columns: 1fr; gap: 12px; }
-  .step-number { width: 48px; height: 48px; font-size: 16px; }
+  .step-number { width: 36px; height: 36px; font-size: 14px; }
   .smart-private-grid { grid-template-columns: 1fr; gap: 12px; }
   .download { padding: 64px 24px 80px; }
   .download-title { font-size: 28px; }
