@@ -17,54 +17,175 @@ document.getElementById('theme-toggle').addEventListener('click', () => {
   setTheme(current === 'dark' ? 'light' : 'dark');
 });
 
-// ─── Particle Background ──────────────────────────
+// ─── Starfield + Constellations Background ───────
 (function() {
   const canvas = document.getElementById('particles');
   if (!canvas) return;
   const ctx = canvas.getContext('2d');
-  let particles = [];
   let w, h;
+  let stars = [];
+  let shootingStars = [];
+  let constellations = [];
+  const CONNECT_DIST = 120;
 
   function resize() {
     w = canvas.width = window.innerWidth;
-    h = canvas.height = window.innerHeight * 5; // cover full scroll
+    h = canvas.height = window.innerHeight * 5;
+    init();
   }
+
+  function init() {
+    stars = [];
+    constellations = [];
+    // Static background stars (many, tiny, no movement)
+    const bgCount = Math.floor((w * h) / 8000);
+    for (let i = 0; i < bgCount; i++) {
+      stars.push({
+        x: Math.random() * w,
+        y: Math.random() * h,
+        r: Math.random() * 0.8 + 0.2,
+        baseOpacity: Math.random() * 0.4 + 0.05,
+        opacity: 0,
+        twinkleSpeed: Math.random() * 0.008 + 0.002,
+        twinkleOffset: Math.random() * Math.PI * 2,
+        moving: false,
+      });
+    }
+    // Brighter drifting stars (fewer, larger)
+    const driftCount = Math.floor((w * h) / 60000);
+    for (let i = 0; i < driftCount; i++) {
+      stars.push({
+        x: Math.random() * w,
+        y: Math.random() * h,
+        r: Math.random() * 1.4 + 0.8,
+        baseOpacity: Math.random() * 0.5 + 0.3,
+        opacity: 0,
+        twinkleSpeed: Math.random() * 0.012 + 0.004,
+        twinkleOffset: Math.random() * Math.PI * 2,
+        dx: (Math.random() - 0.5) * 0.08,
+        dy: (Math.random() - 0.5) * 0.04,
+        moving: true,
+      });
+    }
+    // Build constellation clusters
+    const clusterCount = Math.floor(h / 600);
+    for (let c = 0; c < clusterCount; c++) {
+      const cx = Math.random() * w * 0.8 + w * 0.1;
+      const cy = Math.random() * h;
+      const nodeCount = Math.floor(Math.random() * 4) + 3;
+      const nodes = [];
+      for (let n = 0; n < nodeCount; n++) {
+        const nx = cx + (Math.random() - 0.5) * CONNECT_DIST * 2.5;
+        const ny = cy + (Math.random() - 0.5) * CONNECT_DIST * 2.5;
+        nodes.push({ x: nx, y: ny });
+        // Add a visible star at each constellation node
+        stars.push({
+          x: nx, y: ny,
+          r: Math.random() * 0.6 + 1.0,
+          baseOpacity: 0.6,
+          opacity: 0,
+          twinkleSpeed: Math.random() * 0.006 + 0.003,
+          twinkleOffset: Math.random() * Math.PI * 2,
+          moving: false,
+        });
+      }
+      // Connect nodes into edges (minimum spanning-ish)
+      const edges = [];
+      for (let i = 0; i < nodes.length; i++) {
+        let bestJ = -1, bestDist = Infinity;
+        for (let j = 0; j < nodes.length; j++) {
+          if (i === j) continue;
+          const d = Math.hypot(nodes[i].x - nodes[j].x, nodes[i].y - nodes[j].y);
+          if (d < bestDist && d < CONNECT_DIST * 2.5) { bestDist = d; bestJ = j; }
+        }
+        if (bestJ !== -1) edges.push([i, bestJ]);
+      }
+      constellations.push({ nodes, edges });
+    }
+  }
+
   resize();
   window.addEventListener('resize', resize);
 
-  function createParticles() {
-    particles = [];
-    const count = Math.floor((w * h) / 25000);
-    for (let i = 0; i < count; i++) {
-      particles.push({
-        x: Math.random() * w,
-        y: Math.random() * h,
-        r: Math.random() * 1.5 + 0.5,
-        dx: (Math.random() - 0.5) * 0.3,
-        dy: (Math.random() - 0.5) * 0.15,
-        opacity: Math.random() * 0.5 + 0.1,
-      });
-    }
-  }
-  createParticles();
-
+  let time = 0;
   function draw() {
     ctx.clearRect(0, 0, w, h);
+    time += 1;
     const isDark = document.documentElement.getAttribute('data-theme') !== 'light';
-    const color = isDark ? '255,255,255' : '0,0,0';
+    const starColor = isDark ? '255,255,255' : '0,0,0';
+    const lineAlpha = isDark ? 0.07 : 0.04;
 
-    particles.forEach(p => {
-      p.x += p.dx;
-      p.y += p.dy;
-      if (p.x < 0) p.x = w;
-      if (p.x > w) p.x = 0;
-      if (p.y < 0) p.y = h;
-      if (p.y > h) p.y = 0;
+    // Draw stars
+    stars.forEach(s => {
+      const twinkle = Math.sin(time * s.twinkleSpeed + s.twinkleOffset) * 0.5 + 0.5;
+      s.opacity = s.baseOpacity * (0.5 + twinkle * 0.5);
+
+      if (s.moving) {
+        s.x += s.dx;
+        s.y += s.dy;
+        if (s.x < 0) s.x = w;
+        if (s.x > w) s.x = 0;
+        if (s.y < 0) s.y = h;
+        if (s.y > h) s.y = 0;
+      }
 
       ctx.beginPath();
-      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(${color}, ${p.opacity})`;
+      ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(${starColor}, ${s.opacity})`;
       ctx.fill();
+
+      // Glow on brighter stars
+      if (s.r > 1.2) {
+        ctx.beginPath();
+        ctx.arc(s.x, s.y, s.r * 3, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(${starColor}, ${s.opacity * 0.08})`;
+        ctx.fill();
+      }
+    });
+
+    // Draw constellation lines
+    constellations.forEach(c => {
+      c.edges.forEach(([i, j]) => {
+        const a = c.nodes[i], b = c.nodes[j];
+        ctx.beginPath();
+        ctx.moveTo(a.x, a.y);
+        ctx.lineTo(b.x, b.y);
+        ctx.strokeStyle = `rgba(${starColor}, ${lineAlpha})`;
+        ctx.lineWidth = 0.5;
+        ctx.stroke();
+      });
+    });
+
+    // Shooting stars
+    if (Math.random() < 0.003) {
+      shootingStars.push({
+        x: Math.random() * w,
+        y: Math.random() * h * 0.6,
+        len: Math.random() * 80 + 40,
+        speed: Math.random() * 4 + 3,
+        angle: Math.PI / 4 + (Math.random() - 0.5) * 0.3,
+        opacity: 1,
+        life: 0,
+      });
+    }
+    shootingStars = shootingStars.filter(ss => ss.opacity > 0);
+    shootingStars.forEach(ss => {
+      ss.life += 1;
+      ss.x += Math.cos(ss.angle) * ss.speed;
+      ss.y += Math.sin(ss.angle) * ss.speed;
+      ss.opacity = Math.max(0, 1 - ss.life / 40);
+
+      const tailX = ss.x - Math.cos(ss.angle) * ss.len;
+      const tailY = ss.y - Math.sin(ss.angle) * ss.len;
+      const grad = ctx.createLinearGradient(tailX, tailY, ss.x, ss.y);
+      grad.addColorStop(0, `rgba(${starColor}, 0)`);
+      grad.addColorStop(1, `rgba(${starColor}, ${ss.opacity * 0.6})`);
+      ctx.beginPath();
+      ctx.moveTo(tailX, tailY);
+      ctx.lineTo(ss.x, ss.y);
+      ctx.strokeStyle = grad;
+      ctx.lineWidth = 1.2;
+      ctx.stroke();
     });
 
     requestAnimationFrame(draw);
@@ -74,18 +195,8 @@ document.getElementById('theme-toggle').addEventListener('click', () => {
 
 // ─── Scrolled Nav + Scroll Progress ──────────────
 const nav = document.querySelector('.nav');
-const scrollProgress = document.getElementById('scroll-progress');
-
 window.addEventListener('scroll', () => {
   nav.classList.toggle('scrolled', window.scrollY > 60);
-
-  // Scroll progress bar
-  if (scrollProgress) {
-    const scrollTop = window.scrollY;
-    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-    const scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-    scrollProgress.style.width = scrollPercent + '%';
-  }
 });
 
 // ─── Smooth Scroll ────────────────────────────────
@@ -166,26 +277,6 @@ document.querySelectorAll('.faq-question').forEach(btn => {
   });
 });
 
-// ─── Section Nav Dots ────────────────────────────
-(function() {
-  const dots = document.querySelectorAll('.section-dots .dot');
-  if (!dots.length) return;
-
-  const sectionIds = Array.from(dots).map(d => d.dataset.section);
-  const sectionEls = sectionIds.map(id => document.getElementById(id)).filter(Boolean);
-
-  const dotObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        dots.forEach(d => d.classList.remove('active'));
-        const activeDot = document.querySelector('.section-dots .dot[data-section="' + entry.target.id + '"]');
-        if (activeDot) activeDot.classList.add('active');
-      }
-    });
-  }, { threshold: 0.3 });
-
-  sectionEls.forEach(el => dotObserver.observe(el));
-})();
 
 // ─── Glow Card Mouse Tracking ─────────────────────
 document.querySelectorAll('.glow-card').forEach(card => {
