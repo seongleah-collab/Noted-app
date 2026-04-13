@@ -2363,18 +2363,75 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 [data-theme="light"] .zoom-tool { color: #3f3f46; }
 
 .mockup-stealth-badge {
+  position: relative;
   display: inline-flex;
   align-items: center;
   gap: 8px;
   margin-top: 12px;
-  padding: 10px 20px;
+  padding: 10px 18px 10px 14px;
   border-radius: 100px;
-  background: var(--glass-bg);
-  border: 1px solid rgba(139, 92, 246, 0.3);
+  background:
+    linear-gradient(90deg, rgba(139, 92, 246, 0.18) 0%, rgba(167, 139, 250, 0.08) 50%, rgba(99, 102, 241, 0.18) 100%);
+  border: 1px solid rgba(167, 139, 250, 0.35);
   font-size: 12px;
+  color: var(--text);
+  backdrop-filter: blur(12px);
+  box-shadow:
+    0 0 24px rgba(139, 92, 246, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  overflow: hidden;
+  letter-spacing: 0.01em;
+}
+.mockup-stealth-badge::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(100deg, transparent 40%, rgba(255, 255, 255, 0.12) 50%, transparent 60%);
+  transform: translateX(-100%);
+  animation: stealth-shimmer 4.5s ease-in-out infinite;
+  pointer-events: none;
+}
+@keyframes stealth-shimmer {
+  0%, 20% { transform: translateX(-100%); }
+  60%, 100% { transform: translateX(100%); }
+}
+.stealth-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #c4b5fd;
+  filter: drop-shadow(0 0 6px rgba(167, 139, 250, 0.5));
+  animation: stealth-float 3.2s ease-in-out infinite;
+}
+@keyframes stealth-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-1.5px); }
+}
+.stealth-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #a78bfa;
+  box-shadow: 0 0 0 0 rgba(167, 139, 250, 0.7);
+  animation: stealth-pulse 1.8s ease-out infinite;
+  flex-shrink: 0;
+}
+@keyframes stealth-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(167, 139, 250, 0.6); }
+  70% { box-shadow: 0 0 0 8px rgba(167, 139, 250, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(167, 139, 250, 0); }
+}
+.stealth-text {
+  font-weight: 600;
+  color: var(--text);
+}
+.stealth-sep {
+  color: rgba(167, 139, 250, 0.6);
+  margin: 0 2px;
+}
+.stealth-subtle {
   color: var(--text-dim);
-  backdrop-filter: blur(10px);
-  box-shadow: 0 0 30px rgba(139, 92, 246, 0.1);
+  font-style: italic;
 }
 
 /* ─── Section Visual Variety ─────────────────────── */
