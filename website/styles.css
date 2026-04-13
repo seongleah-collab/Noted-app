@@ -191,11 +191,6 @@ button {
   animation: btnPulse 3s ease-in-out 2s infinite;
 }
 
-.nav-btn-waitlist {
-  display: none;
-  text-decoration: none;
-}
-
 .nav-btn:hover {
   transform: translateY(-1px) scale(1.03);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
@@ -242,8 +237,8 @@ button {
   pointer-events: none;
   z-index: -1;
   background:
-    radial-gradient(ellipse 50% 45% at 30% 25%, rgba(74, 222, 128, 0.06) 0%, transparent 70%),
-    radial-gradient(ellipse 45% 40% at 70% 35%, rgba(99, 102, 241, 0.05) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 45% at 30% 25%, rgba(99, 102, 241, 0.05) 0%, transparent 70%),
+    radial-gradient(ellipse 45% 40% at 70% 35%, rgba(139, 92, 246, 0.04) 0%, transparent 70%),
     radial-gradient(ellipse 40% 35% at 50% 55%, rgba(59, 130, 246, 0.04) 0%, transparent 70%);
 }
 [data-theme="light"] .hero::before { opacity: 0; }
@@ -264,7 +259,7 @@ button {
   pointer-events: none;
   z-index: -1;
   background:
-    radial-gradient(ellipse 60% 50% at 40% 40%, rgba(74, 222, 128, 0.07) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 50% at 40% 40%, rgba(99, 102, 241, 0.06) 0%, transparent 60%),
     radial-gradient(ellipse 50% 60% at 70% 60%, rgba(139, 92, 246, 0.05) 0%, transparent 60%);
   filter: blur(40px);
   animation: heroGlowPulse 8s ease-in-out infinite;
@@ -1667,12 +1662,7 @@ button {
     height: 36px;
   }
 
-  .nav-btn-learn {
-    display: none;
-  }
-
-  .nav-btn-waitlist {
-    display: inline-block;
+  .nav-btn {
     padding: 8px 20px;
     font-size: 13px;
   }
