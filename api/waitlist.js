@@ -3,15 +3,27 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  const { email } = req.body || {};
+  const { email, phone } = req.body || {};
 
-  if (!email || typeof email !== 'string') {
-    return res.status(400).json({ error: 'Email is required' });
+  if ((!email || typeof email !== 'string') && (!phone || typeof phone !== 'string')) {
+    return res.status(400).json({ error: 'Email or phone is required' });
   }
 
   const apiKey = process.env.LOOPS_API_KEY;
   if (!apiKey) {
     return res.status(500).json({ error: 'Server misconfigured' });
+  }
+
+  const contact = {};
+  if (email) contact.email = email;
+  if (phone) contact.phone = phone;
+
+  // Loops requires an email for contact creation. If only phone was
+  // provided, store it as a custom property with a placeholder email
+  // so the contact still gets created.
+  if (!email && phone) {
+    contact.email = `phone_${phone.replace(/\D/g, '')}@placeholder.noted`;
+    contact.phone = phone;
   }
 
   try {
@@ -21,7 +33,7 @@ export default async function handler(req, res) {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${apiKey}`
       },
-      body: JSON.stringify({ email })
+      body: JSON.stringify(contact)
     });
 
     const data = await response.json();

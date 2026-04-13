@@ -317,55 +317,64 @@ if (scene && heroRight && window.matchMedia('(min-width: 901px)').matches) {
 
 // ─── Signup Form ───────────────────────────────────
 const signupForm = document.getElementById('signup-form');
-const signupInput = signupForm.querySelector('.signup-input');
+const signupEmail = document.getElementById('signup-email');
+const signupPhone = document.getElementById('signup-phone');
+const signupError = document.getElementById('signup-error');
 const signupBtn = signupForm.querySelector('.signup-btn');
 
 signupForm.addEventListener('submit', async (e) => {
   e.preventDefault();
-  const email = signupInput.value.trim();
-  if (!email) return;
+  const email = signupEmail.value.trim();
+  const phone = signupPhone.value.trim();
 
-  signupBtn.textContent = 'Joining...';
+  signupError.classList.remove('visible');
+
+  if (!email && !phone) {
+    signupError.classList.add('visible');
+    return;
+  }
+
+  signupBtn.textContent = 'Sending...';
   signupBtn.disabled = true;
+
+  const body = {};
+  if (email) body.email = email;
+  if (phone) body.phone = phone;
 
   try {
     const res = await fetch('/api/waitlist', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email })
+      body: JSON.stringify(body)
     });
 
     if (res.ok) {
-      signupInput.value = '';
-      signupInput.placeholder = 'You\'re on the list!';
-      signupBtn.textContent = 'Joined';
+      signupEmail.value = '';
+      signupPhone.value = '';
+      signupBtn.textContent = 'You\'re in!';
       setTimeout(() => {
-        signupBtn.textContent = 'Join Waitlist';
+        signupBtn.textContent = 'Notify Me';
         signupBtn.disabled = false;
-        signupInput.placeholder = 'Enter your email';
       }, 3000);
     } else {
       const data = await res.json().catch(() => null);
       if (data?.message?.includes('already')) {
-        signupInput.value = '';
-        signupInput.placeholder = 'You\'re already on the list!';
-        signupBtn.textContent = 'Joined';
+        signupBtn.textContent = 'Already signed up!';
       } else {
-        signupInput.placeholder = 'Something went wrong. Try again.';
-        signupBtn.textContent = 'Join Waitlist';
+        signupBtn.textContent = 'Something went wrong';
       }
+      signupEmail.value = '';
+      signupPhone.value = '';
       setTimeout(() => {
-        signupBtn.textContent = 'Join Waitlist';
+        signupBtn.textContent = 'Notify Me';
         signupBtn.disabled = false;
-        signupInput.placeholder = 'Enter your email';
       }, 3000);
     }
   } catch {
-    signupInput.placeholder = 'Network error. Try again.';
-    signupBtn.textContent = 'Join Waitlist';
+    signupBtn.textContent = 'Network error';
     signupBtn.disabled = false;
     setTimeout(() => {
-      signupInput.placeholder = 'Enter your email';
+      signupBtn.textContent = 'Notify Me';
     }, 3000);
   }
 });
