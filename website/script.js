@@ -2,7 +2,7 @@
 function getPreferredTheme() {
   const stored = localStorage.getItem('noted-theme');
   if (stored) return stored;
-  return 'dark';
+  return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
 }
 
 function setTheme(theme) {
@@ -212,9 +212,10 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
 
 // ─── Scroll Reveal ────────────────────────────────
 const revealEls = document.querySelectorAll(
-  '.step-card, .section-label, .section-title, .section-subtitle, ' +
-  '.download-title, .download-subtitle, ' +
-  '.pitch-text, .compat-inline'
+  '.feature-card, .mode-card, .step-card, .memory-item, .privacy-card, ' +
+  '.stat-card, .faq-item, .compare-table-wrap, ' +
+  '.section-label, .section-title, .section-subtitle, ' +
+  '.download-title, .download-subtitle, .download-buttons, .download-mobile'
 );
 
 const revealObserver = new IntersectionObserver((entries) => {
@@ -551,37 +552,3 @@ if (scene && heroRight && window.matchMedia('(min-width: 901px)').matches) {
     setTimeout(run, 1200);
   }, 3000);
 })();
-
-// ─── Waitlist Form ─────────────────────────────────
-document.querySelectorAll('.waitlist-form').forEach(function(form) {
-  form.addEventListener('submit', async function(e) {
-    e.preventDefault();
-    var input = form.querySelector('input[type="email"]');
-    var btn = form.querySelector('button');
-    var email = input.value.trim();
-    if (!email) return;
-
-    btn.disabled = true;
-    var original = btn.textContent;
-    btn.textContent = 'Joining...';
-
-    try {
-      var res = await fetch('/api/waitlist', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: email })
-      });
-
-      if (res.ok) {
-        form.innerHTML = '<p class="waitlist-success">You\'re on the list. We\'ll be in touch.</p>';
-      } else {
-        throw new Error();
-      }
-    } catch (err) {
-      btn.disabled = false;
-      btn.textContent = original;
-      input.value = '';
-      input.placeholder = 'Something went wrong. Try again.';
-    }
-  });
-});
