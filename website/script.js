@@ -552,3 +552,22 @@ if (scene && heroRight && window.matchMedia('(min-width: 901px)').matches) {
     setTimeout(run, 1200);
   }, 3000);
 })();
+
+// ─── Restore scroll position on refresh ───────────
+(function() {
+  if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
+  }
+  const KEY = 'noted-scroll-' + location.pathname;
+
+  window.addEventListener('load', () => {
+    const y = sessionStorage.getItem(KEY);
+    if (y !== null) {
+      window.scrollTo(0, parseInt(y, 10));
+    }
+  });
+
+  window.addEventListener('beforeunload', () => {
+    sessionStorage.setItem(KEY, String(window.scrollY));
+  });
+})();
