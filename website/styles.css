@@ -1991,97 +1991,60 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .step-card:nth-child(3) .step-number { border-color: rgba(167, 139, 250, 0.35); color: #a78bfa; }
 .step-card:nth-child(4) .step-number { border-color: rgba(245, 158, 11, 0.35); color: #f59e0b; }
 
-/* ─── Desktop: Zigzag timeline layout for How It Works ─── */
+/* ─── Desktop: 4-column horizontal step timeline ─── */
 @media (min-width: 901px) {
-  .how-it-works .section-title {
-    text-align: left;
-    max-width: 900px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .how-it-works .section-label,
-  .how-it-works .section-subtitle {
-    text-align: center;
-  }
-
   .steps-grid {
-    grid-template-columns: 1fr;
-    gap: 12px;
-    max-width: 900px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+    max-width: 1200px;
     margin: 0 auto;
     position: relative;
   }
   .steps-grid::before {
     content: '';
     position: absolute;
-    left: 50%;
-    top: 40px;
-    bottom: 40px;
-    width: 2px;
-    background: linear-gradient(180deg,
+    left: 12.5%;
+    right: 12.5%;
+    top: 100px;
+    height: 2px;
+    background: linear-gradient(90deg,
       rgba(74, 222, 128, 0.4) 0%,
       rgba(59, 130, 246, 0.4) 33%,
       rgba(167, 139, 250, 0.4) 66%,
       rgba(245, 158, 11, 0.4) 100%);
-    transform: translateX(-50%);
     z-index: 0;
     pointer-events: none;
   }
 
   .step-card {
-    flex-direction: row;
-    align-items: stretch;
-    padding: 0;
-    min-height: 140px;
+    flex-direction: column;
+    min-height: 0;
   }
-  .step-card::after { display: none; }
-
   .step-card > .step-mockup {
-    flex: 1;
-    min-width: 0;
-    border-bottom: none;
-    border-right: 1px solid rgba(255, 255, 255, 0.06);
     min-height: 140px;
-    padding: 14px 20px;
+    padding: 14px;
   }
   .step-card > .step-text {
-    flex: 1;
-    min-width: 0;
-    padding: 16px 24px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    position: relative;
+    padding: 14px 16px 18px;
+    text-align: center;
   }
-
-  .step-card:nth-child(even) {
-    flex-direction: row-reverse;
-  }
-  .step-card:nth-child(even) > .step-mockup {
-    border-right: none;
-    border-left: 1px solid rgba(255, 255, 255, 0.06);
-  }
-
   .step-card h3 {
-    font-size: 17px;
+    font-size: 14px;
     margin-bottom: 4px;
-    letter-spacing: -0.01em;
   }
   .step-card p {
-    font-size: 13px;
+    font-size: 12px;
     line-height: 1.5;
   }
 
   .step-number {
-    width: 36px;
-    height: 36px;
-    font-size: 13px;
-    border-width: 1.5px;
-    margin-bottom: 8px;
-    background: var(--bg, rgba(10, 10, 15, 0.9));
+    width: 34px;
+    height: 34px;
+    font-size: 12px;
+    margin: 0 auto 8px;
+    background: rgba(10, 10, 15, 0.9);
     box-shadow: 0 0 16px currentColor, 0 0 0 4px rgba(10, 10, 15, 0.9);
     z-index: 2;
-    align-self: flex-start;
   }
   [data-theme="light"] .step-number {
     box-shadow: 0 0 14px currentColor, 0 0 0 4px #fff;
