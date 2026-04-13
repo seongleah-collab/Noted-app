@@ -7,7 +7,7 @@
 
   function resize() {
     w = canvas.width = window.innerWidth;
-    h = canvas.height = document.documentElement.scrollHeight || window.innerHeight * 3;
+    h = canvas.height = window.innerHeight;
     init();
   }
 
