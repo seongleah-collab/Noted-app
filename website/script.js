@@ -1,3 +1,91 @@
+// ─── Starfield Background ──────────────────────────
+(function() {
+  const canvas = document.getElementById('starfield');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let w, h, stars = [], shootingStars = [];
+
+  function resize() {
+    w = canvas.width = window.innerWidth;
+    h = canvas.height = document.documentElement.scrollHeight || window.innerHeight * 3;
+    init();
+  }
+
+  function init() {
+    stars = [];
+    const count = Math.floor((w * h) / 6000);
+    for (let i = 0; i < count; i++) {
+      stars.push({
+        x: Math.random() * w,
+        y: Math.random() * h,
+        r: Math.random() * 1.2 + 0.2,
+        baseOpacity: Math.random() * 0.6 + 0.1,
+        twinkleSpeed: Math.random() * 0.01 + 0.003,
+        twinkleOffset: Math.random() * Math.PI * 2,
+      });
+    }
+  }
+
+  resize();
+  window.addEventListener('resize', resize);
+
+  let t = 0;
+  function draw() {
+    ctx.clearRect(0, 0, w, h);
+    t++;
+    const isDark = document.documentElement.getAttribute('data-theme') !== 'light';
+    if (!isDark) { requestAnimationFrame(draw); return; }
+
+    for (let i = 0; i < stars.length; i++) {
+      const s = stars[i];
+      const twinkle = Math.sin(t * s.twinkleSpeed + s.twinkleOffset) * 0.5 + 0.5;
+      const opacity = s.baseOpacity * (0.4 + twinkle * 0.6);
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(255,255,255,' + opacity + ')';
+      ctx.fill();
+      if (s.r > 1.0) {
+        ctx.beginPath();
+        ctx.arc(s.x, s.y, s.r * 2.5, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(255,255,255,' + (opacity * 0.06) + ')';
+        ctx.fill();
+      }
+    }
+
+    // Shooting stars
+    if (Math.random() < 0.004) {
+      shootingStars.push({
+        x: Math.random() * w, y: Math.random() * h * 0.5,
+        len: Math.random() * 60 + 30, speed: Math.random() * 4 + 3,
+        angle: Math.PI / 4 + (Math.random() - 0.5) * 0.3,
+        opacity: 1, life: 0,
+      });
+    }
+    shootingStars = shootingStars.filter(s => s.opacity > 0);
+    for (let i = 0; i < shootingStars.length; i++) {
+      const ss = shootingStars[i];
+      ss.life++;
+      ss.x += Math.cos(ss.angle) * ss.speed;
+      ss.y += Math.sin(ss.angle) * ss.speed;
+      ss.opacity = Math.max(0, 1 - ss.life / 35);
+      const tx = ss.x - Math.cos(ss.angle) * ss.len;
+      const ty = ss.y - Math.sin(ss.angle) * ss.len;
+      const grad = ctx.createLinearGradient(tx, ty, ss.x, ss.y);
+      grad.addColorStop(0, 'rgba(255,255,255,0)');
+      grad.addColorStop(1, 'rgba(255,255,255,' + (ss.opacity * 0.5) + ')');
+      ctx.beginPath();
+      ctx.moveTo(tx, ty);
+      ctx.lineTo(ss.x, ss.y);
+      ctx.strokeStyle = grad;
+      ctx.lineWidth = 1;
+      ctx.stroke();
+    }
+
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+
 // ─── Theme Toggle ──────────────────────────────────
 function getPreferredTheme() {
   const stored = localStorage.getItem('noted-theme');
