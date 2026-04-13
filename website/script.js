@@ -571,3 +571,28 @@ if (scene && heroRight && window.matchMedia('(min-width: 901px)').matches) {
     sessionStorage.setItem(KEY, String(window.scrollY));
   });
 })();
+
+// ─── Smart & Private: cursor-tracked glow + scroll reveal ────
+(function() {
+  const cards = document.querySelectorAll('.sp-card');
+  if (!cards.length) return;
+
+  cards.forEach((card) => {
+    card.addEventListener('pointermove', (e) => {
+      const r = card.getBoundingClientRect();
+      card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+      card.style.setProperty('--my', (e.clientY - r.top) + 'px');
+    });
+  });
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('sp-reveal'), i * 80);
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.2 });
+
+  cards.forEach((card) => io.observe(card));
+})();
