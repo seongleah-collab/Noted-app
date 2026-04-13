@@ -15,16 +15,12 @@ export default async function handler(req, res) {
   }
 
   const contact = {};
-  if (email) contact.email = email;
   if (phone) contact.phone = phone;
 
   // Loops requires an email for contact creation. If only phone was
-  // provided, store it as a custom property with a placeholder email
-  // so the contact still gets created.
-  if (!email && phone) {
-    contact.email = `phone_${phone.replace(/\D/g, '')}@placeholder.noted`;
-    contact.phone = phone;
-  }
+  // provided, use a placeholder so the contact still gets created.
+  contact.email = email || `phone_${phone.replace(/\D/g, '')}@placeholder.notedco.io`;
+  contact.source = 'website';
 
   try {
     const response = await fetch('https://app.loops.so/api/v1/contacts/create', {
