@@ -180,7 +180,6 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   display: block;
   width: 26px;
   height: 26px;
-  filter: drop-shadow(0 2px 8px rgba(139, 92, 246, 0.25));
 }
 
 .nav-links { position: absolute; left: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: 32px; }
