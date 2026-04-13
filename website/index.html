@@ -590,55 +590,101 @@
 
   <!-- Smart & Private -->
   <section class="section smart-private" id="privacy">
-    <div class="section-inner">
-      <p class="section-label">Smart & private</p>
-      <h2 class="section-title">Gets smarter over time.<br>Your data <em>never leaves</em>.</h2>
-      <p class="section-subtitle">Noted learns from every session and keeps everything on your device — no cloud, no compromises.</p>
+    <div class="section-inner sp-split">
+      <!-- Hero visual: device flow diagram -->
+      <div class="sp-hero">
+        <div class="sp-hero-label">Smart &amp; private</div>
+        <h2 class="sp-hero-title">Nothing leaves<br>your device. <em>Ever.</em></h2>
+        <p class="sp-hero-sub">Noted learns from every session and keeps everything on your device — no cloud, no compromises.</p>
 
-      <div class="smart-private-grid">
-        <div class="sp-card glow-card" style="--glow-color: 139, 92, 246">
-          <div class="sp-icon" style="--accent: #8b5cf6">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        <div class="sp-diagram" aria-hidden="true">
+          <div class="sp-diagram-grid"></div>
+
+          <div class="sp-flow sp-flow-in sp-flow-top">
+            <span class="sp-flow-label">Audio in</span>
+            <span class="sp-flow-line"></span>
           </div>
-          <h3>Cross-session recall</h3>
-          <p>Noted remembers what you discussed weeks ago, tracks open action items, and knows what's changed since.</p>
-          <div class="sp-deco" style="--accent: #8b5cf6"></div>
-        </div>
-        <div class="sp-card glow-card" style="--glow-color: 139, 92, 246">
-          <div class="sp-icon" style="--accent: #8b5cf6">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+          <div class="sp-flow sp-flow-in sp-flow-bottom">
+            <span class="sp-flow-label">Screen in</span>
+            <span class="sp-flow-line"></span>
           </div>
-          <h3>Organize with folders</h3>
-          <p>Group sessions into folders like "English 101" or "Weekly Standups." Noted builds richer context within each one.</p>
-          <div class="sp-deco" style="--accent: #a78bfa"><span class="sp-deco-core"></span></div>
-        </div>
-        <div class="sp-card glow-card" style="--glow-color: 74, 222, 128">
-          <div class="sp-content">
-            <div class="sp-icon" style="--accent: #4ade80">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+
+          <div class="sp-device">
+            <div class="sp-device-ring"></div>
+            <div class="sp-device-ring sp-device-ring-2"></div>
+            <div class="sp-device-core">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="2" y="4" width="20" height="14" rx="2"/><line x1="8" y1="20" x2="16" y2="20"/><line x1="12" y1="18" x2="12" y2="20"/></svg>
+              <span class="sp-device-label">Your device</span>
             </div>
-            <h3>100% on-device</h3>
-            <p>All AI processing happens on your machine. Nothing is sent to a server. Works offline too — record anywhere, get full notes.</p>
           </div>
-          <div class="sp-deco">
-            <span class="sp-deco-core">100%</span>
+
+          <div class="sp-flow sp-flow-out">
+            <span class="sp-flow-line sp-flow-blocked"></span>
+            <span class="sp-flow-label sp-flow-label-out">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg>
+              No cloud
+            </span>
           </div>
-        </div>
-        <div class="sp-card glow-card" style="--glow-color: 74, 222, 128">
-          <div class="sp-content">
-            <div class="sp-icon" style="--accent: #4ade80">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg>
-            </div>
-            <h3>Zero-knowledge design</h3>
-            <p>We can't see your notes, recordings, or transcripts. Everything is encrypted and stored locally on your device.</p>
-          </div>
-          <div class="sp-deco">
-            <span class="sp-deco-core">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+
+          <div class="sp-stamp">
+            <span class="sp-stamp-ring"></span>
+            <span class="sp-stamp-text">
+              <svg viewBox="0 0 120 120" width="120" height="120" aria-hidden="true">
+                <defs>
+                  <path id="sp-stamp-path" d="M 60,60 m -44,0 a 44,44 0 1,1 88,0 a 44,44 0 1,1 -88,0" />
+                </defs>
+                <text font-size="10.5" letter-spacing="3" fill="currentColor" font-weight="600">
+                  <textPath href="#sp-stamp-path">PRIVATE BY DEFAULT · PRIVATE BY DEFAULT · </textPath>
+                </text>
+              </svg>
+            </span>
+            <span class="sp-stamp-core">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
             </span>
           </div>
         </div>
       </div>
+
+      <!-- Feature list -->
+      <ul class="sp-list">
+        <li class="sp-list-item" style="--accent: #4ade80">
+          <div class="sp-list-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <div class="sp-list-body">
+            <h3>100% on-device</h3>
+            <p>All AI processing happens on your machine. Nothing is sent to a server. Works offline too.</p>
+          </div>
+          <span class="sp-list-mark">100%</span>
+        </li>
+        <li class="sp-list-item" style="--accent: #4ade80">
+          <div class="sp-list-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          </div>
+          <div class="sp-list-body">
+            <h3>Zero-knowledge design</h3>
+            <p>We can't see your notes, recordings, or transcripts. Everything is encrypted and stored locally.</p>
+          </div>
+        </li>
+        <li class="sp-list-item" style="--accent: #a78bfa">
+          <div class="sp-list-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <div class="sp-list-body">
+            <h3>Cross-session recall</h3>
+            <p>Noted remembers what you discussed weeks ago, tracks open action items, and knows what's changed.</p>
+          </div>
+        </li>
+        <li class="sp-list-item" style="--accent: #a78bfa">
+          <div class="sp-list-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+          </div>
+          <div class="sp-list-body">
+            <h3>Organize with folders</h3>
+            <p>Group sessions into folders like "English 101" or "Weekly Standups." Noted builds richer context within each one.</p>
+          </div>
+        </li>
+      </ul>
     </div>
   </section>
 

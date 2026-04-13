@@ -572,27 +572,19 @@ if (scene && heroRight && window.matchMedia('(min-width: 901px)').matches) {
   });
 })();
 
-// ─── Smart & Private: cursor-tracked glow + scroll reveal ────
+// ─── Smart & Private: staggered scroll reveal on list ────
 (function() {
-  const cards = document.querySelectorAll('.sp-card');
-  if (!cards.length) return;
-
-  cards.forEach((card) => {
-    card.addEventListener('pointermove', (e) => {
-      const r = card.getBoundingClientRect();
-      card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
-      card.style.setProperty('--my', (e.clientY - r.top) + 'px');
-    });
-  });
+  const items = document.querySelectorAll('.sp-list-item');
+  if (!items.length) return;
 
   const io = new IntersectionObserver((entries) => {
     entries.forEach((entry, i) => {
       if (entry.isIntersecting) {
-        setTimeout(() => entry.target.classList.add('sp-reveal'), i * 80);
+        setTimeout(() => entry.target.classList.add('sp-reveal'), i * 90);
         io.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.2 });
+  }, { threshold: 0.15 });
 
-  cards.forEach((card) => io.observe(card));
+  items.forEach((item) => io.observe(item));
 })();
