@@ -292,10 +292,11 @@ button {
 .signup-label {
   font-size: 13px;
   font-weight: 500;
-  color: var(--text-dim);
+  color: #fff;
   letter-spacing: 0.2px;
   margin-bottom: 12px;
 }
+[data-theme="light"] .signup-label { color: #1a1a1a; }
 
 .signup-form {
   display: flex;
