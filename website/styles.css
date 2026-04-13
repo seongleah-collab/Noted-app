@@ -10,6 +10,7 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
@@ -21,6 +22,8 @@ body {
   flex-direction: column;
   overflow-x: hidden;
   transition: background 0.3s, color 0.3s;
+  -webkit-text-size-adjust: 100%;
+  touch-action: pan-y;
 }
 
 @media (min-width: 901px) {
