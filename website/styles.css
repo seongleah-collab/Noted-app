@@ -1185,14 +1185,115 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 
 /* ─── Smart & Private Grid ────────────────────────── */
-.smart-private { background: radial-gradient(ellipse 80% 50% at 50% 50%, rgba(139, 92, 246, 0.05) 0%, transparent 70%); }
-.smart-private-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
-.sp-card { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.06); border-radius: 20px; padding: 28px; backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s, background 0.4s; }
-.sp-card:hover { transform: translateY(-6px); box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25), 0 0 30px rgba(var(--glow-color), 0.06); border-color: rgba(var(--glow-color), 0.2); background: rgba(var(--glow-color), 0.03); }
-.sp-icon { width: 44px; height: 44px; border-radius: 12px; background: color-mix(in srgb, var(--accent) 12%, transparent); border: 1px solid color-mix(in srgb, var(--accent) 25%, transparent); display: flex; align-items: center; justify-content: center; margin-bottom: 18px; color: var(--accent); }
-.sp-card h3 { font-size: 16px; font-weight: 600; color: var(--text); margin-bottom: 8px; }
-.sp-card p { font-size: 14px; line-height: 1.6; color: var(--text-secondary); }
-[data-theme="light"] .smart-private { background: radial-gradient(ellipse 80% 50% at 50% 50%, rgba(139, 92, 246, 0.04) 0%, transparent 70%); }
+.smart-private {
+  position: relative;
+  background:
+    radial-gradient(ellipse 60% 40% at 20% 30%, rgba(139, 92, 246, 0.12) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 80% 70%, rgba(74, 222, 128, 0.08) 0%, transparent 60%);
+  overflow: hidden;
+}
+.smart-private::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, black 0%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, black 0%, transparent 80%);
+  pointer-events: none;
+}
+.smart-private .section-inner { position: relative; z-index: 1; }
+.smart-private .section-title {
+  background: linear-gradient(135deg, #fff 0%, #c4b5fd 50%, #86efac 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.smart-private-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+.sp-card {
+  position: relative;
+  background: linear-gradient(135deg, rgba(var(--glow-color), 0.06) 0%, rgba(255, 255, 255, 0.02) 60%);
+  border: 1px solid rgba(var(--glow-color), 0.15);
+  border-radius: 20px;
+  padding: 32px;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s ease, border-color 0.4s, background 0.4s;
+  overflow: hidden;
+}
+.sp-card::after {
+  content: '';
+  position: absolute;
+  top: -40%;
+  right: -40%;
+  width: 260px;
+  height: 260px;
+  background: radial-gradient(circle, rgba(var(--glow-color), 0.18) 0%, transparent 70%);
+  filter: blur(30px);
+  opacity: 0.6;
+  transition: opacity 0.4s ease, transform 0.6s ease;
+  pointer-events: none;
+}
+.sp-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.35), 0 0 40px rgba(var(--glow-color), 0.18);
+  border-color: rgba(var(--glow-color), 0.4);
+}
+.sp-card:hover::after {
+  opacity: 1;
+  transform: scale(1.1);
+}
+.sp-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, color-mix(in srgb, var(--accent) 25%, transparent), color-mix(in srgb, var(--accent) 8%, transparent));
+  border: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
+  box-shadow: 0 0 24px color-mix(in srgb, var(--accent) 25%, transparent), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  color: var(--accent);
+  position: relative;
+  z-index: 1;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+.sp-card:hover .sp-icon {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 0 40px color-mix(in srgb, var(--accent) 45%, transparent), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+.sp-card h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 10px;
+  position: relative;
+  z-index: 1;
+  letter-spacing: -0.01em;
+}
+.sp-card p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  position: relative;
+  z-index: 1;
+}
+[data-theme="light"] .smart-private {
+  background:
+    radial-gradient(ellipse 60% 40% at 20% 30%, rgba(139, 92, 246, 0.08) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 80% 70%, rgba(74, 222, 128, 0.06) 0%, transparent 60%);
+}
+[data-theme="light"] .smart-private .section-title {
+  background: linear-gradient(135deg, #1a1a1a 0%, #7c3aed 50%, #16a34a 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 
 /* ─── FAQ ──────────────────────────────────────────── */
 .faq-list {
