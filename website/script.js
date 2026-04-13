@@ -22,25 +22,31 @@ const learnMoreBtn = document.getElementById('learn-more-btn');
 const modalOverlay = document.getElementById('modal-overlay');
 const modalClose = document.getElementById('modal-close');
 
-learnMoreBtn.addEventListener('click', () => {
-  modalOverlay.classList.add('active');
-});
+if (learnMoreBtn && modalOverlay) {
+  learnMoreBtn.addEventListener('click', () => {
+    modalOverlay.classList.add('active');
+  });
+}
 
-modalClose.addEventListener('click', () => {
-  modalOverlay.classList.remove('active');
-});
-
-modalOverlay.addEventListener('click', (e) => {
-  if (e.target === modalOverlay) {
+if (modalClose && modalOverlay) {
+  modalClose.addEventListener('click', () => {
     modalOverlay.classList.remove('active');
-  }
-});
+  });
+}
 
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') {
-    modalOverlay.classList.remove('active');
-  }
-});
+if (modalOverlay) {
+  modalOverlay.addEventListener('click', (e) => {
+    if (e.target === modalOverlay) {
+      modalOverlay.classList.remove('active');
+    }
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      modalOverlay.classList.remove('active');
+    }
+  });
+}
 
 // ─── Meeting Timer (ticks up like a real call) ─────
 const meetingTimeEl = document.getElementById('meeting-time');
