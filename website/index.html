@@ -4,6 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Noted — AI Meeting & Lecture Assistant</title>
+  <meta name="description" content="An invisible AI note-taker for your meetings and lectures. Real-time notes, no bots, nobody knows it's there.">
+  <meta property="og:title" content="Noted — AI Meeting & Lecture Assistant">
+  <meta property="og:description" content="An invisible AI note-taker for your meetings and lectures. Real-time notes, no bots, nobody knows it's there.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://notedco.io">
+  <meta name="theme-color" content="#0e0e14">
   <link rel="stylesheet" href="styles.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,11 +17,9 @@
 </head>
 <body>
 
-
-  <!-- Particle Canvas Background -->
   <canvas id="particles" class="particles-canvas"></canvas>
 
-  <!-- Navigation -->
+  <!-- Nav -->
   <nav class="nav">
     <a href="#" class="nav-logo">
       <svg class="nav-logo-icon" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -28,42 +32,31 @@
       </svg>
       <span>Noted</span>
     </a>
-    <div class="nav-links">
-      <a href="#showcase-live">Features</a>
-      <a href="#how-it-works">How It Works</a>
-      <a href="#privacy">Privacy</a>
-    </div>
     <div class="nav-right">
       <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
         <svg class="theme-icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
         <svg class="theme-icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
       </button>
-      <a href="#download" class="nav-btn">Download</a>
+      <a href="#waitlist" class="nav-btn">Join Waitlist</a>
     </div>
   </nav>
 
   <!-- Hero -->
   <section class="hero" id="hero">
     <div class="hero-left">
-      <div class="hero-badge">
-        <span class="hero-badge-dot"></span>
-        Now available on all platforms
-      </div>
       <h1 class="hero-title">
         Your memory<br>
         just got an<br>
         upgrade,<br>
         literally.
       </h1>
-      <p class="hero-subtitle">The AI assistant that listens, takes notes, and answers your questions — all while staying completely invisible.</p>
-      <div class="hero-ctas">
-        <a href="#download" class="btn-primary btn-glow">
-          <span>Download for Windows</span>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-        </a>
-        <a href="#showcase-live" class="btn-secondary">See Features</a>
-      </div>
-      <p class="hero-platforms">Mac, iOS & Android coming soon</p>
+      <p class="hero-subtitle">Your least intrusive but most reliable assistant.</p>
+      <p class="hero-waitlist-label">Be first to try it</p>
+      <form class="waitlist-form" id="hero-waitlist">
+        <input type="email" placeholder="Enter your email" required>
+        <button type="submit">Join Waitlist</button>
+      </form>
+      <p class="hero-compat-line">Works with Zoom, Meet, and Teams · No bot joins your call</p>
     </div>
 
     <div class="hero-right">
@@ -180,43 +173,9 @@
     </div>
   </section>
 
-
-  <!-- Stats -->
-  <section class="section stats-section">
+  <!-- Compat -->
+  <section class="section compat-section">
     <div class="section-inner">
-      <p class="section-label">Why Noted</p>
-      <h2 class="section-title">Built different from<br>every other note tool.</h2>
-      <p class="section-subtitle">No bots. No cloud uploads. No post-meeting wait. Just real-time, private, context-rich notes.</p>
-      <div class="stats-grid">
-        <div class="stat-card" style="--accent: #4ade80">
-          <div class="stat-icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 12l2 2 4-4"/></svg>
-          </div>
-          <div class="stat-number" data-target="100" data-suffix="%">0%</div>
-          <div class="stat-label">On-device processing</div>
-        </div>
-        <div class="stat-card" style="--accent: #3b82f6">
-          <div class="stat-icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
-          </div>
-          <div class="stat-number" data-target="0" data-suffix="">0</div>
-          <div class="stat-label">Bots that join your calls</div>
-        </div>
-        <div class="stat-card" style="--accent: #a78bfa">
-          <div class="stat-icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
-          </div>
-          <div class="stat-number" data-target="10" data-suffix="x">0x</div>
-          <div class="stat-label">Richer than audio-only notes</div>
-        </div>
-        <div class="stat-card" style="--accent: #f59e0b">
-          <div class="stat-icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
-          </div>
-          <div class="stat-number" data-target="2" data-suffix="">0</div>
-          <div class="stat-label">Specialized modes</div>
-        </div>
-      </div>
       <div class="compat-inline">
         <span class="compat-inline-label">Works with</span>
         <div class="compat-inline-logos">
@@ -230,214 +189,14 @@
     </div>
   </section>
 
-  <!-- Showcase: Live Notes -->
-  <section class="section showcase" id="showcase-live">
+  <!-- Pitch -->
+  <section class="section pitch">
     <div class="section-inner">
-      <div class="showcase-grid">
-        <div class="showcase-text">
-          <p class="section-label">Real-time intelligence</p>
-          <h2 class="showcase-title">Noted listens to the<br>conversation.</h2>
-          <p class="showcase-desc">Captures system audio and reads your screen simultaneously. Notes generate live as your meeting or lecture happens — not hours later.</p>
-          <ul class="showcase-list">
-            <li>Real-time transcription and notes</li>
-            <li>Screen context + audio capture</li>
-            <li>Customizable note format and depth</li>
-          </ul>
-        </div>
-        <div class="showcase-visual">
-          <div class="mockup-window">
-            <div class="mockup-titlebar">
-              <div class="mockup-dots"><span></span><span></span><span></span></div>
-              <span class="mockup-title-text">Noted — Live Notes</span>
-              <span class="mockup-recording"><span class="recording-dot"></span>Recording · <span id="showcase-timer">14:23</span></span>
-            </div>
-            <div class="mockup-content mockup-notes-view">
-              <p>- Q3 revenue targets increased to <strong>$2.4M</strong></p>
-              <p>- New hire onboarding starts <strong>Monday</strong></p>
-              <p>- Marketing team to present campaign results</p>
-              <p class="mockup-typing">- Sarah flagged Q4 pipeline ris<span class="cursor-blink">|</span></p>
-              <div class="mockup-divider"></div>
-              <div class="mockup-section-label">Action Items</div>
-              <div class="mockup-action done">Submit budget proposal by <strong>Friday</strong></div>
-              <div class="mockup-action">Review Q3 marketing deck</div>
-              <div class="mockup-action">Schedule follow-up with Sarah</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Showcase: AI Assistant -->
-  <section class="section showcase" id="showcase-chat">
-    <div class="section-inner">
-      <div class="showcase-grid reversed">
-        <div class="showcase-text">
-          <p class="section-label">Context-aware AI</p>
-          <h2 class="showcase-title">When you need help,<br>Noted assists instantly.</h2>
-          <p class="showcase-desc">Ask questions mid-meeting and get answers based on everything that's been said and shown on screen. No context switching, no searching.</p>
-          <ul class="showcase-list">
-            <li>Answers grounded in the live conversation</li>
-            <li>References both audio and screen content</li>
-            <li>Responds in under 300ms</li>
-          </ul>
-        </div>
-        <div class="showcase-visual">
-          <div class="mockup-window">
-            <div class="mockup-titlebar">
-              <div class="mockup-dots"><span></span><span></span><span></span></div>
-              <span class="mockup-title-text">Ask Noted</span>
-            </div>
-            <div class="mockup-content mockup-chat-view">
-              <div class="mockup-chat-msg user">What's the deadline for the budget proposal?</div>
-              <div class="mockup-chat-msg ai">Based on what Sarah said at 14:12, the budget proposal is due <strong>Friday Oct 11</strong>. Late submissions won't be reviewed until next quarter.</div>
-              <div class="mockup-chat-msg user">Who's handling the Q3 deck?</div>
-              <div class="mockup-chat-msg ai">Mike volunteered to draft the deck. Jane said she'd review it by <strong>Wednesday</strong>.</div>
-              <div class="mockup-chat-input">
-                <span>Ask anything about this session...</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Showcase: Invisible -->
-  <section class="section showcase" id="showcase-invisible">
-    <div class="section-inner">
-      <div class="showcase-grid">
-        <div class="showcase-text">
-          <p class="section-label">Completely undetectable</p>
-          <h2 class="showcase-title">Invisible to<br>everyone.</h2>
-          <p class="showcase-desc">No bots join your call. No notifications sent. No screen indicators. Noted captures system audio locally — nobody knows it's there.</p>
-          <ul class="showcase-list">
-            <li>Zero bots join your meetings</li>
-            <li>Invisible to screen sharing</li>
-            <li>No participant notifications</li>
-          </ul>
-        </div>
-        <div class="showcase-visual">
-          <div class="mockup-window zoom-meeting">
-            <div class="zoom-titlebar">
-              <div class="mockup-dots"><span></span><span></span><span></span></div>
-              <span class="zoom-title">Zoom Meeting</span>
-              <div class="zoom-title-right">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                <span class="zoom-participant-count">4 Participants</span>
-              </div>
-            </div>
-            <div class="zoom-body">
-              <div class="zoom-screen-share">
-                <div class="zoom-share-label">
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-                  Sarah Chen's screen
-                </div>
-                <div class="zoom-slide">
-                  <div class="zoom-slide-title">Q4 Revenue Forecast</div>
-                  <div class="zoom-slide-chart">
-                    <div class="zoom-bar" style="--h: 40%; --color: #60a5fa"></div>
-                    <div class="zoom-bar" style="--h: 55%; --color: #60a5fa"></div>
-                    <div class="zoom-bar" style="--h: 48%; --color: #60a5fa"></div>
-                    <div class="zoom-bar" style="--h: 72%; --color: #4ade80"></div>
-                  </div>
-                  <div class="zoom-slide-labels">
-                    <span>Q1</span><span>Q2</span><span>Q3</span><span>Q4</span>
-                  </div>
-                  <div class="zoom-slide-note">Projected growth: <strong>+34%</strong> YoY</div>
-                </div>
-              </div>
-              <div class="zoom-sidebar">
-                <div class="zoom-thumb" style="--p-color: #3b82f6">
-                  <div class="zoom-thumb-avatar">S</div>
-                  <span class="zoom-thumb-name">Sarah</span>
-                  <span class="zoom-thumb-speaking"><span></span><span></span><span></span></span>
-                </div>
-                <div class="zoom-thumb" style="--p-color: #8b5cf6">
-                  <div class="zoom-thumb-avatar">Y</div>
-                  <span class="zoom-thumb-name">You</span>
-                </div>
-                <div class="zoom-thumb" style="--p-color: #f59e0b">
-                  <div class="zoom-thumb-avatar">M</div>
-                  <span class="zoom-thumb-name">Mike</span>
-                </div>
-                <div class="zoom-thumb" style="--p-color: #10b981">
-                  <div class="zoom-thumb-avatar">J</div>
-                  <span class="zoom-thumb-name">Jane</span>
-                </div>
-              </div>
-            </div>
-            <div class="zoom-toolbar">
-              <div class="zoom-tool"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/></svg><span>Mute</span></div>
-              <div class="zoom-tool"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg><span>Video</span></div>
-              <div class="zoom-tool"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg><span>Share</span></div>
-              <div class="zoom-tool zoom-tool-red"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M10.68 13.31a16 16 0 0 0 3.41 2.6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7 2 2 0 0 1 1.72 2v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91"/><line x1="23" y1="1" x2="1" y2="23"/></svg><span>End</span></div>
-            </div>
-          </div>
-          <div class="mockup-stealth-badge">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/><line x1="1" y1="1" x2="23" y2="23"/></svg>
-            Noted running silently · Invisible to others
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Modes -->
-  <section class="section modes" id="modes">
-    <div class="section-inner">
-      <p class="section-label">Two modes, one tool</p>
-      <h2 class="section-title">Meeting mode.<br>Lecture mode.</h2>
-      <p class="section-subtitle">The way notes are structured and what the AI prioritizes changes depending on the mode you choose.</p>
-
-      <div class="modes-grid">
-        <div class="mode-card glow-card" style="--glow-color: 59, 130, 246">
-          <div class="mode-icon mode-icon-meeting">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-          </div>
-          <h3>Meeting Mode</h3>
-          <p>Tracks who said what, surfaces action items, and generates follow-up emails automatically.</p>
-          <div class="mode-preview">
-            <div class="mode-preview-header">
-              <span class="mode-preview-dot" style="background:#3b82f6"></span>
-              Meeting Notes · Q4 Budget Review
-            </div>
-            <div class="mode-preview-body">
-              <div class="mode-preview-line"><strong>Sarah:</strong> Budget proposal is due Friday Oct 11.</div>
-              <div class="mode-preview-line"><strong>Mike:</strong> I'll draft the Q3 deck by Wednesday.</div>
-              <div class="mode-preview-line dim">Jane will review before the board meeting.</div>
-              <div class="mode-preview-divider"></div>
-              <div class="mode-preview-label">Action Items</div>
-              <div class="mode-preview-action"><span class="mode-preview-check"></span>Mike — Draft Q3 deck <span class="mode-preview-tag">Wed Oct 9</span></div>
-              <div class="mode-preview-action"><span class="mode-preview-check"></span>Jane — Review deck <span class="mode-preview-tag">Thu Oct 10</span></div>
-              <div class="mode-preview-action"><span class="mode-preview-check"></span>Sarah — Submit budget <span class="mode-preview-tag">Fri Oct 11</span></div>
-            </div>
-          </div>
-        </div>
-        <div class="mode-card glow-card" style="--glow-color: 167, 139, 250">
-          <div class="mode-icon mode-icon-lecture">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><line x1="8" y1="7" x2="16" y2="7"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
-          </div>
-          <h3>Lecture Mode</h3>
-          <p>Generates study-ready notes with definitions, key concepts, and structured outlines in real time.</p>
-          <div class="mode-preview">
-            <div class="mode-preview-header">
-              <span class="mode-preview-dot" style="background:#a78bfa"></span>
-              Lecture Notes · Organic Chemistry — Week 7
-            </div>
-            <div class="mode-preview-body">
-              <div class="mode-preview-label">Key Concepts</div>
-              <div class="mode-preview-line"><strong>SN1 vs SN2:</strong> SN1 is unimolecular (two steps, carbocation intermediate). SN2 is bimolecular (one step, backside attack).</div>
-              <div class="mode-preview-divider"></div>
-              <div class="mode-preview-label">Definitions</div>
-              <div class="mode-preview-line"><strong>Nucleophile:</strong> electron-rich species that donates an electron pair to an electrophile.</div>
-              <div class="mode-preview-line"><strong>Leaving group:</strong> atom or group that departs with a bonding pair of electrons.</div>
-              <div class="mode-preview-divider"></div>
-              <div class="mode-preview-label">Assignment</div>
-              <div class="mode-preview-action"><span class="mode-preview-check"></span>Problem Set 7 — Ch. 6 <span class="mode-preview-tag">Due Mon</span></div>
-            </div>
-          </div>
-        </div>
+      <div class="pitch-text">
+        <p>Someone says something important 30 minutes into a meeting. You think <em>"I'll remember that."</em> You won't.</p>
+        <p>We built Noted because we were tired of it. It sits invisibly on your machine, captures audio and screen in real-time, and writes the notes you would've written if you weren't busy actually paying attention.</p>
+        <p>No bot joins your call. No data leaves your device. Nobody knows it's there.</p>
+        <p class="pitch-byline">Built by students who got tired of missing half of every lecture.</p>
       </div>
     </div>
   </section>
@@ -447,7 +206,6 @@
     <div class="section-inner">
       <p class="section-label">How it works</p>
       <h2 class="section-title">One click. Fully present.</h2>
-      <p class="section-subtitle">Start a recording and forget about it. Noted handles the rest.</p>
 
       <div class="steps-grid">
         <div class="step-card">
@@ -488,7 +246,7 @@
           <div class="step-text">
             <div class="step-number">01</div>
             <h3>Open Noted</h3>
-            <p>Launch the app. It sits quietly in your menu bar. Select meeting mode or lecture mode.</p>
+            <p>It lives in your menu bar. Pick meeting or lecture, hit record.</p>
           </div>
         </div>
         <div class="step-card">
@@ -516,8 +274,8 @@
           </div>
           <div class="step-text">
             <div class="step-number">02</div>
-            <h3>Start your session</h3>
-            <p>Hit record. Noted captures system audio and your screen silently in the background.</p>
+            <h3>Forget about it</h3>
+            <p>Go to your meeting or lecture. Noted captures audio and screen silently in the background.</p>
           </div>
         </div>
         <div class="step-card">
@@ -540,183 +298,24 @@
           </div>
           <div class="step-text">
             <div class="step-number">03</div>
-            <h3>Watch notes appear</h3>
-            <p>Real-time notes, action items, and key highlights generate live as your session happens.</p>
-          </div>
-        </div>
-        <div class="step-card">
-          <div class="step-mockup step-mockup-export">
-            <div class="sm-export-window">
-              <div class="sm-export-bar">
-                <span>Session Summary</span>
-              </div>
-              <div class="sm-export-body">
-                <div class="sm-export-stat">
-                  <span class="sm-export-num">14</span>
-                  <span class="sm-export-label">Notes</span>
-                </div>
-                <div class="sm-export-stat">
-                  <span class="sm-export-num">5</span>
-                  <span class="sm-export-label">Action Items</span>
-                </div>
-                <div class="sm-export-stat">
-                  <span class="sm-export-num">32m</span>
-                  <span class="sm-export-label">Duration</span>
-                </div>
-              </div>
-              <div class="sm-export-buttons">
-                <span class="sm-export-btn">
-                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
-                  Notion
-                </span>
-                <span class="sm-export-btn">
-                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
-                  Drive
-                </span>
-              </div>
-            </div>
-          </div>
-          <div class="step-text">
-            <div class="step-number">04</div>
-            <h3>Review & export</h3>
-            <p>Get a complete summary and organized notes. Export to Notion, Google Drive, or keep in Noted.</p>
+            <h3>Check your notes</h3>
+            <p>Real-time notes, action items, and highlights — generated live as the conversation happens.</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-
-  <!-- Smart & Private -->
-  <section class="section smart-private" id="privacy">
-    <div class="section-inner">
-      <p class="section-label">Smart & private</p>
-      <h2 class="section-title">Gets smarter over time.<br>Your data never leaves.</h2>
-      <p class="section-subtitle">Noted learns from every session and keeps everything on your device — no cloud, no compromises.</p>
-
-      <div class="smart-private-grid">
-        <div class="sp-card glow-card" style="--glow-color: 139, 92, 246">
-          <div class="sp-icon" style="--accent: #8b5cf6">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-          </div>
-          <h3>Cross-session recall</h3>
-          <p>Noted remembers what you discussed weeks ago, tracks open action items, and knows what's changed since.</p>
-        </div>
-        <div class="sp-card glow-card" style="--glow-color: 139, 92, 246">
-          <div class="sp-icon" style="--accent: #8b5cf6">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
-          </div>
-          <h3>Organize with folders</h3>
-          <p>Group sessions into folders like "English 101" or "Weekly Standups." Noted builds richer context within each one.</p>
-        </div>
-        <div class="sp-card glow-card" style="--glow-color: 74, 222, 128">
-          <div class="sp-icon" style="--accent: #4ade80">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          </div>
-          <h3>100% on-device</h3>
-          <p>All AI processing happens on your machine. Nothing is sent to a server. Works offline too — record anywhere, get full notes.</p>
-        </div>
-        <div class="sp-card glow-card" style="--glow-color: 74, 222, 128">
-          <div class="sp-icon" style="--accent: #4ade80">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg>
-          </div>
-          <h3>Zero-knowledge design</h3>
-          <p>We can't see your notes, recordings, or transcripts. Everything is encrypted and stored locally on your device.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FAQ -->
-  <section class="section faq" id="faq">
-    <div class="section-inner">
-      <p class="section-label">FAQ</p>
-      <h2 class="section-title">Got questions?</h2>
-
-      <div class="faq-list">
-        <div class="faq-item">
-          <button class="faq-question">
-            <span>How is Noted different from Fireflies or Otter?</span>
-            <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
-          </button>
-          <div class="faq-answer">
-            <p>Unlike Fireflies and Otter, Noted generates notes in real-time during your session — not after. It also captures your screen alongside audio for richer context, runs completely on-device for privacy, and is 100% incognito (no bots join your call).</p>
-          </div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question">
-            <span>Is Noted really invisible to other participants?</span>
-            <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
-          </button>
-          <div class="faq-answer">
-            <p>Yes. Noted captures system audio directly from your machine — no bot joins the call, no notifications are sent, and there's no indication to anyone that it's running. It's your personal tool running locally.</p>
-          </div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question">
-            <span>Does Noted work offline?</span>
-            <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
-          </button>
-          <div class="faq-answer">
-            <p>Yes. Because all AI processing happens on your device, Noted works without an internet connection. Record an in-person lecture or meeting anywhere and get full notes.</p>
-          </div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question">
-            <span>What platforms does Noted support?</span>
-            <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
-          </button>
-          <div class="faq-answer">
-            <p>Noted is launching first on Windows, with Mac, iOS, and Android coming soon. The desktop app is the core experience for recording, while mobile and web will let you review notes, search sessions, and chat with the AI from anywhere.</p>
-          </div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question">
-            <span>Can I use Noted with Zoom, Google Meet, and Teams?</span>
-            <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
-          </button>
-          <div class="faq-answer">
-            <p>Yes — Noted works with any app. It captures system audio and your screen, so it works with Zoom, Meet, Teams, Webex, or any other platform. It also works for in-person meetings and lectures via your microphone.</p>
-          </div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question">
-            <span>Can I export my notes?</span>
-            <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
-          </button>
-          <div class="faq-answer">
-            <p>Absolutely. Export notes, transcripts, and calendars to Notion, Google Drive, and more. We believe your data is yours — we'll never lock you in.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Download CTA -->
-  <section class="section download" id="download">
+  <!-- CTA -->
+  <section class="section download" id="waitlist">
     <div class="download-glow"></div>
     <div class="section-inner download-inner">
-      <h2 class="download-title">Be fully present.<br>Let Noted handle the rest.</h2>
-      <p class="download-subtitle">Download Noted and never miss a thing in your meetings and lectures again.</p>
-      <div class="download-buttons">
-        <a href="#" class="btn-primary btn-large btn-glow">
-          <span>Download for Windows</span>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-        </a>
-        <a href="#" class="btn-primary btn-large btn-mac">
-          <span>Mac — Coming Soon</span>
-        </a>
-      </div>
-      <div class="download-mobile">
-        <a href="#" class="store-badge">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-          App Store
-        </a>
-        <a href="#" class="store-badge">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M3.18 23.72c.59.35 1.31.37 1.92.05l12.09-6.95-3.01-3.01-11 9.91zm17.24-10.96L17.1 11 14 14.1l3.52 3.52 2.92-1.68c.72-.41 1.14-1.16 1.14-1.97s-.44-1.58-1.16-1.31zm-17.72 11.1L15.07 12 3.47.23C3.02-.06 2.48-.08 2.01.15c-.38.18-.62.57-.62 1.01v21.68c0 .44.24.83.62 1.01.17.09.35.13.53.13.24 0 .48-.07.69-.2l-.01.08zM14.37 11.28L17.1 8.55l-12.09-6.95c-.61-.32-1.33-.3-1.92.05l11 9.63z"/></svg>
-          Google Play
-        </a>
-      </div>
+      <h2 class="download-title">Be fully present.<br>We'll handle the rest.</h2>
+      <p class="download-subtitle">Join the waitlist for early access.</p>
+      <form class="waitlist-form waitlist-form-cta" id="cta-waitlist">
+        <input type="email" placeholder="Enter your email" required>
+        <button type="submit">Join Waitlist</button>
+      </form>
     </div>
   </section>
 
