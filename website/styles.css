@@ -1202,7 +1202,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 .sp-split {
   display: grid;
-  grid-template-columns: 1.15fr 1fr;
+  grid-template-columns: 1fr 1fr;
   gap: 80px;
   align-items: center;
   max-width: 1240px;
