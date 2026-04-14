@@ -2513,14 +2513,14 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 .zoom-slide {
   flex: 1;
-  background: #ffffff;
+  background: #1e1e28;
   border-radius: 10px;
   padding: 16px 20px 12px;
   display: flex;
   flex-direction: column;
   gap: 8px;
-  box-shadow: inset 0 0 0 1px rgba(15, 23, 42, 0.06), 0 2px 8px rgba(15, 23, 42, 0.05);
-  background-image: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.06), 0 2px 8px rgba(0, 0, 0, 0.3);
+  background-image: linear-gradient(180deg, #222230 0%, #1a1a24 100%);
 }
 .zoom-slide-head {
   display: flex;
@@ -2531,13 +2531,13 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .zoom-slide-title {
   font-size: 13px;
   font-weight: 700;
-  color: #0f172a;
+  color: #f1f5f9;
   letter-spacing: -0.2px;
 }
 .zoom-slide-sub {
   font-size: 9.5px;
   font-weight: 500;
-  color: #94a3b8;
+  color: #71717a;
   letter-spacing: 0.02em;
 }
 .zoom-slide-legend {
@@ -2545,7 +2545,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   gap: 14px;
   font-size: 9.5px;
   font-weight: 500;
-  color: #475569;
+  color: #a1a1aa;
   align-items: center;
 }
 .zoom-slide-legend span {
@@ -2571,7 +2571,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   flex-direction: column;
   justify-content: space-between;
   font-size: 8.5px;
-  color: #94a3b8;
+  color: #71717a;
   font-weight: 500;
   text-align: right;
   padding-bottom: 2px;
@@ -2591,7 +2591,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .zoom-slide-grid span {
   display: block;
   height: 1px;
-  background: rgba(148, 163, 184, 0.22);
+  background: rgba(148, 163, 184, 0.14);
 }
 .zoom-slide-chart {
   position: relative;
@@ -2614,10 +2614,10 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .zoom-bar-val {
   font-size: 8.5px;
   font-weight: 600;
-  color: #64748b;
+  color: #a1a1aa;
   letter-spacing: -0.02em;
 }
-.zoom-bar-val-highlight { color: #16a34a; }
+.zoom-bar-val-highlight { color: #4ade80; }
 .zoom-bar {
   width: 28px;
   height: var(--h);
@@ -2638,27 +2638,44 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   text-align: center;
   font-size: 9.5px;
   font-weight: 600;
-  color: #64748b;
+  color: #a1a1aa;
 }
 .zoom-slide-foot {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-top: 1px solid rgba(148, 163, 184, 0.25);
+  border-top: 1px solid rgba(148, 163, 184, 0.14);
   padding-top: 6px;
   margin-top: 2px;
 }
 .zoom-slide-page {
   font-size: 9px;
-  color: #94a3b8;
+  color: #71717a;
   font-weight: 500;
   letter-spacing: 0.02em;
 }
 .zoom-slide-note {
   font-size: 10px;
-  color: #475569;
+  color: #a1a1aa;
 }
 .zoom-slide-note strong { color: #4ade80; }
+
+[data-theme="light"] .zoom-slide {
+  background: #ffffff;
+  background-image: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+  box-shadow: inset 0 0 0 1px rgba(15, 23, 42, 0.06), 0 2px 8px rgba(15, 23, 42, 0.05);
+}
+[data-theme="light"] .zoom-slide-title { color: #0f172a; }
+[data-theme="light"] .zoom-slide-sub { color: #94a3b8; }
+[data-theme="light"] .zoom-slide-legend { color: #475569; }
+[data-theme="light"] .zoom-slide-yaxis { color: #94a3b8; }
+[data-theme="light"] .zoom-slide-grid span { background: rgba(148, 163, 184, 0.22); }
+[data-theme="light"] .zoom-bar-val { color: #64748b; }
+[data-theme="light"] .zoom-bar-val-highlight { color: #16a34a; }
+[data-theme="light"] .zoom-slide-labels span { color: #64748b; }
+[data-theme="light"] .zoom-slide-foot { border-top-color: rgba(148, 163, 184, 0.25); }
+[data-theme="light"] .zoom-slide-page { color: #94a3b8; }
+[data-theme="light"] .zoom-slide-note { color: #475569; }
 
 .zoom-sidebar {
   width: 80px;
