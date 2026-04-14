@@ -339,9 +339,41 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .btn-large { padding: 18px 40px; font-size: 16px; border-radius: 16px; }
 
 .btn-mac {
-  background: transparent; color: var(--text-dim); border: 1px solid var(--border); opacity: 0.6; cursor: default;
+  background: rgba(255, 255, 255, 0.04);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  opacity: 1;
+  cursor: default;
+  gap: 10px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
-.btn-mac:hover { border-color: var(--border); background: transparent; box-shadow: none; }
+.btn-mac:hover { border-color: rgba(255, 255, 255, 0.32); background: rgba(255, 255, 255, 0.07); box-shadow: none; transform: none; }
+.btn-mac-badge {
+  display: inline-flex;
+  align-items: center;
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 4px 9px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, rgba(167, 139, 250, 0.35), rgba(59, 130, 246, 0.35));
+  border: 1px solid rgba(196, 181, 253, 0.4);
+  color: #ffffff;
+  box-shadow: 0 0 12px rgba(147, 197, 253, 0.25);
+  margin-left: 4px;
+}
+[data-theme="light"] .btn-mac {
+  background: rgba(0, 0, 0, 0.04);
+  color: #0a0a0a;
+  border-color: rgba(0, 0, 0, 0.18);
+}
+[data-theme="light"] .btn-mac:hover {
+  border-color: rgba(0, 0, 0, 0.28);
+  background: rgba(0, 0, 0, 0.06);
+}
+[data-theme="light"] .btn-mac-badge { color: #0a0a0a; border-color: rgba(0, 0, 0, 0.2); background: linear-gradient(135deg, rgba(167, 139, 250, 0.3), rgba(147, 197, 253, 0.35)); }
 
 .hero-platforms { font-size: 13px; color: var(--text-dim); }
 
