@@ -2164,7 +2164,39 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .legal-section p { font-size: 15px; line-height: 1.7; color: var(--text-secondary); margin-bottom: 10px; }
 
 /* ─── Showcase Sections (Cluely-style) ────────────── */
-.showcase .section-inner { text-align: left; }
+.showcase { position: relative; }
+.showcase .section-inner { text-align: left; position: relative; z-index: 1; }
+
+#showcase-live {
+  background:
+    radial-gradient(ellipse 45% 60% at 78% 50%, rgba(74, 222, 128, 0.16) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 50% at 15% 60%, rgba(34, 211, 238, 0.10) 0%, transparent 70%);
+}
+#showcase-chat {
+  background:
+    radial-gradient(ellipse 45% 60% at 22% 50%, rgba(59, 130, 246, 0.16) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 50% at 85% 55%, rgba(167, 139, 250, 0.10) 0%, transparent 70%);
+}
+#showcase-invisible {
+  background:
+    radial-gradient(ellipse 45% 60% at 78% 45%, rgba(167, 139, 250, 0.16) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 50% at 15% 60%, rgba(244, 114, 182, 0.10) 0%, transparent 70%);
+}
+
+#showcase-live .mockup-window {
+  box-shadow: 0 25px 80px rgba(0, 0, 0, 0.35), 0 0 60px rgba(74, 222, 128, 0.15), 0 0 0 0.5px rgba(134, 239, 172, 0.2) inset;
+}
+#showcase-chat .mockup-window {
+  box-shadow: 0 25px 80px rgba(0, 0, 0, 0.35), 0 0 60px rgba(59, 130, 246, 0.18), 0 0 0 0.5px rgba(147, 197, 253, 0.2) inset;
+}
+#showcase-invisible .mockup-window {
+  box-shadow: 0 25px 80px rgba(0, 0, 0, 0.35), 0 0 60px rgba(167, 139, 250, 0.18), 0 0 0 0.5px rgba(196, 181, 253, 0.2) inset;
+}
+
+#showcase-chat .showcase-list li::before { background: rgba(59, 130, 246, 0.14); border-color: rgba(59, 130, 246, 0.55); }
+#showcase-chat .showcase-list li::after { border-left-color: #60a5fa; border-bottom-color: #60a5fa; }
+#showcase-invisible .showcase-list li::before { background: rgba(167, 139, 250, 0.14); border-color: rgba(167, 139, 250, 0.55); }
+#showcase-invisible .showcase-list li::after { border-left-color: #c4b5fd; border-bottom-color: #c4b5fd; }
 
 .showcase-grid {
   display: grid;
