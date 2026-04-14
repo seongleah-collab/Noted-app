@@ -1696,11 +1696,11 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 /* ─── FAQ ──────────────────────────────────────────── */
 .faq-split {
   display: grid;
-  grid-template-columns: minmax(280px, 360px) 1fr;
-  gap: 72px;
+  grid-template-columns: minmax(300px, 400px) 1fr;
+  gap: 84px;
   align-items: start;
   text-align: left;
-  max-width: 1140px;
+  max-width: 1230px;
   margin: 0 auto;
 }
 
@@ -1708,7 +1708,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .faq-intro .section-label { text-align: left; margin-bottom: 14px; }
 .faq-title {
   text-align: left;
-  font-size: 48px;
+  font-size: 56px;
   line-height: 1;
   letter-spacing: -0.03em;
   margin-bottom: 16px;
@@ -1782,11 +1782,11 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .faq-question {
   width: 100%;
   display: grid;
-  grid-template-columns: 44px 1fr auto;
+  grid-template-columns: 48px 1fr auto;
   align-items: center;
-  gap: 24px;
-  padding: 22px 12px;
-  font-size: 16px;
+  gap: 26px;
+  padding: 27px 12px;
+  font-size: 17.5px;
   font-weight: 500;
   color: var(--text);
   text-align: left;
@@ -2440,7 +2440,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .modes { background: radial-gradient(ellipse 80% 50% at 50% 50%, rgba(59, 130, 246, 0.06) 0%, transparent 70%); }
 .how-it-works { background: radial-gradient(ellipse 80% 50% at 50% 50%, rgba(167, 139, 250, 0.05) 0%, transparent 70%); padding-top: 40px; padding-bottom: 40px; }
 .compare { background: radial-gradient(ellipse 80% 50% at 50% 30%, rgba(74, 222, 128, 0.04) 0%, transparent 70%); }
-.faq { background: radial-gradient(ellipse 80% 50% at 50% 50%, rgba(59, 130, 246, 0.03) 0%, transparent 70%); padding-top: 100px; padding-bottom: 100px; }
+.faq { background: radial-gradient(ellipse 80% 50% at 50% 50%, rgba(59, 130, 246, 0.03) 0%, transparent 70%); padding-top: 120px; padding-bottom: 120px; }
 
 [data-theme="light"] .modes { background: radial-gradient(ellipse 80% 50% at 50% 50%, rgba(59, 130, 246, 0.05) 0%, transparent 70%); }
 [data-theme="light"] .how-it-works { background: radial-gradient(ellipse 80% 50% at 50% 50%, rgba(167, 139, 250, 0.04) 0%, transparent 70%); }
