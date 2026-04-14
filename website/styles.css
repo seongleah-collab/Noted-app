@@ -687,8 +687,18 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .mode-card { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.06); border-radius: 20px; padding: 28px 24px; backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s, background 0.4s; }
 .mode-card:hover { transform: translateY(-6px); box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25); }
 .mode-icon { width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
-.mode-icon-meeting { background: rgba(59, 130, 246, 0.12); border: 1px solid rgba(59, 130, 246, 0.25); color: #3b82f6; }
-.mode-icon-lecture { background: rgba(167, 139, 250, 0.12); border: 1px solid rgba(167, 139, 250, 0.25); color: #a78bfa; }
+.mode-icon-meeting {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.45), rgba(14, 165, 233, 0.25));
+  border: 1px solid rgba(147, 197, 253, 0.5);
+  color: #ffffff;
+  box-shadow: 0 0 24px rgba(59, 130, 246, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+.mode-icon-lecture {
+  background: linear-gradient(135deg, rgba(167, 139, 250, 0.45), rgba(236, 72, 153, 0.25));
+  border: 1px solid rgba(196, 181, 253, 0.5);
+  color: #ffffff;
+  box-shadow: 0 0 24px rgba(167, 139, 250, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
 .mode-card h3 { font-size: 18px; font-weight: 700; color: var(--text); margin-bottom: 8px; letter-spacing: -0.3px; }
 .mode-card p { font-size: 13.5px; line-height: 1.55; color: var(--text-secondary); margin-bottom: 16px; }
 
@@ -2670,7 +2680,12 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 /* ─── Section Visual Variety ─────────────────────── */
 
 /* Section ambient backgrounds — color shifts as you scroll */
-.modes { background: radial-gradient(ellipse 80% 50% at 50% 50%, rgba(59, 130, 246, 0.06) 0%, transparent 70%); }
+.modes {
+  background:
+    radial-gradient(ellipse 55% 50% at 28% 55%, rgba(59, 130, 246, 0.18) 0%, transparent 70%),
+    radial-gradient(ellipse 55% 50% at 72% 55%, rgba(167, 139, 250, 0.18) 0%, transparent 70%),
+    radial-gradient(ellipse 90% 40% at 50% 110%, rgba(236, 72, 153, 0.08) 0%, transparent 70%);
+}
 .how-it-works { background: radial-gradient(ellipse 80% 50% at 50% 50%, rgba(167, 139, 250, 0.05) 0%, transparent 70%); padding-top: 40px; padding-bottom: 40px; }
 .compare { background: radial-gradient(ellipse 80% 50% at 50% 30%, rgba(74, 222, 128, 0.04) 0%, transparent 70%); }
 .faq { background: radial-gradient(ellipse 80% 50% at 50% 50%, rgba(59, 130, 246, 0.03) 0%, transparent 70%); padding-top: 120px; padding-bottom: 120px; }
@@ -2714,20 +2729,26 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 
 .mode-card:first-child {
-  background: linear-gradient(155deg, rgba(59, 130, 246, 0.08) 0%, rgba(255, 255, 255, 0.03) 40%);
-  border-color: rgba(59, 130, 246, 0.15);
+  background:
+    radial-gradient(ellipse 120% 60% at 0% 0%, rgba(59, 130, 246, 0.28) 0%, transparent 55%),
+    linear-gradient(155deg, rgba(59, 130, 246, 0.14) 0%, rgba(14, 165, 233, 0.06) 50%, rgba(255, 255, 255, 0.02) 100%);
+  border-color: rgba(59, 130, 246, 0.32);
+  box-shadow: 0 10px 40px rgba(59, 130, 246, 0.12), inset 0 1px 0 rgba(147, 197, 253, 0.15);
 }
 .mode-card:first-child:hover {
-  border-color: rgba(59, 130, 246, 0.35);
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25), 0 0 40px rgba(59, 130, 246, 0.08);
+  border-color: rgba(59, 130, 246, 0.55);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25), 0 0 60px rgba(59, 130, 246, 0.22);
 }
 .mode-card:last-child {
-  background: linear-gradient(155deg, rgba(167, 139, 250, 0.08) 0%, rgba(255, 255, 255, 0.03) 40%);
-  border-color: rgba(167, 139, 250, 0.15);
+  background:
+    radial-gradient(ellipse 120% 60% at 100% 0%, rgba(167, 139, 250, 0.28) 0%, transparent 55%),
+    linear-gradient(155deg, rgba(167, 139, 250, 0.14) 0%, rgba(236, 72, 153, 0.06) 50%, rgba(255, 255, 255, 0.02) 100%);
+  border-color: rgba(167, 139, 250, 0.32);
+  box-shadow: 0 10px 40px rgba(167, 139, 250, 0.12), inset 0 1px 0 rgba(196, 181, 253, 0.15);
 }
 .mode-card:last-child:hover {
-  border-color: rgba(167, 139, 250, 0.35);
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25), 0 0 40px rgba(167, 139, 250, 0.08);
+  border-color: rgba(167, 139, 250, 0.55);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25), 0 0 60px rgba(167, 139, 250, 0.22);
 }
 
 [data-theme="light"] .mode-card:first-child {
@@ -2845,11 +2866,13 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 .mode-card:first-child::before {
   content: '01';
-  color: #3b82f6;
+  color: #60a5fa;
+  opacity: 0.14;
 }
 .mode-card:last-child::before {
   content: '02';
-  color: #a78bfa;
+  color: #c4b5fd;
+  opacity: 0.14;
 }
 .mode-card > * { position: relative; z-index: 1; }
 [data-theme="light"] .mode-card::before { opacity: 0.08; }
