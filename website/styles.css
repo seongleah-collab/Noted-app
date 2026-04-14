@@ -2001,6 +2001,21 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
 .download-subtitle { font-size: 17px; line-height: 1.6; color: #ffffff; margin-bottom: 40px; max-width: 520px; }
 .download-buttons { display: flex; gap: 14px; margin-bottom: 20px; }
+
+[data-theme="light"] .download-title,
+[data-theme="light"] .download-title-accent { color: #0a0a0a; }
+[data-theme="light"] .download-subtitle { color: #444; }
+[data-theme="light"] .download-trust { color: #0a0a0a; }
+[data-theme="light"] .download-trust li {
+  border-color: rgba(0, 0, 0, 0.1);
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.04) 0%, rgba(0, 0, 0, 0.015) 100%);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.6) inset, 0 6px 18px rgba(0, 0, 0, 0.06);
+}
+[data-theme="light"] .download-trust li:hover {
+  border-color: rgba(0, 0, 0, 0.18);
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.06) 0%, rgba(0, 0, 0, 0.02) 100%);
+}
+
 .download-buttons .btn-glow::before {
   background: none;
   animation: none;
