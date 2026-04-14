@@ -1238,8 +1238,10 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .smart-private {
   position: relative;
   background:
-    radial-gradient(ellipse 55% 70% at 20% 50%, rgba(74, 222, 128, 0.07) 0%, transparent 65%),
-    linear-gradient(180deg, transparent 0%, rgba(74, 222, 128, 0.015) 100%);
+    radial-gradient(ellipse 50% 60% at 18% 45%, rgba(74, 222, 128, 0.18) 0%, transparent 65%),
+    radial-gradient(ellipse 45% 55% at 85% 40%, rgba(34, 211, 238, 0.12) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 50% at 75% 90%, rgba(244, 114, 182, 0.10) 0%, transparent 70%),
+    radial-gradient(ellipse 45% 55% at 30% 95%, rgba(167, 139, 250, 0.10) 0%, transparent 70%);
   overflow: hidden;
 }
 .sp-split {
@@ -1297,12 +1299,14 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   width: 100%;
   max-width: 420px;
   aspect-ratio: 1.6 / 1;
-  border: 1px solid rgba(74, 222, 128, 0.18);
+  border: 1px solid rgba(74, 222, 128, 0.32);
   border-radius: 20px;
   background:
-    linear-gradient(180deg, rgba(74, 222, 128, 0.04) 0%, rgba(255, 255, 255, 0.015) 100%);
+    radial-gradient(ellipse 80% 60% at 50% 50%, rgba(74, 222, 128, 0.10) 0%, transparent 75%),
+    linear-gradient(180deg, rgba(74, 222, 128, 0.06) 0%, rgba(34, 211, 238, 0.03) 60%, rgba(255, 255, 255, 0.015) 100%);
   padding: 28px;
   overflow: hidden;
+  box-shadow: 0 20px 60px rgba(74, 222, 128, 0.12), inset 0 1px 0 rgba(134, 239, 172, 0.15);
 }
 .sp-diagram-grid {
   position: absolute;
@@ -1505,13 +1509,17 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   width: 40px;
   height: 40px;
   border-radius: 10px;
-  background: color-mix(in srgb, var(--accent) 10%, transparent);
-  border: 1px solid color-mix(in srgb, var(--accent) 22%, transparent);
+  background: linear-gradient(135deg, color-mix(in srgb, var(--accent) 28%, transparent), color-mix(in srgb, var(--accent) 10%, transparent));
+  border: 1px solid color-mix(in srgb, var(--accent) 45%, transparent);
   color: var(--accent);
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 0 18px color-mix(in srgb, var(--accent) 22%, transparent), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+.sp-list-item:hover .sp-list-icon {
+  box-shadow: 0 0 28px color-mix(in srgb, var(--accent) 45%, transparent), inset 0 1px 0 rgba(255, 255, 255, 0.15);
 }
 .sp-list-item:hover .sp-list-icon { transform: rotate(-6deg) scale(1.05); }
 
