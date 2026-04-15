@@ -2846,7 +2846,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
     radial-gradient(ellipse 55% 50% at 72% 55%, rgba(167, 139, 250, 0.18) 0%, transparent 70%),
     radial-gradient(ellipse 90% 40% at 50% 110%, rgba(236, 72, 153, 0.08) 0%, transparent 70%);
 }
-.how-it-works { background: radial-gradient(ellipse 80% 50% at 50% 50%, rgba(167, 139, 250, 0.05) 0%, transparent 70%); padding-top: 40px; padding-bottom: 120px; }
+.how-it-works { background: radial-gradient(ellipse 80% 50% at 50% 50%, rgba(167, 139, 250, 0.05) 0%, transparent 70%); padding-top: 140px; padding-bottom: 120px; }
 .compare { background: radial-gradient(ellipse 80% 50% at 50% 30%, rgba(74, 222, 128, 0.04) 0%, transparent 70%); }
 .faq {
   background:
