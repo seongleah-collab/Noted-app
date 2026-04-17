@@ -1991,8 +1991,8 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   width: 18px;
   height: 18px;
   border-radius: 50%;
-  background: radial-gradient(circle at 35% 35%, #fff1cf, #e6c57b 52%, #8c5a1f 100%);
-  box-shadow: 0 0 14px rgba(230, 197, 123, 0.6), inset -2px -2px 4px rgba(0, 0, 0, 0.18);
+  background: radial-gradient(circle at 35% 35%, #d6e2ec, #8ea4b8 55%, #3a4a5c 100%);
+  box-shadow: 0 0 14px rgba(170, 195, 220, 0.55), inset -2px -2px 4px rgba(0, 0, 0, 0.22);
   margin-left: -9px;
 }
 .download-planet::before {
@@ -2003,8 +2003,8 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   width: 44px;
   height: 10px;
   border-radius: 50%;
-  border: 1.5px solid rgba(230, 197, 123, 0.85);
-  box-shadow: 0 0 10px rgba(230, 197, 123, 0.45);
+  border: 1.5px solid rgba(240, 245, 252, 0.9);
+  box-shadow: 0 0 12px rgba(220, 232, 245, 0.55);
   transform: translate(-50%, -50%) rotate(-22deg);
   pointer-events: none;
 }
@@ -2016,7 +2016,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   width: 36px;
   height: 7px;
   border-radius: 50%;
-  border: 1px solid rgba(255, 228, 173, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.65);
   transform: translate(-50%, -50%) rotate(-22deg);
   pointer-events: none;
 }
